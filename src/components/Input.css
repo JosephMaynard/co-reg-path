@@ -1,0 +1,93 @@
+.Input {
+    width: 500px;
+    margin: 0 auto;
+    position: relative;
+    padding: 10px 0 0 0;
+}
+
+.Input-label {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.Input-label-span {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    top: -20px;
+    left: 0;
+    position: absolute;
+    font-weight: bold;
+    color: #b1b1b1;
+    font-size: 0.7em;
+    transition: all 0.3s;
+}
+
+.Input-input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 1.6em;
+  font-weight: 300;
+  display: block;
+  margin: 0;
+  padding: 10px;
+  line-height: 1;
+  transition: border-color 0.2s;
+  color: #595F6E;
+  background: transparent;
+  border: none;
+}
+
+.Input input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+.Input input [type=number]::-webkit-inner-spin-button,
+.Input input [type=number]::-webkit-outer-spin-button {
+    -webkit-appearance:
+    none; margin: 0;
+}
+
+.Input-input:focus {
+  outline: none;
+}
+
+.Input-line {
+  width: 100%;
+  height: 3px;
+  display: block;
+  stroke: hsl(0, 0%, 75%);
+  stroke-width: 2px;
+}
+
+.Input-line .focus,
+.Input-line .valid,
+.Input-line .invalid {
+  transition: all 0.3s;
+  stroke-dasharray: 0, 40;
+}
+.Input-line .focus {
+  stroke: #2e96b4;
+}
+.Input-line .valid {
+  stroke: #23cdb7;
+}
+.Input-line .invalid {
+  stroke: #eb4a3f;
+}
+
+.Input-input:focus ~ .Input-line .focus,
+.Input-input:valid ~ .Input-line .valid,
+.Input-input[data-touched]:invalid ~ .Input-line .invalid {
+  stroke-dasharray: 40, 0;
+  stroke-dashoffset: 0;
+}
+
+.Input-label-span-not-empty,
+.Input-input:focus ~ .Input-label-span,
+.Input-input:valid ~ .Input-label-span,
+.Input-input[data-touched]:invalid ~ .Input-label-span {
+  -webkit-transform: translateY(-40px);
+  transform: translateY(-40px);
+}
