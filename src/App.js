@@ -21,7 +21,14 @@ class App extends Component {
         <div className="App-header">
           <h1>Leading Competitions Australia</h1>
         </div>
-        <Input />
+        <Input
+          type="text"
+          label="First Name"
+         />
+        <Input
+          type="number"
+          label="Phone Number"
+         />
       </div>
     );
   }

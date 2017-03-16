@@ -3,19 +3,19 @@ const pathData = [
         type: 'email',
         name: 'email',
         title: 'Enter your email address:',
-        placeholder: 'Email address',
+        label: 'Email address',
     },
     {
         type: 'name',
         name: 'firstName',
         title: 'Enter your first name:',
-        placeholder: 'First name',
+        label: 'First name',
     },
     {
         type: 'name',
         name: 'lastName',
         title: 'Enter your last name:',
-        placeholder: 'Last name',
+        label: 'Last name',
     },
     {
         type: 'postcode',
