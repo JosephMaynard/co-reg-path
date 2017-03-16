@@ -1,4 +1,3 @@
-import Inferno from 'inferno';
 import './CTAButton.css';
 
 function CTAButton(props) {
