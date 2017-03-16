@@ -1,6 +1,7 @@
 import Component from 'inferno-component';
 
 import Input from './components/Input';
+import CTAButton from './components/CTAButton';
 
 import pathData from './data/sample_path_data';
 import './App.css';
@@ -21,14 +22,27 @@ class App extends Component {
         <div className="App-header">
           <h1>Leading Competitions Australia</h1>
         </div>
-        <Input
-          type="text"
-          label="First Name"
-         />
-        <Input
-          type="number"
-          label="Phone Number"
-         />
+        <div className="container">
+          <Input
+            type="text"
+            label="First Name"
+           />
+          <Input
+            type="number"
+            label="Phone Number"
+           />
+           <CTAButton
+            text="next"
+            disabled={false}
+           />
+           <br/>
+           <br/>
+           <br/>
+           <CTAButton
+            text="next"
+            disabled={true}
+           />
+        </div>
       </div>
     );
   }

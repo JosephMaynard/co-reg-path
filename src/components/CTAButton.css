@@ -1,0 +1,111 @@
+.CTAButton{
+    display: block;
+    background: #e9369f;
+    background: -moz-linear-gradient(left,  #e9369f 0%, #e9347a 48%, #e73359 100%);
+    background: -webkit-linear-gradient(left,  #e9369f 0%,#e9347a 48%,#e73359 100%);
+    background: linear-gradient(to right,  #e9369f 0%,#e9347a 48%,#e73359 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9369f', endColorstr='#e73359',GradientType=1 );
+    width: 80%;
+    color: #FFF;
+    padding: 16px 0;
+    text-align: center;
+    font-size: 1.7em;
+    font-weight: bold;
+    border-radius: 8px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    box-shadow: rgba(233,52,122,0.6) 0px 4px 42px,
+                inset rgba(255,255,255,0.3) 0px 0px 11px 4px;
+    text-shadow: rgba(255,255,255,0.4) 0px 0px 12px;
+    transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+    position: relative;
+}
+
+.CTAButton:disabled{
+    background: transparent;
+    color: #b1b1b1;
+    border: solid 4px #b1b1b1;
+    padding: 12px 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.CTAButton:active{
+    background: #ff21a3;
+    background: -moz-linear-gradient(left,  #ff21a3 0%, #ff1f75 48%, #ff1b4c 100%);
+    background: -webkit-linear-gradient(left,  #ff21a3 0%,#ff1f75 48%,#ff1b4c 100%);
+    background: linear-gradient(to right,  #ff21a3 0%,#ff1f75 48%,#ff1b4c 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff21a3', endColorstr='#ff1b4c',GradientType=1 );
+    box-shadow: rgba(233,52,122,0.8) 0px 2px 24px,
+                inset rgba(255,255,255,0.3) 0px 0px 8px 2px;
+    text-shadow: rgba(255,255,255,1) 0px 0px 32px;
+}
+
+.CTAButton:not([disabled]):before {
+  -webkit-animation: shine 0.5s 0s linear;
+  -moz-animation: shine 0.5s 0s linear;
+  animation: shine 0.5s 0s linear;
+}
+
+.CTAButton:before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: white;
+  box-shadow: 0 0 15px 8px rgba(255,255,255,0.8);
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+}
+
+@-webkit-keyframes shine {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+@-moz-keyframes shine {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+@keyframes shine {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
