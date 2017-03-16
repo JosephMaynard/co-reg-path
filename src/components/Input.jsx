@@ -27,7 +27,8 @@ class Input extends Component {
                         className="Input-input"
                         type={this.props.type}
                         id={this.state.id}
-                        minlength="4"
+                        minlength={this.props.minlength}
+                        maxlength={this.props.maxlength}
                         value={this.state.value}
                         onInput={this.handleChange}
                         required

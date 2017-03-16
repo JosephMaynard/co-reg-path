@@ -24,6 +24,11 @@
     color: #b1b1b1;
     font-size: 0.7em;
     transition: all 0.3s;
+    -webkit-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+    pointer-events: none;
 }
 
 .Input-input {

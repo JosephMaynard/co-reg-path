@@ -28,11 +28,12 @@
 
 .CTAButton:disabled{
     background: transparent;
-    color: #b1b1b1;
-    border: solid 4px #b1b1b1;
+    color: #cacaca;
+    border: solid 4px #cacaca;
     padding: 12px 0;
     box-shadow: none;
     text-shadow: none;
+    cursor: not-allowed;
 }
 
 .CTAButton:active{
