@@ -1,6 +1,7 @@
 import Component from 'inferno-component';
 
 import Input from './components/Input';
+import Select from './components/Select';
 import CTAButton from './components/CTAButton';
 
 import pathData from './data/sample_path_data';
@@ -23,6 +24,7 @@ class App extends Component {
           <h1>Leading Competitions Australia</h1>
         </div>
         <div className="container">
+          <p className="title">Please enter your name:</p>
           <Input
             type="text"
             label="First Name"
@@ -31,17 +33,28 @@ class App extends Component {
             type="number"
             label="Phone Number"
            />
-           <CTAButton
+          <Input
+            type="email"
+            label="Email"
+           />
+          <Select
+            label="Select Suburb"
+            options={[
+              {value:'Marrickville', text:'Marrickville'},
+              {value:'DulwichHill', text:'Dulwich Hill'},
+              {value:'Newtown', text:'Newtown'},
+            ]}
+          />
+          <CTAButton
             text="next"
             disabled={false}
-           />
-           <br/>
-           <br/>
-           <br/>
-           <CTAButton
+          />
+          <br/>
+          <br/>
+          <CTAButton
             text="next"
             disabled={true}
-           />
+          />
         </div>
       </div>
     );

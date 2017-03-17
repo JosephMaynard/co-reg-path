@@ -1,22 +1,23 @@
 .CTAButton{
+    width: 80%;
+    height: 60px;
     display: block;
     background: #e9369f;
     background: -moz-linear-gradient(left,  #e9369f 0%, #e9347a 48%, #e73359 100%);
     background: -webkit-linear-gradient(left,  #e9369f 0%,#e9347a 48%,#e73359 100%);
     background: linear-gradient(to right,  #e9369f 0%,#e9347a 48%,#e73359 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9369f', endColorstr='#e73359',GradientType=1 );
-    width: 80%;
     color: #FFF;
-    padding: 16px 0;
+    padding: 0;
     text-align: center;
     font-size: 1.7em;
     font-weight: bold;
     border-radius: 8px;
     margin: 0 auto;
     box-sizing: border-box;
-    box-shadow: rgba(233,52,122,0.6) 0px 4px 42px,
-                inset rgba(255,255,255,0.3) 0px 0px 11px 4px;
-    text-shadow: rgba(255,255,255,0.4) 0px 0px 12px;
+    box-shadow: rgba(233,52,122,0.6) 0px 2px 18px,
+                inset rgba(255,255,255,0.3) 0px 6px 11px 4px;
+    text-shadow: rgba(255,255,255,0.4) 0px 0px 8px;
     transition: all 0.15s;
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none; 
@@ -24,13 +25,15 @@
     -ms-user-select: none; 
     user-select: none;
     position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .CTAButton:disabled{
     background: transparent;
     color: #cacaca;
     border: solid 4px #cacaca;
-    padding: 12px 0;
     box-shadow: none;
     text-shadow: none;
     cursor: not-allowed;
@@ -42,9 +45,9 @@
     background: -webkit-linear-gradient(left,  #ff21a3 0%,#ff1f75 48%,#ff1b4c 100%);
     background: linear-gradient(to right,  #ff21a3 0%,#ff1f75 48%,#ff1b4c 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff21a3', endColorstr='#ff1b4c',GradientType=1 );
-    box-shadow: rgba(233,52,122,0.8) 0px 2px 24px,
-                inset rgba(255,255,255,0.3) 0px 0px 8px 2px;
-    text-shadow: rgba(255,255,255,1) 0px 0px 32px;
+    box-shadow: rgba(233,52,122,0.8) 0px 1px 12px,
+                inset rgba(255,255,255,0.5) 0px 5px 8px 2px;
+    text-shadow: rgba(255,255,255,1) 0px 0px 12px;
 }
 
 .CTAButton:not([disabled]):before {

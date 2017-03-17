@@ -7,3 +7,7 @@ export function checkPhoneNumber(phoneNumber) {
     const pattern = new RegExp(/[0-9]{8,11}/i);
     return pattern.test(phoneNumber);
 };
+
+export function uniqueID() {
+    return (new Date()).getTime().toString(36) + Math.round(Math.random() * 1e8).toString(36);
+}

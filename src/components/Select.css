@@ -1,0 +1,106 @@
+.Select {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    padding: 10px 0 0 0;
+    margin-bottom: 30px;
+}
+
+.Select-label {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+.Select-label-span {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    top: 30px;
+    left: 0;
+    position: absolute;
+    font-weight: bold;
+    color: #b1b1b1;
+    font-size: 0.7em;
+    transition: all 0.3s;
+    -webkit-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+    pointer-events: none;
+}
+
+.Select-input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.6em;
+    font-weight: 300;
+    display: block;
+    margin: 0;
+    padding: 10px;
+    line-height: 1;
+    transition: border-color 0.2s;
+    color: #595F6E;
+    background: transparent;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.Select-input:focus {
+    outline: none;
+}
+
+.Select-input:required:invalid {
+    color: #b1b1b1;
+    opacity: 0;
+    transform: all 0.3s;
+}
+.Select-input:focus:required:invalid {
+    opacity: 1;
+}
+
+.Select-input option {
+    color: #595F6E;
+}
+
+.Select-line {
+    width: 100%;
+    height: 3px;
+    display: block;
+    stroke: #b1b1b1;
+    stroke-width: 2px;
+}
+
+.Select-line .focus,
+.Select-line .valid,
+.Select-line .invalid {
+    transition: all 0.3s;
+    stroke-dasharray: 0, 40;
+}
+.Select-line .focus {
+    stroke: #2e96b4;
+}
+.Select-line .valid {
+    stroke: #23cdb7;
+}
+.Select-line .invalid {
+    stroke: #eb4a3f;
+}
+
+.Select-input:focus ~ .Select-line .focus,
+.Select-input:valid ~ .Select-line .valid,
+.Select-input[data-touched]:invalid ~ .Select-line .invalid {
+    stroke-dasharray: 40, 0;
+    stroke-dashoffset: 0;
+}
+
+.Select-label-span-not-empty,
+.Select-input:focus ~ .Select-label-span,
+.Select-input:valid ~ .Select-label-span,
+.Select-input[data-touched]:invalid ~ .Select-label-span {
+    -webkit-transform: translateY(-40px);
+    transform: translateY(-40px);
+}

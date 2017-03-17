@@ -1,4 +1,5 @@
 import Component from 'inferno-component';
+import { uniqueID } from '../helpers';
 import './Input.css';
 
 class Input extends Component {
@@ -7,7 +8,7 @@ class Input extends Component {
     super(props);
     this.state = {
         value: '',
-        id: (new Date()).getTime().toString(36) + Math.round(Math.random() * 1e8).toString(36),
+        id: uniqueID(),
     };
 
    this.handleChange = this.handleChange.bind(this);
