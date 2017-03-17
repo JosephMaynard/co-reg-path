@@ -3,6 +3,7 @@ import Component from 'inferno-component';
 import Input from './components/Input';
 import Select from './components/Select';
 import CTAButton from './components/CTAButton';
+import Gender from './components/Gender';
 
 import pathData from './data/sample_path_data';
 import './App.css';
@@ -45,6 +46,8 @@ class App extends Component {
               {value:'Newtown', text:'Newtown'},
             ]}
           />
+          <Gender />
+          <br/>
           <CTAButton
             text="next"
             disabled={false}

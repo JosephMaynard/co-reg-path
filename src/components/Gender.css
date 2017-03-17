@@ -1,0 +1,59 @@
+.Gender {
+    display: flex;
+    justify-content: space-around;    
+}
+
+.Gender-button-male, .Gender-button-female  {
+    width: 40%;
+    max-width: 200px;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none; 
+    -moz-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.Gender-button-male svg, .Gender-button-female svg  {
+    width: 50%;
+    display: block;
+    position: absolute;
+    top: 17%;
+    left: 30%;
+}
+
+.Gender-button-male-icon, .Gender-button-female-icon {
+    border-radius: 50%;
+    width: 100%;
+    padding-bottom: 100%;
+    margin-bottom: 10px;
+    transition: all 0.15s;
+    position: relative;
+}
+.Gender-button-male-icon {
+    background: #2e96b4;
+    box-shadow: #237188 0px 6px 0px;
+}
+.Gender-button-female-icon {
+    background: #e75280;
+    box-shadow: #af2851 0px 6px 0px;
+}
+.Gender-button-male:active .Gender-button-male-icon {
+    box-shadow: #237188 0px 0px 0px;
+    transform: translateY(6px);
+    
+}
+.Gender-button-female:active .Gender-button-female-icon {    
+    box-shadow: #af2851 0px 0px 0px;
+    transform: translateY(6px);
+}
+
+.Gender-male-svg, .Gender-female-svg {
+    fill: #FFF;
+}
+.Gender-button-male p, .Gender-button-female p  {
+    font-weight: 100;
+    font-size: 1.8em;
+}
