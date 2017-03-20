@@ -25,7 +25,7 @@ class Select extends Component {
             <div className="Select">
                 <label className="Select-label" for={this.state.id}>
                     <select className="Select-input" required>
-                        <option value="" disabled selected hidden>Please select...</option>
+                        <option value="" disabled selected hidden>{this.props.placeholder || 'Please select...'}</option>
                         {this.props.options.map(option => <option value={option.value}>{option.text}</option>)}
                     </select>      
                     <div className={ this.state.value === '' 

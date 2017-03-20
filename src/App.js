@@ -4,6 +4,7 @@ import Input from './components/Input';
 import Select from './components/Select';
 import CTAButton from './components/CTAButton';
 import Gender from './components/Gender';
+import DoB from './components/DoB';
 
 import pathData from './data/sample_path_data';
 import './App.css';
@@ -47,6 +48,7 @@ class App extends Component {
             ]}
           />
           <Gender />
+          <DoB />
           <br/>
           <CTAButton
             text="next"
