@@ -1,30 +1,53 @@
 .App {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: auto;
+
 }
 
 .App-header {
-  
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
     background: #e9369f;
     background: -moz-linear-gradient(left,  #e9369f 0%, #e9347a 48%, #e73359 100%);
     background: -webkit-linear-gradient(left,  #e9369f 0%,#e9347a 48%,#e73359 100%);
     background: linear-gradient(to right,  #e9369f 0%,#e9347a 48%,#e73359 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9369f', endColorstr='#e73359',GradientType=1 );
-  padding: 30px;
-  color: #FFF;
-  text-align: center;
-  margin-bottom: 30px;
+    padding: 2em 0;
+    color: #FFF;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .title {
     text-align: center;
     font-size: 2em;
+    font-weight: 300;
+    color: #565656;
 }
 
 .container {
-    width: 90%;
-    max-width: 580px;
-    margin: 0 auto;
+    z-index: 5;
+    width: 80%;
+    max-width: 480px;
+    margin: 100px auto;
+    background: #FFF;
+    box-shadow: rgba(27,6,13,0.4) 0px 8px 40px;
+    box-sizing: border-box;
+    padding: 2em;
+    position: relative;
 }
 
 code {
   color: #e73a37;
+}
+
+@media screen and (min-width: 2000px) {
+    .container {
+        max-width: 960px;
+    }
 }

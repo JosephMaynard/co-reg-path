@@ -3,7 +3,7 @@
     margin: 0 auto;
     position: relative;
     padding: 10px 0 0 0;
-    margin-bottom: 30px;
+    margin-bottom: 1.5em;
 }
 
 .Input-label {
@@ -32,18 +32,21 @@
 }
 
 .Input-input {
-  width: 100%;
-  box-sizing: border-box;
-  font-size: 1.6em;
-  font-weight: 300;
-  display: block;
-  margin: 0;
-  padding: 10px;
-  line-height: 1;
-  transition: border-color 0.2s;
-  color: #595F6E;
-  background: transparent;
-  border: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.6em;
+    font-weight: 300;
+    display: block;
+    margin: 0;
+    padding: 10px;
+    line-height: 1;
+    transition: border-color 0.2s;
+    color: #595F6E;
+    background: transparent;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 .Input input[type='number'] {
@@ -57,44 +60,44 @@
 }
 
 .Input-input:focus {
-  outline: none;
+    outline: none;
 }
 
 .Input-line {
-  width: 100%;
-  height: 3px;
-  display: block;
-  stroke: #b1b1b1;
-  stroke-width: 2px;
+    width: 100%;
+    height: 3px;
+    display: block;
+    stroke: #b1b1b1;
+    stroke-width: 2px;
 }
 
 .Input-line .focus,
 .Input-line .valid,
 .Input-line .invalid {
-  transition: all 0.3s;
-  stroke-dasharray: 0, 40;
+    transition: all 0.3s;
+    stroke-dasharray: 0, 40;
 }
 .Input-line .focus {
-  stroke: #2e96b4;
+    stroke: #2e96b4;
 }
 .Input-line .valid {
-  stroke: #23cdb7;
+    stroke: #23cdb7;
 }
 .Input-line .invalid {
-  stroke: #eb4a3f;
+    stroke: #eb4a3f;
 }
 
 .Input-input:focus ~ .Input-line .focus,
 .Input-input:valid ~ .Input-line .valid,
 .Input-input[data-touched]:invalid ~ .Input-line .invalid {
-  stroke-dasharray: 40, 0;
-  stroke-dashoffset: 0;
+    stroke-dasharray: 40, 0;
+    stroke-dashoffset: 0;
 }
 
 .Input-label-span-not-empty,
 .Input-input:focus ~ .Input-label-span,
 .Input-input:valid ~ .Input-label-span,
 .Input-input[data-touched]:invalid ~ .Input-label-span {
-  -webkit-transform: translateY(-40px);
-  transform: translateY(-40px);
+    -webkit-transform: translateY(-40px);
+    transform: translateY(-40px);
 }

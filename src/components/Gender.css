@@ -5,7 +5,7 @@
 
 .Gender-button-male, .Gender-button-female  {
     width: 40%;
-    max-width: 200px;
+    max-width: 12em;
     position: relative;
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none; 
@@ -60,4 +60,6 @@
 .Gender-button-male p, .Gender-button-female p  {
     font-weight: 100;
     font-size: 1.8em;
+    color: #565656;
+    
 }

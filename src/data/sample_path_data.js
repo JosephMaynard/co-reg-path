@@ -57,6 +57,12 @@ const pathData = [
         name: 'offer3',
         title: 'Would you like to take home an iPhone 6 or Macbook Pro Laptop? Enter a short consumer survey, in return for a chance to WIN! Tick Yes and participate today!',
         image: 'https://leadinterface.vizmondmedia.com/attachments/coregs/cdca8584-c0e8-40bc-9c5b-ec01d0387a44.jpg',
+    },
+    {
+        type: 'offerBool',
+        name: 'offer4',
+        title: 'Love sport? Watch all your teams, every round, LIVE AFL, NRL, V8 and F1 with Foxtel\'s Sport + Entertainment pack for $50* a month. For a limited time only with no lock-in contract. Tick Yes to hear more.',
+        image: 'https://leadinterface.vizmondmedia.com/attachments/coregs/cdca8584-c0e8-40bc-9c5b-ec01d0387a44.jpg',
     }
 ];
 

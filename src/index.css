@@ -13,34 +13,22 @@ body {
     /* System Fonts as used by GitHub */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 100%;
+    background: #e73359;
 }
-h1,
-h2,
-h3,
-h4,
-p,
-blockquote,
-figure,
-ol,
-ul {
+h1, h2, h3, h4, p, blockquote, figure, ol, ul {
     margin: 0;
     padding: 0;
 }
-main,
-li {
+main, li {
     display: block;
 }
-h1,
-h2,
-h3,
-h4 {
+h1, h2, h3, h4 {
     font-size: inherit;
 }
 strong {
     font-weight: bold;
 }
-a,
-button {
+a, button {
     color: inherit;
     transition: .3s;
 }
@@ -67,4 +55,72 @@ img {
     max-width: 100%;
     height: auto;
     border: 0;
+}
+.app-container {    
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+}
+
+@media screen and (min-width: 800px) {
+    body {
+        background: #e73359;
+        background: -moz-linear-gradient(top,  #e73359 1%, #c92240 100%);
+        background: -webkit-linear-gradient(top,  #e73359 1%,#c92240 100%);
+        background: linear-gradient(to bottom,  #e73359 1%,#c92240 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73359', endColorstr='#c92240',GradientType=0 );
+        background-attachment: fixed;
+    }
+    .app-container {    
+        width: 100%;
+        height: 100%;
+        max-width: 800px;
+        max-height: 600px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        box-shadow: rgba(0,0,0,0.2) 0px 8px 128px;
+    }
+    .app-container:after {
+        content: ' ';
+        position: absolute;
+        width: 80%;
+        height: 1%;
+        left: 10%;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 100%;
+        box-shadow: rgba(0,0,0,0.5) 0px 4px 42px 10px;
+    }
+}
+@media screen and (min-width: 1500px) {
+    body {
+        font-size: 150%;
+    }
+    .app-container {    
+        width: 100%;
+        height: 100%;
+        max-width: 1200px;
+        max-height: 900px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        box-shadow: rgba(0,0,0,0.2) 0px 8px 128px;
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    body {
+        font-size: 200%;
+    }
+    .app-container {
+        max-width: 1800px;
+        max-height: 1200px;
+    }
 }
