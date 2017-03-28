@@ -21,3 +21,21 @@ export function getUrlParameters() {
     });
     return parameters;
 }
+
+export function populateDays() {
+    const days = [];
+    for (let i = 1; i < 32; i++) {
+        days.push({value:i , text: i});
+    }
+    return days;
+}
+
+export function populateYears() {
+    let years = [],
+        currentYear = (new Date()).getFullYear() - 17;
+
+    for (let i = 0; i < 100; i++) {
+        years.push({value: currentYear - i , text: currentYear - i});
+    }
+    return years;
+}

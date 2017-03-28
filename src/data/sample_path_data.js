@@ -1,4 +1,9 @@
 const pathData = [
+     {
+        type: 'dob',
+        name: 'dob',
+        title: 'Please enter your date of birth:',
+    },
     {
         type: 'name',
         name: 'firstName',
@@ -26,11 +31,6 @@ const pathData = [
         type: 'gender',
         name: 'gender',
         title: 'Please select your gender:',
-    },
-     {
-        type: 'dob',
-        name: 'dob',
-        title: 'Please enter your date of birth:',
     },
     {
         type: 'phone',

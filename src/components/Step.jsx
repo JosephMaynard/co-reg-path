@@ -14,7 +14,7 @@ class Step extends Component {
     super(props);
     this.state = {
         value: '',
-        inputValid: false,
+        inputValid: true,
     };
 
    this.handleChange = this.handleChange.bind(this);
@@ -34,7 +34,7 @@ class Step extends Component {
                     <CTAButton
                         text="next"
                         disabled={this.state.inputValid}
-                        onClick={this.props.nextStep}
+                        onClick={!this.props.nextStep}
                     />
                 </div>
             );
@@ -49,7 +49,7 @@ class Step extends Component {
                 <CTAButton
                     text="next"
                     disabled={this.state.inputValid}
-                    onClick={this.props.nextStep}
+                    onClick={!this.props.nextStep}
                 />
                 </div>
             );
@@ -66,7 +66,7 @@ class Step extends Component {
                 <CTAButton
                     text="next"
                     disabled={this.state.inputValid}
-                    onClick={this.props.nextStep}
+                    onClick={!this.props.nextStep}
                 />
                 </div>
             );
@@ -102,7 +102,7 @@ class Step extends Component {
                 <CTAButton
                     text="next"
                     disabled={this.state.inputValid}
-                    onClick={this.props.nextStep}
+                    onClick={!this.props.nextStep}
                 />
                 </div>
             );
