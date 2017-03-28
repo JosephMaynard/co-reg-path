@@ -1,5 +1,5 @@
 import Component from 'inferno-component';
-import ReactCSSTransitionGroup   from 'inferno-transition-group';
+import TransitionGroup from 'inferno-transition-group';
 
 import Input from './Input';
 import Select from './Select';
@@ -14,7 +14,7 @@ class Step extends Component {
     super(props);
     this.state = {
         value: '',
-        inputValid: true,
+        inputValid: false,
     };
 
    this.handleChange = this.handleChange.bind(this);
@@ -34,7 +34,7 @@ class Step extends Component {
                     <CTAButton
                         text="next"
                         disabled={this.state.inputValid}
-                        onClick={!this.props.nextStep}
+                        onClick={this.props.nextStep}
                     />
                 </div>
             );
@@ -49,7 +49,7 @@ class Step extends Component {
                 <CTAButton
                     text="next"
                     disabled={this.state.inputValid}
-                    onClick={!this.props.nextStep}
+                    onClick={this.props.nextStep}
                 />
                 </div>
             );
@@ -66,7 +66,7 @@ class Step extends Component {
                 <CTAButton
                     text="next"
                     disabled={this.state.inputValid}
-                    onClick={!this.props.nextStep}
+                    onClick={this.props.nextStep}
                 />
                 </div>
             );
@@ -82,6 +82,11 @@ class Step extends Component {
                 <div className="Step">
                     <p className="title">{this.props.title}</p>
                     <DoB />
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        onClick={this.props.nextStep}
+                    />
                 </div>
             );
         } else if (this.props.type === 'suburb') {
@@ -102,7 +107,7 @@ class Step extends Component {
                 <CTAButton
                     text="next"
                     disabled={this.state.inputValid}
-                    onClick={!this.props.nextStep}
+                    onClick={this.props.nextStep}
                 />
                 </div>
             );
@@ -132,7 +137,7 @@ class Step extends Component {
         return (
             <div>
                 { this.createStep() }
-            </div>
+                </div>
         )
     };
 }

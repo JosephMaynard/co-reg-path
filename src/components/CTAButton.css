@@ -51,9 +51,9 @@
 }
 
 .CTAButton:not([disabled]):before {
-  -webkit-animation: shine 0.5s 0s linear;
-  -moz-animation: shine 0.5s 0s linear;
-  animation: shine 0.5s 0s linear;
+  -webkit-animation: shine 3.5s 0s linear infinite;
+  -moz-animation: shine 3.5s 0s linear infinite;
+  animation: shine 3.5s 0s linear infinite;
 }
 
 .CTAButton:before {
@@ -79,10 +79,10 @@
     opacity: 0;
     left: 0%;
   }
-  50% {
+  5% {
     opacity: 1;
   }
-  to {
+  10%, 100% {
     opacity: 0;
     left: 100%;
   }
@@ -92,10 +92,10 @@
     opacity: 0;
     left: 0%;
   }
-  50% {
+  5% {
     opacity: 1;
   }
-  to {
+  10%, 100% {
     opacity: 0;
     left: 100%;
   }
@@ -105,10 +105,10 @@
     opacity: 0;
     left: 0%;
   }
-  50% {
+  5% {
     opacity: 1;
   }
-  to {
+  10%, 100% {
     opacity: 0;
     left: 100%;
   }
