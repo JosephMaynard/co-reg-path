@@ -1,11 +1,5 @@
 const pathData = [
     {
-        type: 'email',
-        name: 'email',
-        title: 'Enter your email address:',
-        label: 'Email address',
-    },
-    {
         type: 'name',
         name: 'firstName',
         title: 'Enter your first name:',
@@ -16,6 +10,12 @@ const pathData = [
         name: 'lastName',
         title: 'Enter your last name:',
         label: 'Last name',
+    },
+    {
+        type: 'email',
+        name: 'email',
+        title: 'Enter your email address:',
+        label: 'Email address',
     },
     {
         type: 'postcode',

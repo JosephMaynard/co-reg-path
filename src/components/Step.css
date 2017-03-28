@@ -1,0 +1,52 @@
+.Step {
+    z-index: 5;
+    width: 80%;
+    max-width: 480px;
+    margin: 100px auto;
+    background: #FFF;
+    box-shadow: rgba(27,6,13,0.4) 0px 8px 40px;
+    box-sizing: border-box;
+    padding: 2em;
+    position: relative;
+    border-radius: 1px;
+}
+
+.Step .title {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 300;
+    color: #565656;
+    margin-bottom: 1em;
+}
+
+
+
+.step-transition-enter {
+  opacity: 0.01;
+}
+
+.step-transition-enter.step-transition-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.step-transition-leave {
+  opacity: 1;
+}
+
+.step-transition-leave.step-transition-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+@media screen and (min-width: 1500px) {
+    .Step {
+        max-width: 720px;
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    .Step {
+        max-width: 960px;
+    }
+}

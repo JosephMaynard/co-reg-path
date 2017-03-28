@@ -5,6 +5,7 @@ function CTAButton(props) {
         <button
             className="CTAButton"
             disabled={props.disabled}
+            onClick={props.onClick}
         >{props.text}</button>
     );
 }

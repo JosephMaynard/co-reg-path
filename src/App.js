@@ -1,11 +1,7 @@
 import Component from 'inferno-component';
 
 import BackgroundImage from './components/BackgroundImage';
-import Input from './components/Input';
-import Select from './components/Select';
-import CTAButton from './components/CTAButton';
-import Gender from './components/Gender';
-import DoB from './components/DoB';
+import Step from './components/Step';
 
 import pathData from './data/sample_path_data';
 import { getUrlParameters, uniqueID } from './helpers'
@@ -23,6 +19,9 @@ class App extends Component {
         parameters: getUrlParameters(),
       },
     }
+
+   this.collectData = this.collectData.bind(this);
+   this.nextStep = this.nextStep.bind(this);
   }
 
   collectData(key, value) {
@@ -35,8 +34,9 @@ class App extends Component {
   }
 
   nextStep(){
+    const nextStep = this.state.currentStep + 1;
     this.setState({
-      currentStep: this.state.currentStep + 1,
+      currentStep: nextStep,
     });
   }
 
@@ -47,41 +47,8 @@ class App extends Component {
         <div className="App-header">
           <h1>Leading Competitions Australia</h1>
         </div>
-        <div className="container">
-          <p className="title">Please enter your name:</p>
-          <Input
-            type="text"
-            label="First Name"
-           />
-          <Input
-            type="number"
-            label="Phone Number"
-           />
-          <Input
-            type="email"
-            label="Email"
-           />
-          <Select
-            label="Select Suburb"
-            options={[
-              {value:'Marrickville', text:'Marrickville'},
-              {value:'DulwichHill', text:'Dulwich Hill'},
-              {value:'Newtown', text:'Newtown'},
-            ]}
-          />
-          <Gender />
-          <DoB />
-          <br/>
-          <CTAButton
-            text="next"
-            disabled={false}
-          />
-          <br/>
-          <br/>
-          <CTAButton
-            text="next"
-            disabled={true}
-          />
+        <div className="StepArea">
+          <Step {...this.state.pathData[this.state.currentStep]} nextStep={this.nextStep} />
         </div>
       </div>
     );
