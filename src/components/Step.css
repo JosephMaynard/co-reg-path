@@ -1,14 +1,49 @@
+@-webkit-keyframes StepEnter {
+  0% { transform: -webkit-translateY(12em); opacity: 0; }
+  75% { transform: -webkit-translateY(-2em); opacity: 1; }
+  100% { transform: -webkit-translateY(0); opacity: 1; }
+}
+@-moz-keyframes StepEnter {
+  0% { transform: -moz-translateY(12em); opacity: 0; }
+  75% { transform: -moz-translateY(-2em); opacity: 1; }
+  100% { transform: -moz-translateY(0); opacity: 1; }
+}
+@keyframes StepEnter {
+  0% { transform: translateY(12em); opacity: 0; }
+  75% { transform: translateY(-2em); opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@-webkit-keyframes StepExitAnimation {
+  0% { transform: -webkit-translateY(0); opacity: 1; }
+  100% { transform: -webkit-translateY(-12em); opacity: 0; }
+}
+@-moz-keyframes StepExitAnimation {
+  0% { transform: -moz-translateY(0); opacity: 1; }
+  100% { transform: -moz-translateY(-12em); opacity: 0; }
+}
+@keyframes StepExitAnimation {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-12em); opacity: 0; }
+}
+
+
 .Step {
     z-index: 5;
-    width: 80%;
+    width: 90%;
     max-width: 480px;
     margin: 100px auto;
     background: #FFF;
     box-shadow: rgba(27,6,13,0.4) 0px 8px 40px;
     box-sizing: border-box;
-    padding: 2em;
+    padding: 1.6em;
     position: relative;
     border-radius: 1px;
+    animation: StepEnter 0.6s forwards;
+}
+
+.StepExit {
+    animation: StepExitAnimation 0.3s forwards;
 }
 
 .Step .title {
@@ -16,10 +51,20 @@
     font-size: 2em;
     font-weight: 300;
     color: #565656;
-    margin-bottom: 1em;
+    margin-bottom: 0.8em;
 }
 
-
+.Step .offerText {
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: 300;
+    color: #565656;
+    margin-bottom: 0.8em;
+}
+.Step .offerImg {
+    display: block;
+    margin: 0 auto 0.8em;
+}
 
 .step-transition-enter {
   opacity: 0.01;

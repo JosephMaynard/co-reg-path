@@ -4,8 +4,8 @@
 }
 
 .Gender-button-male, .Gender-button-female  {
-    width: 40%;
-    max-width: 12em;
+    width: 48%;
+    max-width: 10em;
     position: relative;
     -webkit-tap-highlight-color: transparent;
     -webkit-user-select: none; 

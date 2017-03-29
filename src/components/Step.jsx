@@ -1,5 +1,4 @@
 import Component from 'inferno-component';
-import TransitionGroup from 'inferno-transition-group';
 
 import Input from './Input';
 import Select from './Select';
@@ -25,7 +24,7 @@ class Step extends Component {
   createStep() {
         if (this.props.type === 'name') {
             return (
-                <div className="Step">
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <p className="title">{this.props.title}</p>
                     <Input
                         type="text"
@@ -34,13 +33,13 @@ class Step extends Component {
                     <CTAButton
                         text="next"
                         disabled={this.state.inputValid}
-                        onClick={this.props.nextStep}
+                        nextstep={this.props.nextStep}
                     />
                 </div>
             );
         } else if (this.props.type === 'email') {
             return (
-                <div className="Step">
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                 <p className="title">{this.props.title}</p>
                 <Input
                     type="email"
@@ -49,13 +48,13 @@ class Step extends Component {
                 <CTAButton
                     text="next"
                     disabled={this.state.inputValid}
-                    onClick={this.props.nextStep}
+                    nextstep={this.props.nextStep}
                 />
                 </div>
             );
         } else if (this.props.type === 'postcode') {
             return (
-                <div className="Step">
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                 <p className="title">{this.props.title}</p>
                 <Input
                     type="number"
@@ -66,39 +65,41 @@ class Step extends Component {
                 <CTAButton
                     text="next"
                     disabled={this.state.inputValid}
-                    onClick={this.props.nextStep}
+                    nextstep={this.props.nextStep}
                 />
                 </div>
             );
         } else if (this.props.type === 'gender') {
             return (
-                <div className="Step">
-                <p className="title">{this.props.title}</p>
-                <Gender />
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                    <p className="title">{this.props.title}</p>
+                    <Gender 
+                        nextstep={this.props.nextStep}
+                    />
                 </div>
             );
         } else if (this.props.type === 'dob') {
             return (
-                <div className="Step">
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <p className="title">{this.props.title}</p>
                     <DoB />
                     <CTAButton
                         text="next"
                         disabled={this.state.inputValid}
-                        onClick={this.props.nextStep}
+                        nextstep={this.props.nextStep}
                     />
                 </div>
             );
         } else if (this.props.type === 'suburb') {
             return (
-                <div className="Step">
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <p className="title">{this.props.title}</p>
                     <Select />
                 </div>
             );
         } else if (this.props.type === 'phone') {
             return (
-                <div className="Step">
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                 <p className="title">{this.props.title}</p>
                 <Input
                     type="text"
@@ -107,23 +108,25 @@ class Step extends Component {
                 <CTAButton
                     text="next"
                     disabled={this.state.inputValid}
-                    onClick={this.props.nextStep}
+                    nextstep={this.props.nextStep}
                 />
-                </div>
-            );
-        } else if (this.props.type === 'offerMultiChoice') {
-            return (
-                <div className="Step">
-                <p className="title">{this.props.title}</p>
                 </div>
             );
         } else if (this.props.type === 'offerBool') {
             return (
-                <div className="Step">
-                <p className="title">{this.props.title}</p>
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                    <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
+                    <p className="offerText">{this.props.title}</p>
                 </div>
             );
-        }
+        }else if (this.props.type === 'offerMultiChoice') {
+            return (
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                    <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
+                    <p className="offerText">{this.props.title}</p>
+                </div>
+            );
+        } 
 
         return null;
   }
@@ -134,11 +137,7 @@ class Step extends Component {
 
 
     render() {
-        return (
-            <div>
-                { this.createStep() }
-                </div>
-        )
+        return this.createStep();
     };
 }
 

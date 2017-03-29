@@ -2,14 +2,13 @@
   "name": "co-reg-path",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://creative.mobileembrace.com/test/co-reg-path",
+  "homepage": "https://creative.mobileembrace.com/test/co-reg-path",
   "dependencies": {
     "inferno": "^1.4.0",
-    "inferno-component": "^1.4.0",
-    "inferno-transition-group": "^1.1.1"
+    "inferno-component": "^1.4.0"
   },
   "devDependencies": {
-    "inferno-devtools": "^1.4.0",
+    "inferno-devtools": "^1.5.4",
     "inferno-scripts": "1.0.0"
   },
   "scripts": {

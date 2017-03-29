@@ -22,4 +22,36 @@
 .BackgroundImageBlurred {
     filter: blur(8px);
     transform: scale(1.1);
+    animation: BlurAnimation 5s;
+}
+
+@-webkit-keyframes BlurAnimation {
+    from { 
+        filter: blur(0px);
+        transform: scale(1);
+    }
+    to { 
+        filter: blur(8px);
+        transform: scale(1.1); 
+    }
+}
+@-moz-keyframes BlurAnimation {
+    from { 
+        filter: blur(0px);
+        transform: scale(1);
+    }
+    to { 
+        filter: blur(8px);
+        transform: scale(1.1); 
+    }
+}
+@keyframes BlurAnimation {
+    from { 
+        filter: blur(0px);
+        transform: scale(1);
+    }
+    to { 
+        filter: blur(8px);
+        transform: scale(1.1); 
+    }
 }

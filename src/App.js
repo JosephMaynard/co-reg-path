@@ -12,6 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      stepExit: false,
       currentStep: 0,
       pathData,
       collectedData: {
@@ -34,10 +35,16 @@ class App extends Component {
   }
 
   nextStep(){
-    const nextStep = this.state.currentStep + 1;
     this.setState({
-      currentStep: nextStep,
+      stepExit: true
     });
+    setTimeout(() => {    
+      const nextStep = this.state.currentStep + 1;
+      this.setState({
+        currentStep: nextStep,
+        stepExit: false
+      });
+    }, 300);
   }
 
   render() {
@@ -48,7 +55,12 @@ class App extends Component {
           <h1>Leading Competitions Australia</h1>
         </div>
         <div className="StepArea">
-          <Step {...this.state.pathData[this.state.currentStep]} nextStep={this.nextStep} />
+          <Step
+            {...this.state.pathData[this.state.currentStep]}
+            nextStep={this.nextStep}
+            key={this.state.currentStep}
+            stepExit={this.state.stepExit}
+          />
         </div>
       </div>
     );

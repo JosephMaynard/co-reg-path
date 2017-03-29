@@ -1,9 +1,4 @@
 const pathData = [
-     {
-        type: 'dob',
-        name: 'dob',
-        title: 'Please enter your date of birth:',
-    },
     {
         type: 'name',
         name: 'firstName',
@@ -22,10 +17,16 @@ const pathData = [
         title: 'Enter your email address:',
         label: 'Email address',
     },
+     {
+        type: 'dob',
+        name: 'dob',
+        title: 'Please enter your date of birth:',
+    },
     {
         type: 'postcode',
         name: 'postcode',
         title: 'Please enter your postcode:',
+        label: 'Postcode',
     },
     {
         type: 'gender',
@@ -36,6 +37,7 @@ const pathData = [
         type: 'phone',
         name: 'phone',
         title: 'Please enter your mobile number',
+        label: 'Mobile Number',
     },
     {
         type: 'offerMultiChoice',
