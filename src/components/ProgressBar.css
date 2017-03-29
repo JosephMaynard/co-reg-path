@@ -1,0 +1,50 @@
+@-webkit-keyframes ProgressBarAnimation {
+    from { -webkit-transform: translateY(-8em); opacity: 0 }
+    to { -webkit-transform: translateY(0); opacity: 1 }
+}
+@-moz-keyframes ProgressBarAnimation {
+    from { -moz-transform: translateY(-8em); opacity: 0 }
+    to { -moz-transform: translateY(0); opacity: 1 }
+}
+@keyframes ProgressBarAnimation {
+    from { transform: translateY(-8em); opacity: 0 }
+    to { transform: translateY(0); opacity: 1 }
+}
+.ProgressBar {    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    animation: ProgressBarAnimation 0.5s forwards;
+}
+.ProgressBarBackround{
+    background: #e9369f;
+    background: -moz-linear-gradient(left,  #e9369f 0%, #e9347a 48%, #e73359 100%);
+    background: -webkit-linear-gradient(left,  #e9369f 0%,#e9347a 48%,#e73359 100%);
+    background: linear-gradient(to right,  #e9369f 0%,#e9347a 48%,#e73359 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9369f', endColorstr='#e73359',GradientType=1 );
+    padding: 1em;
+    color: #FFF;
+    box-sizing: border-box;
+}
+.ProgressBar p {
+    font-size: 0.8em;
+    padding-bottom: 0.6em;
+}
+.ProgressBarContainer {
+    width: 100%;
+    box-sizing: border-box;
+    background: #FFF;
+    height: 0.8em;
+    padding: 2px;
+}
+.ProgressBarInner {
+    height: 100%;
+    background: #1698b6;
+    transition: width 0.3s;
+}
+.ProgressBarBottom {
+    background: rgba(136, 15, 95, 0.5);
+    height: 1em; 
+}

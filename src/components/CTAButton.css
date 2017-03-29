@@ -1,4 +1,4 @@
-.CTAButton{
+.CTAButton, .YesButton{
     width: 80%;
     height: 2.4em;
     display: block;
@@ -30,7 +30,7 @@
     appearance: none;
 }
 
-.CTAButton:disabled{
+.CTAButton:disabled, .NoButton {
     background: transparent;
     color: #cacaca;
     border: solid 4px #cacaca;
@@ -39,7 +39,7 @@
     cursor: not-allowed;
 }
 
-.CTAButton:active{
+.CTAButton:active, .YesButton:active{
     background: #ff21a3;
     background: -moz-linear-gradient(left,  #ff21a3 0%, #ff1f75 48%, #ff1b4c 100%);
     background: -webkit-linear-gradient(left,  #ff21a3 0%,#ff1f75 48%,#ff1b4c 100%);
@@ -50,13 +50,13 @@
     text-shadow: rgba(255,255,255,1) 0px 0px 12px;
 }
 
-.CTAButton:not([disabled]):before {
+.CTAButton:not([disabled]):before, .YesButton:before {
   -webkit-animation: shine 3.5s 0s linear infinite;
   -moz-animation: shine 3.5s 0s linear infinite;
   animation: shine 3.5s 0s linear infinite;
 }
 
-.CTAButton:before {
+.CTAButton:before, .YesButton:before {
   content: '';
   display: block;
   width: 0px;
@@ -72,6 +72,24 @@
   -ms-transform: skewX(-20deg);
   -o-transform: skewX(-20deg);
   transform: skewX(-20deg);
+}
+
+.YesNo {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.YesButton {
+  width: 55%;
+}
+.NoButton {
+  width: 35%;
+    text-align: center;
+    font-size: 1.7em;
+    font-weight: bold;
+    border-radius: 8px;
 }
 
 @-webkit-keyframes shine {

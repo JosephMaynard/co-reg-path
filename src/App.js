@@ -1,11 +1,16 @@
 import Component from 'inferno-component';
 
 import BackgroundImage from './components/BackgroundImage';
+import ProgressBar from './components/ProgressBar';
 import Step from './components/Step';
 
 import pathData from './data/sample_path_data';
-import { getUrlParameters, uniqueID } from './helpers'
+import { getUrlParameters, uniqueID, preloadImages } from './helpers'
 import './App.css';
+
+const offerImages = pathData.filter(item => item.image).map(item => item.image);
+
+console.log(offerImages);
 
 class App extends Component {
 
@@ -23,6 +28,10 @@ class App extends Component {
 
    this.collectData = this.collectData.bind(this);
    this.nextStep = this.nextStep.bind(this);
+  }
+
+  componentDidMount() {
+    preloadImages('', offerImages);
   }
 
   collectData(key, value) {
@@ -51,9 +60,10 @@ class App extends Component {
     return (
       <div className="App">
         <BackgroundImage blur />
-        <div className="App-header">
-          <h1>Leading Competitions Australia</h1>
-        </div>
+        <ProgressBar
+          currentStep={this.state.currentStep}
+          totalSteps={this.state.pathData.length}
+        />
         <div className="StepArea">
           <Step
             {...this.state.pathData[this.state.currentStep]}

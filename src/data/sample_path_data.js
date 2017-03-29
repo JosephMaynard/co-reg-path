@@ -37,35 +37,42 @@ const pathData = [
         type: 'phone',
         name: 'phone',
         title: 'Please enter your mobile number',
-        label: 'Mobile Number',
+        label: 'Mobile N',
     },
     {
-        type: 'offerMultiChoice',
+        type: 'offerBool',
         name: 'offer1',
-        title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
-        image: 'https://leadinterface.vizmondmedia.com/attachments/coregs/4951443e-2277-45e9-a336-2d46aa4620ce.jpg',
-        choices: ['Australia', 'New Zealand', 'Fiji', 'Asia', 'Vanuatu', 'Cook Islands', 'Samoa', 'Not Interested'],
-        requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
+        title: 'Dodo NBN plans just got better! Get a FREE SPEED BOOST on an awesome Standard Speed NBN plan. Tick Yes to find out more.',
+        image: 'https://creative.mobileembrace.com/test/co-reg-path/img/dodo.png',
+        requiredInfo: ['state'],
     },
     {
         type: 'offerBool',
         name: 'offer2',
-        title: 'Dodo NBN plans just got better! Get a FREE SPEED BOOST on an awesome Standard Speed NBN plan. Tick Yes to find out more.',
-        image: 'https://leadinterface.vizmondmedia.com/attachments/coregs/cdca8584-c0e8-40bc-9c5b-ec01d0387a44.jpg',
+        title: 'Virgin Life insurance can provide financial support if you’re not around to take care of family. Insurance issued by TAL Life Limited. General advice only and please read the PDS.',
+        image: 'https://creative.mobileembrace.com/test/co-reg-path/img/VirginMoney.png',
         requiredInfo: ['state'],
     },
     {
         type: 'offerBool',
         name: 'offer3',
-        title: 'Would you like to take home an iPhone 6 or Macbook Pro Laptop? Enter a short consumer survey, in return for a chance to WIN! Tick Yes and participate today!',
-        image: 'https://leadinterface.vizmondmedia.com/attachments/coregs/cdca8584-c0e8-40bc-9c5b-ec01d0387a44.jpg',
+        title: 'It\'s better knowing your familys future is protected. That\'s NRMADE BETTER! If you\'re considering any of these products, tick to receive more information.\n Insurance Issued by TAL Life Limited and Involuntary Unemployment cover issued by St. Andrew\'s Insurance (Australia) Pty Ltd. Please read the PDS.',
+        image: 'https://creative.mobileembrace.com/test/co-reg-path/img/NRMA.png',
     },
     {
         type: 'offerBool',
         name: 'offer4',
         title: 'Love sport? Watch all your teams, every round, LIVE AFL, NRL, V8 and F1 with Foxtel\'s Sport + Entertainment pack for $50* a month. For a limited time only with no lock-in contract. Tick Yes to hear more.',
-        image: 'https://leadinterface.vizmondmedia.com/attachments/coregs/cdca8584-c0e8-40bc-9c5b-ec01d0387a44.jpg',
-    }
+        image: 'https://creative.mobileembrace.com/test/co-reg-path/img/Foxtel.png',
+    },
+    // {
+    //     type: 'offerMultiChoice',
+    //     name: 'offer1',
+    //     title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
+    //     image: 'https://leadinterface.vizmondmedia.com/attachments/coregs/4951443e-2277-45e9-a336-2d46aa4620ce.jpg',
+    //     choices: ['Australia', 'New Zealand', 'Fiji', 'Asia', 'Vanuatu', 'Cook Islands', 'Samoa', 'Not Interested'],
+    //     requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
+    // }
 ];
 
 

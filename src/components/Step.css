@@ -63,7 +63,9 @@
 }
 .Step .offerImg {
     display: block;
-    margin: 0 auto 0.8em;
+    margin: 0 auto 1em;
+    width: 80%;
+    max-width: 360px;
 }
 
 .step-transition-enter {

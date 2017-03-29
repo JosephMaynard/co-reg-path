@@ -5,6 +5,7 @@ import Select from './Select';
 import CTAButton from './CTAButton';
 import Gender from './Gender';
 import DoB from './DoB';
+import YesNo from './YesNo';
 import './Step.css';
 
 class Step extends Component {
@@ -117,6 +118,9 @@ class Step extends Component {
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
                     <p className="offerText">{this.props.title}</p>
+                    <YesNo
+                        nextstep={this.props.nextStep}
+                    />
                 </div>
             );
         }else if (this.props.type === 'offerMultiChoice') {
