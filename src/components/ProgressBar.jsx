@@ -1,7 +1,7 @@
 import './ProgressBar.css';
 
 function ProgressBar(props) {
-    const progress = ((props.currentStep + 1) / (props.totalSteps + 1)) * 100;
+    const progress = ((props.currentStep + 1) / (props.totalSteps)) * 100;
     return (
         <div className="ProgressBar">
             <div className="ProgressBarBackround">

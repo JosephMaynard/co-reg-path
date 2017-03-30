@@ -123,10 +123,17 @@ class Step extends Component {
                     />
                 </div>
             );
-        }else if (this.props.type === 'offerMultiChoice') {
+        } else if (this.props.type === 'offerMultiChoice') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
+                    <p className="offerText">{this.props.title}</p>
+                </div>
+            );
+        } else if (this.props.type === 'endCard') {
+            return (
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                    <img src={this.props.image} alt="Congratulations" className="endCardImg" />
                     <p className="offerText">{this.props.title}</p>
                 </div>
             );

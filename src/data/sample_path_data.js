@@ -49,21 +49,26 @@ const pathData = [
     {
         type: 'offerBool',
         name: 'offer2',
-        title: 'Virgin Life insurance can provide financial support if you’re not around to take care of family. Insurance issued by TAL Life Limited. General advice only and please read the PDS.',
+        title: 'Virgin Life insurance can provide financial support if you’re not around to take care of family. Insurance issued by TAL Life Limited.',
         image: 'https://creative.mobileembrace.com/test/co-reg-path/img/VirginMoney.png',
         requiredInfo: ['state'],
     },
     {
         type: 'offerBool',
         name: 'offer3',
-        title: 'It\'s better knowing your familys future is protected. That\'s NRMADE BETTER! If you\'re considering any of these products, tick to receive more information.\n Insurance Issued by TAL Life Limited and Involuntary Unemployment cover issued by St. Andrew\'s Insurance (Australia) Pty Ltd. Please read the PDS.',
+        title: 'It\'s better knowing your familys future is protected. That\'s NRMADE BETTER! If you\'re considering any of these products, tick to receive more information.',
         image: 'https://creative.mobileembrace.com/test/co-reg-path/img/NRMA.png',
     },
     {
         type: 'offerBool',
         name: 'offer4',
-        title: 'Love sport? Watch all your teams, every round, LIVE AFL, NRL, V8 and F1 with Foxtel\'s Sport + Entertainment pack for $50* a month. For a limited time only with no lock-in contract. Tick Yes to hear more.',
+        title: 'Love sport? Watch all your teams, every round, LIVE AFL, NRL, V8 and F1 with Foxtel\'s Sport + Entertainment pack for $50* a month. Tick Yes to hear more.',
         image: 'https://creative.mobileembrace.com/test/co-reg-path/img/Foxtel.png',
+    },
+    {
+        type: 'endCard',
+        title: 'Congratulations Neil! You’re in the draw to Win a $10,000 New York Shopping Spree.\n\nYou’ll begin receiving the latest Surveys & Competitions shortly, catered to your interests.',
+        image: 'https://creative.mobileembrace.com/test/co-reg-path/img/endCard.jpg',
     },
     // {
     //     type: 'offerMultiChoice',
