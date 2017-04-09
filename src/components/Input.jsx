@@ -17,6 +17,7 @@ class Input extends Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
+    this.props.handleChange({value: event.target.value});
   }
 
 
@@ -38,7 +39,7 @@ class Input extends Component {
                         ? "Input-label-span"   
                         : "Input-label-span Input-label-span-not-empty"
                     } >{this.props.label}</div>
-                    <svg class="Input-line" viewBox="0 0 40 2" preserveAspectRatio="none">
+                    <svg className="Input-line" viewBox="0 0 40 2" preserveAspectRatio="none">
                         <path d="M0 1 L40 1"/>
                         <path d="M0 1 L40 1" className="focus"/>
                         <path d="M0 1 L40 1" className="invalid"/>

@@ -31,7 +31,7 @@ class Select extends Component {
                         ? "Select-label-span"   
                         : "Select-label-span Select-label-span-not-empty"
                     } >{this.props.label}</div>
-                    <svg class="Select-line" viewBox="0 0 40 2" preserveAspectRatio="none">
+                    <svg className="Select-line" viewBox="0 0 40 2" preserveAspectRatio="none">
                         <path d="M0 1 L40 1"/>
                         <path d="M0 1 L40 1" className="focus"/>
                         <path d="M0 1 L40 1" className="invalid"/>

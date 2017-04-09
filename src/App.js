@@ -5,59 +5,59 @@ import ProgressBar from './components/ProgressBar';
 import Step from './components/Step';
 
 import pathData from './data/sample_path_data';
-import { getUrlParameters, uniqueID, preloadImages } from './helpers'
+import { getUrlParameters, uniqueID, preloadImages } from './helpers';
 import './App.css';
 
 const offerImages = pathData.filter(item => item.image).map(item => item.image);
 
-console.log(offerImages);
+// console.log(offerImages);
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      stepExit: false,
-      currentStep: 0,
-      pathData,
-      collectedData: {
-        sessionID: uniqueID(),
-        parameters: getUrlParameters(),
-      },
+    constructor(props) {
+        super(props);
+        this.state = {
+            stepExit: false,
+            currentStep: 0,
+            pathData,
+            collectedData: {
+                sessionID: uniqueID(),
+                parameters: getUrlParameters(),
+            },
+        };
+
+        this.collectData = this.collectData.bind(this);
+        this.nextStep = this.nextStep.bind(this);
     }
 
-   this.collectData = this.collectData.bind(this);
-   this.nextStep = this.nextStep.bind(this);
-  }
+    componentDidMount() {
+        preloadImages('', offerImages);
+    }
 
-  componentDidMount() {
-    preloadImages('', offerImages);
-  }
-
-  collectData(key, value) {
-    let collectedData = this.state.collectedData;
-    collectedData[key] = value;
+    collectData(key, value) {
+        let collectedData = Object.assign({}, this.state.collectedData);
+        collectedData[key] = value;
     
-    this.setState({
-      collectedData,
-    });
-  }
+        this.setState({
+            collectedData,
+        });
+    }
 
-  nextStep(){
-    this.setState({
-      stepExit: true
-    });
-    setTimeout(() => {    
-      const nextStep = this.state.currentStep + 1;
-      this.setState({
-        currentStep: nextStep,
-        stepExit: false
-      });
-    }, 300);
-  }
+    nextStep(){
+        this.setState({
+            stepExit: true
+        });
+        setTimeout(() => {    
+            const nextStep = this.state.currentStep + 1;
+            this.setState({
+                currentStep: nextStep,
+                stepExit: false
+            });
+        }, 300);
+    }
 
-  render() {
-    return (
+    render() {
+        return (
       <div className="App">
         <BackgroundImage blur />
         <ProgressBar
@@ -70,11 +70,12 @@ class App extends Component {
             nextStep={this.nextStep}
             key={this.state.currentStep}
             stepExit={this.state.stepExit}
+            collectData={this.collectData}
           />
         </div>
       </div>
-    );
-  }
+        );
+    }
 }
 
 export default App;
