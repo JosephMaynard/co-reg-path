@@ -32,52 +32,61 @@ class DoB extends Component {
         this.selectDay = this.selectDay.bind(this);
         this.selectMonth = this.selectMonth.bind(this);
         this.selectYear = this.selectYear.bind(this);
+        this.sendDoB = this.sendDoB.bind(this);
    
     }
 
     selectDay(day) {
         this.setState({day});
+        this.sendDoB();
     }
     selectMonth(month) {
         this.setState({month});
+        this.sendDoB();
     }
     selectYear(year) {
         this.setState({year});
+        this.sendDoB();
     }
 
+    sendDoB() {
+        if(this.state.day !== '' && this.state.month !== '' && this.state.year !== '') {
+            this.props.updateValue(`${this.state.day} ${this.state.month} ${this.state.year} `);
+        }
+    }
 
     render() {
         return (
             <div className="DoB">
                 <div>
-              <Select
-                label="Day"
-                placeholder='Select...'
-                options={ this.state.days }
-                id={`${this.props.id}days`}
-                optionSelected={this.selectDay}
-                value={this.state.day}
-              />
+                    <Select
+                        label="Day"
+                        placeholder='Select...'
+                        options={ this.state.days }
+                        id={`${this.props.id}days`}
+                        optionSelected={this.selectDay}
+                        value={this.state.day}
+                    />
                 </div>
                 <div>
-              <Select
-                label="Month"
-                placeholder='Select...'
-                options={ this.state.months }
-                id={`${this.props.id}months`}
-                optionSelected={this.selectMonth}
-                value={this.state.month}
-              />
+                    <Select
+                        label="Month"
+                        placeholder='Select...'
+                        options={ this.state.months }
+                        id={`${this.props.id}months`}
+                        optionSelected={this.selectMonth}
+                        value={this.state.month}
+                    />
                 </div>
                 <div>
-              <Select
-                label="Year"
-                placeholder='Select...'
-                options={ this.state.years }
-                id={`${this.props.id}years`}
-                optionSelected={this.selectYear}
-                value={this.state.year}
-              />
+                    <Select
+                        label="Year"
+                        placeholder='Select...'
+                        options={ this.state.years }
+                        id={`${this.props.id}years`}
+                        optionSelected={this.selectYear}
+                        value={this.state.year}
+                    />
                 </div>
             </div>
         );

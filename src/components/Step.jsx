@@ -18,13 +18,13 @@ class Step extends Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleKeyPress  = this.handleKeyPress.bind(this);
         this.createStep = this.createStep.bind(this);
         this.validateInput = this.validateInput.bind(this);
-   
+        this.updateValue = this.updateValue.bind(this);
     }
 
     validateInput(input) {
-        
         if (this.props.type === 'name') {
             return (input !== '');
         } else if (this.props.type === 'email') {
@@ -60,6 +60,7 @@ class Step extends Component {
                         type="text"
                         label={this.props.label}
                         handleChange={this.handleChange}
+                        handleKeyPress={this.handleKeyPress}
                     /> 
                     <CTAButton
                         text="next"
@@ -79,6 +80,7 @@ class Step extends Component {
                     type="email"
                     label={this.props.label}
                     handleChange={this.handleChange}
+                    handleKeyPress={this.handleKeyPress}
                 />
                 <CTAButton
                     text="next"
@@ -100,6 +102,7 @@ class Step extends Component {
                     minLength='3'
                     maxLength='4'
                     handleChange={this.handleChange}
+                    handleKeyPress={this.handleKeyPress}
                 />
                 <CTAButton
                     text="next"
@@ -123,6 +126,7 @@ class Step extends Component {
                     <p className="title">{this.props.title}</p>
                     <DoB
                         id={uniqueID()}
+                        updateValue={this.updateValue}
                      />
                     <CTAButton
                         text="next"
@@ -149,6 +153,7 @@ class Step extends Component {
                     type="text"
                     label={this.props.label}
                     handleChange={this.handleChange}
+                    handleKeyPress={this.handleKeyPress}
                 />
                 <CTAButton
                     text="next"
@@ -193,6 +198,18 @@ class Step extends Component {
         });
     }
 
+    updateValue(value) {
+        this.setState({
+            value,
+            inputValid: !this.validateInput(value),
+        });
+    }
+
+    handleKeyPress(e) {
+        if (e.key === 'Enter' && !this.state.inputValid) {
+            this.props.nextStep();
+        }
+    }
 
     render() {
         return this.createStep();

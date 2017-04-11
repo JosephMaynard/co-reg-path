@@ -12,6 +12,7 @@ const Input = (props) => {
                     maxlength={props.maxlength}
                     value={props.value}
                     onInput={props.handleChange}
+                    onKeyPress={props.handleKeyPress}
                     required
                 />        
                 <div className={ props.value === '' 
