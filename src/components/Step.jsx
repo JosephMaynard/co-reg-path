@@ -30,25 +30,7 @@ class Step extends Component {
         } else if (this.props.type === 'email') {
             return checkEmailAddress(input);
         } else if (this.props.type === 'postcode') {
-            return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
-                <p className="title">{this.props.title}</p>
-                <Input
-                    value={this.state.value}
-                    onInput={this.handleChange}
-                    id={uniqueID()}
-                    type="number"
-                    label={this.props.label}
-                    minlength='3'
-                    maxlength='4'
-                />
-                <CTAButton
-                    text="next"
-                    disabled={this.state.inputValid}
-                    nextstep={this.props.nextStep}
-                />
-                </div>
-            );
+            return true;
         } else if (this.props.type === 'gender') {
             return true;
         } else if (this.props.type === 'dob') {
@@ -139,7 +121,9 @@ class Step extends Component {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <p className="title">{this.props.title}</p>
-                    <DoB />
+                    <DoB
+                        id={uniqueID()}
+                     />
                     <CTAButton
                         text="next"
                         disabled={this.state.inputValid}

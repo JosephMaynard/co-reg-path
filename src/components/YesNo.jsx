@@ -13,6 +13,6 @@ const YesNo = (props) => {
             >YES!</button>
         </div>
     );
-}
+};
 
 export default YesNo;

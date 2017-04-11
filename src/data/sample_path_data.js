@@ -1,5 +1,10 @@
 const pathData = [
     {
+        type: 'dob',
+        name: 'dob',
+        title: 'Please enter your date of birth:',
+    },
+    {
         type: 'name',
         name: 'firstName',
         title: 'Enter your first name:',
@@ -16,11 +21,6 @@ const pathData = [
         name: 'email',
         title: 'Enter your email address:',
         label: 'Email address',
-    },
-     {
-        type: 'dob',
-        name: 'dob',
-        title: 'Please enter your date of birth:',
     },
     {
         type: 'postcode',
