@@ -1,6 +1,6 @@
 import Component from 'inferno-component';
 import Select from './Select';
-import { populateDays, populateYears } from '../helpers'
+import { populateDays, populateYears } from '../helpers';
 import './DoB.css';
 
 class DoB extends Component {

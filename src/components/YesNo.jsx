@@ -1,6 +1,6 @@
 import './CTAButton.css';
 
-function YesNo(props) {
+const YesNo = (props) => {
     return (
         <div className="YesNo">
             <button

@@ -1,6 +1,5 @@
 import Component from 'inferno-component';
-import { checkEmailAddress, checkPhoneNumber } from '../helpers';
-
+import { checkEmailAddress, checkPhoneNumber, uniqueID } from '../helpers';
 import Input from './Input';
 import Select from './Select';
 import CTAButton from './CTAButton';
@@ -35,6 +34,9 @@ class Step extends Component {
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                 <p className="title">{this.props.title}</p>
                 <Input
+                    value={this.state.value}
+                    onInput={this.handleChange}
+                    id={uniqueID()}
                     type="number"
                     label={this.props.label}
                     minlength='3'
@@ -70,6 +72,9 @@ class Step extends Component {
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <p className="title">{this.props.title}</p>
                     <Input
+                        value={this.state.value}
+                        onInput={this.handleChange}
+                        id={uniqueID()}
                         type="text"
                         label={this.props.label}
                         handleChange={this.handleChange}
@@ -86,6 +91,9 @@ class Step extends Component {
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                 <p className="title">{this.props.title}</p>
                 <Input
+                    value={this.state.value}
+                    onInput={this.handleChange}
+                    id={uniqueID()}
                     type="email"
                     label={this.props.label}
                     handleChange={this.handleChange}
@@ -102,6 +110,9 @@ class Step extends Component {
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                 <p className="title">{this.props.title}</p>
                 <Input
+                    value={this.state.value}
+                    onInput={this.handleChange}
+                    id={uniqueID()}
                     type="number"
                     label={this.props.label}
                     minLength='3'
@@ -148,6 +159,9 @@ class Step extends Component {
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                 <p className="title">{this.props.title}</p>
                 <Input
+                    value={this.state.value}
+                    onInput={this.handleChange}
+                    id={uniqueID()}
                     type="text"
                     label={this.props.label}
                     handleChange={this.handleChange}
@@ -187,7 +201,8 @@ class Step extends Component {
         return null;
     }
 
-    handleChange(input) {
+    handleChange(event) {
+        const input = event.target.value;
         this.setState({
             value: input,
             inputValid: !this.validateInput(input),
