@@ -14,44 +14,44 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #FFF url(https://creative.mobileembrace.com/test/co-reg-path/img/bkg.jpg);
+    background: #FFF url(https://creative.mobileembrace.com/test/co-reg-path/img/bkg.jpg) 50% 50%;
     background-size: cover;
     transition: all 1s;
 }
 
 .BackgroundImageBlurred {
     filter: blur(8px);
-    transform: scale(1.1);
-    animation: BlurAnimation 5s;
+    transform: scale(1.2);
+    animation: BlurAnimation 4s ease-out;
 }
 
 @-webkit-keyframes BlurAnimation {
     from { 
         filter: blur(0px);
-        transform: scale(1);
+        transform: scale(1.1);
     }
     to { 
         filter: blur(8px);
-        transform: scale(1.1); 
+        transform: scale(1.2); 
     }
 }
 @-moz-keyframes BlurAnimation {
     from { 
         filter: blur(0px);
-        transform: scale(1);
+        transform: scale(1.1);
     }
     to { 
         filter: blur(8px);
-        transform: scale(1.1); 
+        transform: scale(1.2); 
     }
 }
 @keyframes BlurAnimation {
     from { 
         filter: blur(0px);
-        transform: scale(1);
+        transform: scale(1.1);
     }
     to { 
         filter: blur(8px);
-        transform: scale(1.1); 
+        transform: scale(1.2); 
     }
 }
