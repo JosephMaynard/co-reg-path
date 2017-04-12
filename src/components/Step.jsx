@@ -68,58 +68,59 @@ class Step extends Component {
                     <CTAButton
                         text="next"
                         disabled={this.state.inputValid}
-                        nextstep={this.props.nextStep}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
                     />
                 </div>
             );
         } else if (this.props.type === 'email') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
-                <p className="title">{this.props.title}</p>
-                <Input
-                    value={this.state.value}
-                    onInput={this.handleChange}
-                    id={uniqueID()}
-                    type="email"
-                    label={this.props.label}
-                    handleChange={this.handleChange}
-                    handleKeyPress={this.handleKeyPress}
-                />
-                <CTAButton
-                    text="next"
-                    disabled={this.state.inputValid}
-                    nextstep={this.props.nextStep}
-                />
+                    <p className="title">{this.props.title}</p>
+                    <Input
+                        value={this.state.value}
+                        onInput={this.handleChange}
+                        id={uniqueID()}
+                        type="email"
+                        label={this.props.label}
+                        handleChange={this.handleChange}
+                        handleKeyPress={this.handleKeyPress}
+                    />
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
                 </div>
             );
         } else if (this.props.type === 'postcode') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
-                <p className="title">{this.props.title}</p>
-                <Input
-                    value={this.state.value}
-                    onInput={this.handleChange}
-                    id={uniqueID()}
-                    type="number"
-                    label={this.props.label}
-                    min='100'
-                    max='9999'
-                    handleChange={this.handleChange}
-                    handleKeyPress={this.handleKeyPress}
-                />
-                <CTAButton
-                    text="next"
-                    disabled={this.state.inputValid}
-                    nextstep={this.props.nextStep}
-                />
+                    <p className="title">{this.props.title}</p>
+                    <Input
+                        value={this.state.value}
+                        onInput={this.handleChange}
+                        id={uniqueID()}
+                        type="number"
+                        label={this.props.label}
+                        min='100'
+                        max='9999'
+                        handleChange={this.handleChange}
+                        handleKeyPress={this.handleKeyPress}
+                    />
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
                 </div>
             );
         } else if (this.props.type === 'gender') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <p className="title">{this.props.title}</p>
-                    <Gender 
-                        nextstep={this.props.nextStep}
+                    <Gender
+                        nextstep={this.props.collectData}
+                        name={this.props.name}
                     />
                 </div>
             );
@@ -134,7 +135,7 @@ class Step extends Component {
                     <CTAButton
                         text="next"
                         disabled={this.state.inputValid}
-                        nextstep={this.props.nextStep}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
                     />
                 </div>
             );
@@ -161,7 +162,7 @@ class Step extends Component {
                 <CTAButton
                     text="next"
                     disabled={this.state.inputValid}
-                    nextstep={this.props.nextStep}
+                    nextstep={() => this.props.collectData(this.props.name, this.state.value)}
                 />
                 </div>
             );
@@ -171,7 +172,8 @@ class Step extends Component {
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
                     <p className="offerText">{this.props.title}</p>
                     <YesNo
-                        nextstep={this.props.nextStep}
+                        nextstep={this.props.collectData}
+                        name={this.props.name}
                     />
                 </div>
             );
@@ -210,7 +212,8 @@ class Step extends Component {
 
     handleKeyPress(e) {
         if (e.key === 'Enter' && !this.state.inputValid) {
-            this.props.nextStep();
+            // this.props.nextStep();
+            this.props.collectData(this.props.name, this.state.value);
         }
     }
 
