@@ -36,7 +36,10 @@
     border: solid 4px #cacaca;
     box-shadow: none;
     text-shadow: none;
-    cursor: not-allowed;
+}
+
+.CTAButton:disabled {
+    cursor: not-allowed; 
 }
 
 .CTAButton:active, .YesButton:active{
