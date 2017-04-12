@@ -86,6 +86,7 @@ class App extends Component {
             key={this.state.currentStep}
             stepExit={this.state.stepExit}
             collectData={this.collectData}
+            details={this.state.collectedData}
           />
         </div>
       </div>

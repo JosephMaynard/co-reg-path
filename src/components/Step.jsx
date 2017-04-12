@@ -1,5 +1,5 @@
 import Component from 'inferno-component';
-import { checkEmailAddress, checkPhoneNumber, uniqueID } from '../helpers';
+import { checkEmailAddress, checkPhoneNumber, uniqueID, replaceTemplateStrings } from '../helpers';
 import Input from './Input';
 import Select from './Select';
 import CTAButton from './CTAButton';
@@ -55,7 +55,7 @@ class Step extends Component {
         } else if (this.props.type === 'name') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
-                    <p className="title">{this.props.title}</p>
+                    <p className="title">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                     <Input
                         value={this.state.value}
                         onInput={this.handleChange}
@@ -75,7 +75,7 @@ class Step extends Component {
         } else if (this.props.type === 'email') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
-                    <p className="title">{this.props.title}</p>
+                    <p className="title">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                     <Input
                         value={this.state.value}
                         onInput={this.handleChange}
@@ -95,7 +95,7 @@ class Step extends Component {
         } else if (this.props.type === 'postcode') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
-                    <p className="title">{this.props.title}</p>
+                    <p className="title">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                     <Input
                         value={this.state.value}
                         onInput={this.handleChange}
@@ -117,7 +117,7 @@ class Step extends Component {
         } else if (this.props.type === 'gender') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
-                    <p className="title">{this.props.title}</p>
+                    <p className="title">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                     <Gender
                         nextstep={this.props.collectData}
                         name={this.props.name}
@@ -127,7 +127,7 @@ class Step extends Component {
         } else if (this.props.type === 'dob') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
-                    <p className="title">{this.props.title}</p>
+                    <p className="title">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                     <DoB
                         id={uniqueID()}
                         updateValue={this.updateValue}
@@ -142,14 +142,14 @@ class Step extends Component {
         } else if (this.props.type === 'suburb') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
-                    <p className="title">{this.props.title}</p>
+                    <p className="title">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                     <Select />
                 </div>
             );
         } else if (this.props.type === 'phone') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
-                <p className="title">{this.props.title}</p>
+                <p className="title">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                 <Input
                     value={this.state.value}
                     onInput={this.handleChange}
@@ -170,7 +170,7 @@ class Step extends Component {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
-                    <p className="offerText">{this.props.title}</p>
+                    <p className="offerText">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                     <YesNo
                         nextstep={this.props.collectData}
                         name={this.props.name}
@@ -181,14 +181,14 @@ class Step extends Component {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
-                    <p className="offerText">{this.props.title}</p>
+                    <p className="offerText">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                 </div>
             );
         } else if (this.props.type === 'endCard') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <img src={this.props.image} alt="Congratulations" className="endCardImg" />
-                    <p className="offerText">{this.props.title}</p>
+                    <p className="offerText">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                 </div>
             );
         } 

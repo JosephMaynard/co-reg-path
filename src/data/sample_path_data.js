@@ -8,7 +8,7 @@ const pathData = [
     {
         type: 'name',
         name: 'lastName',
-        title: 'Enter your last name:',
+        title: 'Hi {firstName}, please enter your last name:',
         label: 'Last name',
     },
     {

@@ -40,21 +40,28 @@ export function populateYears() {
     return years;
 }
 
-export  function preloadImages (imagePath, imageArray, callBack){
+export function preloadImages (imagePath, imageArray, callBack){
     var preloadedImages = [],
         preloadCounter = 0;
 
     function loadImg(url, callBack){
         var pixel = new Image();
         pixel.src = url;
-        if(typeof callBack === "function"){
+        if(typeof callBack === 'function'){
             pixel.onload = callBack;
         }
     }
     for(var i = 0; i < imageArray.length; i++){
         loadImg(imagePath + imageArray[i], function(){
             preloadCounter++;
-            if(preloadCounter === imageArray.length && typeof callBack === "function") callBack();
+            if(preloadCounter === imageArray.length && typeof callBack === 'function') callBack();
         });
     }
+}
+
+export function replaceTemplateStrings(text, details) {
+    const updatedText = text.replace(/{[^{}]+}/g, function(key){
+        return details[key.replace(/[{}]+/g, '')] || '';
+    });
+    return updatedText;
 }
