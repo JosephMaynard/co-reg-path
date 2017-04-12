@@ -49,7 +49,10 @@ class Step extends Component {
     }
 
     createStep() {
-        if (this.props.type === 'name') {
+        if (this.props.type === 'redirect') {
+            window.location = this.props.url;
+            return null;
+        } else if (this.props.type === 'name') {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <p className="title">{this.props.title}</p>
@@ -99,8 +102,8 @@ class Step extends Component {
                     id={uniqueID()}
                     type="number"
                     label={this.props.label}
-                    minLength='3'
-                    maxLength='4'
+                    min='100'
+                    max='9999'
                     handleChange={this.handleChange}
                     handleKeyPress={this.handleKeyPress}
                 />

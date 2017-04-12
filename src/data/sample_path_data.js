@@ -65,11 +65,11 @@ const pathData = [
         title: 'Love sport? Watch all your teams, every round, LIVE AFL, NRL, V8 and F1 with Foxtel\'s Sport + Entertainment pack for $50* a month. Tick Yes to hear more.',
         image: 'https://creative.mobileembrace.com/test/co-reg-path/img/Foxtel.png',
     },
-    {
-        type: 'endCard',
-        title: 'Congratulations Neil! You’re in the draw to Win a $10,000 New York Shopping Spree.\n\nYou’ll begin receiving the latest Surveys & Competitions shortly, catered to your interests.',
-        image: 'https://creative.mobileembrace.com/test/co-reg-path/img/endCard.jpg',
-    },
+    // {
+    //     type: 'endCard',
+    //     title: 'Congratulations Neil! You’re in the draw to Win a $10,000 New York Shopping Spree.\n\nYou’ll begin receiving the latest Surveys & Competitions shortly, catered to your interests.',
+    //     image: 'https://creative.mobileembrace.com/test/co-reg-path/img/endCard.jpg',
+    // },
     // {
     //     type: 'offerMultiChoice',
     //     name: 'offer1',
@@ -78,6 +78,11 @@ const pathData = [
     //     choices: ['Australia', 'New Zealand', 'Fiji', 'Asia', 'Vanuatu', 'Cook Islands', 'Samoa', 'Not Interested'],
     //     requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
     // }
+    {
+        type: 'redirect',
+        url: 'https://www.vizmondmedia.com/',
+        
+    },
 ];
 
 

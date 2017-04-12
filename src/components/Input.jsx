@@ -8,8 +8,10 @@ const Input = (props) => {
                     className="Input-input"
                     type={props.type}
                     id={props.id}
-                    minlength={props.minlength}
-                    maxlength={props.maxlength}
+                    minLength={props.minLength}
+                    maxLength={props.maxLength}
+                    min={props.min}
+                    max={props.max}
                     value={props.value}
                     onInput={props.handleChange}
                     onKeyPress={props.handleKeyPress}
