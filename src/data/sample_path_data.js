@@ -65,22 +65,34 @@ const pathData = [
         title: 'Love sport? Watch all your teams, every round, LIVE AFL, NRL, V8 and F1 with Foxtel\'s Sport + Entertainment pack for $50* a month. Tick Yes to hear more.',
         image: 'https://creative.mobileembrace.com/test/co-reg-path/img/Foxtel.png',
     },
-    // {
-    //     type: 'endCard',
-    //     title: 'Congratulations Neil! You’re in the draw to Win a $10,000 New York Shopping Spree.\n\nYou’ll begin receiving the latest Surveys & Competitions shortly, catered to your interests.',
-    //     image: 'https://creative.mobileembrace.com/test/co-reg-path/img/endCard.jpg',
-    // },
-    // {
-    //     type: 'offerMultiChoice',
-    //     name: 'offer1',
-    //     title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
-    //     image: 'https://leadinterface.vizmondmedia.com/attachments/coregs/4951443e-2277-45e9-a336-2d46aa4620ce.jpg',
-    //     choices: ['Australia', 'New Zealand', 'Fiji', 'Asia', 'Vanuatu', 'Cook Islands', 'Samoa', 'Not Interested'],
-    //     requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
-    // }
+    {
+        type: 'offerMultiChoice',
+        name: 'offer1',
+        title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
+        image: 'https://leadinterface.vizmondmedia.com/attachments/coregs/4951443e-2277-45e9-a336-2d46aa4620ce.jpg',
+        choices: [
+            {value:'Australia', text:'Australia'}, 
+            {value:'New_Zealand', text:'New Zealand'}, 
+            {value:'Fiji', text:'Fiji'}, 
+            {value:'Asia', text:'Asia'}, 
+            {value:'Vanuatu', text:'Vanuatu'}, 
+            {value:'Cook_Islands', text:'Cook Islands'}, 
+            {value:'Samoa', text:'Samoa'}, 
+            {value:'Not_Interested', text:'Not Interested'}
+        ],
+        requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
+    },
+    {
+        type: 'endCard',
+        title: 'Congratulations {firstName}! You’re in the draw to Win a $10,000 New York Shopping Spree.\n\nYou’ll begin receiving the latest Surveys & Competitions shortly, catered to your interests.\n\nYou will be redirected to one of our partners shortly.',
+        image: 'https://creative.mobileembrace.com/test/co-reg-path/img/endCard.jpg',
+        redirectURL: 'https://www.vizmondmedia.com/',
+        redirectDelay: 3000,
+    },
     {
         type: 'redirect',
-        url: 'https://www.vizmondmedia.com/',
+        redirectURL: 'https://www.vizmondmedia.com/',
+        redirectDelay: 3000,
         
     },
 ];

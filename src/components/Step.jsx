@@ -50,7 +50,7 @@ class Step extends Component {
 
     createStep() {
         if (this.props.type === 'redirect') {
-            window.location = this.props.url;
+            setTimeout(() => window.location = this.props.redirectURL, this.props.redirectDelay || 0);
             return null;
         } else if (this.props.type === 'name') {
             return (
@@ -185,6 +185,9 @@ class Step extends Component {
                 </div>
             );
         } else if (this.props.type === 'endCard') {
+            if(this.props.redirectURL) {
+                setTimeout(() => window.location = this.props.redirectURL, this.props.redirectDelay || 0);
+            }
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <img src={this.props.image} alt="Congratulations" className="endCardImg" />

@@ -33,7 +33,7 @@
 .CTAButton:disabled, .NoButton {
     background: transparent;
     color: #cacaca;
-    border: solid 4px #cacaca;
+    border: solid 0.15em #cacaca;
     box-shadow: none;
     text-shadow: none;
 }
