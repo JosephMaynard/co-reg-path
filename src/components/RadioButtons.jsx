@@ -20,8 +20,8 @@ const RadioButtons = (props) => {
                                     onChange={e => props.optionSelected(e)}
                                 />
                                 <svg viewBox='0 0 30 30' className='RadioButtons-circle'>
-                                    <circle cx='15' cy='15' r='14' className='outline' />
-                                    <circle cx='15' cy='15' r='10' className='checked' />
+                                    <circle cx='15' cy='15' r='13' className='outline' />
+                                    <circle cx='15' cy='15' r='8' className='checked' />
                                 </svg>
                                 <span className='RadioButtons-span'>
                                     {option.text}
