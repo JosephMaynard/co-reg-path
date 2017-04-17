@@ -2,7 +2,7 @@ import './RadioButtons.css';
 
 const RadioButtons = (props) => {
     return (
-        <div className="RadioButtons">
+        <div className='RadioButtons'>
             <ul className='RadioButtons-ul'>
                 {props.options.map((option, index) => {
                     return (
@@ -12,14 +12,18 @@ const RadioButtons = (props) => {
                                 className='RadioButtons-label'
                             >
                                 <input
-                                    className="RadioButtons-input"
+                                    className='RadioButtons-input'
                                     type='radio'
                                     name={props.name}
                                     value={option.value.toString()}
                                     id={`${props.id}-${index}`}
                                     onChange={e => props.optionSelected(e)}
                                 />
-                                <span className="RadioButtons-span">
+                                <svg viewBox='0 0 30 30' className='RadioButtons-circle'>
+                                    <circle cx='15' cy='15' r='14' className='outline' />
+                                    <circle cx='15' cy='15' r='10' className='checked' />
+                                </svg>
+                                <span className='RadioButtons-span'>
                                     {option.text}
                                 </span>
                             </label>

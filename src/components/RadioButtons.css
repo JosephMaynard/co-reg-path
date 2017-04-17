@@ -4,7 +4,7 @@
 
 .RadioButtons-ul {
     list-style-type: none;
-    padding: 0;
+    padding: 0.1em 0 1.2em;
     margin: 0;
 }
 
@@ -23,16 +23,48 @@
 }
 
 .RadioButtons-input {
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     /*-webkit-appearance: none;*/
     display: inline-block;
-    flex: 0 0 3em;
+    flex: 0 0 2em;
 }
-
 .RadioButtons-span {
     margin-left: 0.6em;
     display: inline-block;
     flex: 2;
     font-size: 1.6em;
+    color: #b1b1b1;
+    transition: color 0.3s;
+}
+
+.RadioButtons-input:checked ~ .RadioButtons-span {
+    color: #565656;
+}
+
+.RadioButtons-circle {
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+}
+.RadioButtons-circle .outline {
+    stroke: #b1b1b1;
+    fill: none;
+    stroke-width: 2px;
+    transition: all 0.3s;
+}
+.RadioButtons-circle .checked {
+    fill: #f00;
+    stroke: none;
+    opacity: 0;
+    transform: scale(0.2);
+    transition: all 0.3s;
+}
+
+.RadioButtons-input:checked ~ .RadioButtons-circle .outline {
+    stroke: #565656;
+}
+.RadioButtons-input:checked ~ .RadioButtons-circle .checked {
+    opacity: 1;
+    transform: scale(1);
 }

@@ -1,11 +1,5 @@
 const pathData = [
     {
-        type: 'name',
-        name: 'firstName',
-        title: 'Enter your first name:',
-        label: 'First name',
-    },
-    {
         type: 'offerMultiChoice',
         name: 'offer1',
         title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
@@ -21,6 +15,12 @@ const pathData = [
             {value:'Not_Interested', text:'Not Interested'}
         ],
         requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
+    },
+    {
+        type: 'name',
+        name: 'firstName',
+        title: 'Enter your first name:',
+        label: 'First name',
     },
     {
         type: 'name',
