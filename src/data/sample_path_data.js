@@ -6,6 +6,23 @@ const pathData = [
         label: 'First name',
     },
     {
+        type: 'offerMultiChoice',
+        name: 'offer1',
+        title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
+        image: 'https://leadinterface.vizmondmedia.com/attachments/coregs/4951443e-2277-45e9-a336-2d46aa4620ce.jpg',
+        options: [
+            {value:'Australia', text:'Australia'}, 
+            {value:'New_Zealand', text:'New Zealand'}, 
+            {value:'Fiji', text:'Fiji'}, 
+            {value:'Asia', text:'Asia'}, 
+            {value:'Vanuatu', text:'Vanuatu'}, 
+            {value:'Cook_Islands', text:'Cook Islands'}, 
+            {value:'Samoa', text:'Samoa'}, 
+            {value:'Not_Interested', text:'Not Interested'}
+        ],
+        requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
+    },
+    {
         type: 'name',
         name: 'lastName',
         title: 'Hi {firstName}, please enter your last name:',
@@ -64,23 +81,6 @@ const pathData = [
         name: 'vmli_co_83',
         title: 'Love sport? Watch all your teams, every round, LIVE AFL, NRL, V8 and F1 with Foxtel\'s Sport + Entertainment pack for $50* a month. Tick Yes to hear more.',
         image: 'https://creative.mobileembrace.com/test/co-reg-path/img/Foxtel.png',
-    },
-    {
-        type: 'offerMultiChoice',
-        name: 'offer1',
-        title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
-        image: 'https://leadinterface.vizmondmedia.com/attachments/coregs/4951443e-2277-45e9-a336-2d46aa4620ce.jpg',
-        choices: [
-            {value:'Australia', text:'Australia'}, 
-            {value:'New_Zealand', text:'New Zealand'}, 
-            {value:'Fiji', text:'Fiji'}, 
-            {value:'Asia', text:'Asia'}, 
-            {value:'Vanuatu', text:'Vanuatu'}, 
-            {value:'Cook_Islands', text:'Cook Islands'}, 
-            {value:'Samoa', text:'Samoa'}, 
-            {value:'Not_Interested', text:'Not Interested'}
-        ],
-        requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
     },
     {
         type: 'endCard',

@@ -1,3 +1,38 @@
 .RadioButtons {
     
 }
+
+.RadioButtons-ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.RadioButtons-li {
+    padding: 0;
+    margin: 1em 0;
+}
+
+.RadioButtons-label {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.RadioButtons-input {
+    width: 3em;
+    height: 3em;
+    /*-webkit-appearance: none;*/
+    display: inline-block;
+    flex: 0 0 3em;
+}
+
+.RadioButtons-span {
+    margin-left: 0.6em;
+    display: inline-block;
+    flex: 2;
+    font-size: 1.6em;
+}

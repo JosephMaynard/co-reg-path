@@ -6,6 +6,7 @@ import CTAButton from './CTAButton';
 import Gender from './Gender';
 import DoB from './DoB';
 import YesNo from './YesNo';
+import RadioButtons from './RadioButtons';
 import './Step.css';
 
 class Step extends Component {
@@ -182,6 +183,17 @@ class Step extends Component {
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
                     <p className="offerText">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
+                    <RadioButtons
+                        options={this.props.options}
+                        id={uniqueID()}
+                        optionSelected={this.handleChange}
+                        name={this.props.name}
+                    />
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
                 </div>
             );
         } else if (this.props.type === 'endCard') {
