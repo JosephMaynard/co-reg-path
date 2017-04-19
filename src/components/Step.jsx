@@ -1,5 +1,5 @@
 import Component from 'inferno-component';
-import { checkEmailAddress, checkPhoneNumber, uniqueID, replaceTemplateStrings } from '../helpers';
+import { checkEmailAddress, checkPhoneNumber, uniqueID, replaceTemplateStrings, checkPostcode } from '../helpers';
 import Input from './Input';
 import Select from './Select';
 import CTAButton from './CTAButton';
@@ -31,7 +31,7 @@ class Step extends Component {
         } else if (this.props.type === 'email') {
             return checkEmailAddress(input);
         } else if (this.props.type === 'postcode') {
-            return true;
+            return checkPostcode(input);
         } else if (this.props.type === 'gender') {
             return true;
         } else if (this.props.type === 'dob') {
@@ -187,8 +187,8 @@ class Step extends Component {
                         options={this.props.options}
                         id={uniqueID()}
                         optionSelected={this.handleChange}
-                        name={this.props.name}
-                    />
+                         name={this.props.name}
+                     />
                     <CTAButton
                         text="next"
                         disabled={this.state.inputValid}
@@ -206,7 +206,7 @@ class Step extends Component {
                     <p className="offerText">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                 </div>
             );
-        } 
+        }
         return null;
     }
 
