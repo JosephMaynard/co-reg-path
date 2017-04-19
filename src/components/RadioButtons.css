@@ -62,6 +62,7 @@
     stroke-width: 3px;
     transition: all 0.3s;
 }
+
 .RadioButtons-circle .checked {
     fill: #e9347a;
     stroke: none;
@@ -74,6 +75,7 @@
 .RadioButtons-input:checked ~ .RadioButtons-circle .outline {
     stroke: #e9347a;
 }
+
 .RadioButtons-input:checked ~ .RadioButtons-circle .checked {
     opacity: 1;
     transform: scale(1);

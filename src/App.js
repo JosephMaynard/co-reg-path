@@ -9,7 +9,7 @@ import { getUrlParameters, uniqueID, preloadImages } from './helpers';
 import './App.css';
 
 //Create array of all images from path data to pre-load on componentDidMount
-const offerImages = pathData.filter(item => item.image).map(item => item.image);
+const offerImages = pathData.path.filter(item => item.image).map(item => item.image);
 
 class App extends Component {
 
@@ -18,7 +18,7 @@ class App extends Component {
         this.state = {
             stepExit: false,
             currentStep: 0,
-            pathData,
+            pathData: pathData.path,
             collectedData: {
                 sessionID: uniqueID(),
                 parameters: getUrlParameters(),
