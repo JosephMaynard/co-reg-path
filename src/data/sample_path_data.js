@@ -10,6 +10,23 @@ const pathData = {
     process: '9301',
     path:[
         {
+            type: 'offerMultiCheckboxes',
+            name: 'offer1',
+            title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
+            image: 'https://creative.mobileembrace.com/test/co-reg-path/img/PlatinumHolidayClub.png',
+            options: [
+                {value:'Australia', text:'Australia'}, 
+                {value:'New_Zealand', text:'New Zealand'}, 
+                {value:'Fiji', text:'Fiji'}, 
+                {value:'Asia', text:'Asia'}, 
+                {value:'Vanuatu', text:'Vanuatu'}, 
+                {value:'Cook_Islands', text:'Cook Islands'}, 
+                {value:'Samoa', text:'Samoa'}, 
+                {value:'Not_Interested', text:'Not Interested'}
+            ],
+            requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
+        },
+        {
             type: 'offerMultiChoice',
             name: 'offer1',
             title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',

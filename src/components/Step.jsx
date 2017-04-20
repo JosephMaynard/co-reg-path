@@ -7,6 +7,7 @@ import Gender from './Gender';
 import DoB from './DoB';
 import YesNo from './YesNo';
 import RadioButtons from './RadioButtons';
+import Checkboxes from './Checkboxes';
 import './Step.css';
 
 class Step extends Component {
@@ -43,6 +44,8 @@ class Step extends Component {
         } else if (this.props.type === 'offerBool') {
             return true;
         } else if (this.props.type === 'offerMultiChoice') {
+            return true;
+        } else if (this.props.type === 'offerMultiCheckboxes') {
             return true;
         } else if (this.props.type === 'endCard') {
             return true;
@@ -184,6 +187,24 @@ class Step extends Component {
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
                     <p className="offerText">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
                     <RadioButtons
+                        options={this.props.options}
+                        id={uniqueID()}
+                        optionSelected={this.handleChange}
+                         name={this.props.name}
+                     />
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
+                </div>
+            );
+        } else if (this.props.type === 'offerMultiCheckboxes') {
+            return (
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                    <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
+                    <p className="offerText">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
+                    <Checkboxes
                         options={this.props.options}
                         id={uniqueID()}
                         optionSelected={this.handleChange}
