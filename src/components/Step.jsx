@@ -227,7 +227,6 @@ class Step extends Component {
 
     handleKeyPress(e) {
         if (e.key === 'Enter' && !this.state.inputValid) {
-            // this.props.nextStep();
             this.props.collectData(this.props.name, this.state.value);
         }
     }

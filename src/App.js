@@ -5,7 +5,7 @@ import ProgressBar from './components/ProgressBar';
 import Step from './components/Step';
 
 import pathData from './data/sample_path_data';
-import { getUrlParameters, uniqueID, preloadImages } from './helpers';
+import { getUrlParameters, uniqueID, preloadImages, getAge } from './helpers';
 import './App.css';
 
 //Create array of all images from path data to pre-load on componentDidMount
@@ -37,7 +37,11 @@ class App extends Component {
     collectData(key, value) {
         let collectedData = this.state.collectedData;
         collectedData[key] = value;
-    
+
+        if(key === 'dob') {
+            collectedData.age = getAge(value);
+        }
+
         this.setState({
             collectedData,
             stepExit: true

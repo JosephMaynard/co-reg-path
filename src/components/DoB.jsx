@@ -10,18 +10,18 @@ class DoB extends Component {
         this.state = {
             days: populateDays(),
             months: [
-              {value:'Jan', text:'Jan'},
-              {value:'Feb', text:'Feb'},
-              {value:'Mar', text:'Mar'},
-              {value:'Apr', text:'Apr'},
-              {value:'May', text:'May'},
-              {value:'Jun', text:'Jun'},
-              {value:'Jul', text:'Jul'},
-              {value:'Aug', text:'Aug'},
-              {value:'Sep', text:'Sep'},
-              {value:'Oct', text:'Oct'},
-              {value:'Nov', text:'Nov'},
-              {value:'Dec', text:'Dec'},
+              {value:'01', text:'Jan'},
+              {value:'02', text:'Feb'},
+              {value:'03', text:'Mar'},
+              {value:'04', text:'Apr'},
+              {value:'05', text:'May'},
+              {value:'06', text:'Jun'},
+              {value:'07', text:'Jul'},
+              {value:'08', text:'Aug'},
+              {value:'09', text:'Sep'},
+              {value:'10', text:'Oct'},
+              {value:'11', text:'Nov'},
+              {value:'12', text:'Dec'},
             ],
             years: populateYears(),
             day: '',
@@ -51,7 +51,7 @@ class DoB extends Component {
 
     sendDoB() {
         if(this.state.day !== '' && this.state.month !== '' && this.state.year !== '') {
-            this.props.updateValue(`${this.state.day} ${this.state.month} ${this.state.year} `);
+            this.props.updateValue(`${this.state.year}-${this.state.month}-${this.state.day}`);
         }
     }
 
