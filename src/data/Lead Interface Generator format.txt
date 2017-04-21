@@ -1,3 +1,12 @@
+<script type="text/javascript">
+vmli_SurveyCode = "eupivh";
+vmli_SourceCode = "";
+vmli_HtmlBlockId = "survey";
+vmli_Prepopulate = "&email=shondyllmundy1@gmail.com&fname=Shondyll&lname=Mundy&postcode=5606&gender=2&address=&phone=&state=43&age=49";
+vmli_RedirectUrl = "http://www.leadingcompetitions.com/au/atrack.php?sl=34C32C98-39D2-3DF4-5969-4DD2B3723ADA&su=16D5B4CB-757D-8A24-DDCD-C73096DA7180";
+</script>
+<script type="text/javascript" src="https://leadinterface.vizmondmedia.com/generator"></script>
+
 https://leadinterface.vizmondmedia.com/generator/preliminary?
 
 survey=eupivh
@@ -31,3 +40,41 @@ https://leadinterface.vizmondmedia.com/ajax/getsuburbsbypostcodeajax?callback=jQ
 
 
 https://leadinterface.vizmondmedia.com/ajax/getstatebypostcodeajax?callback=jQuery1113022624006435548383_1492574077962&country=13&postcode=2000&_=1492574077964
+
+
+
+Rules:
+
+Qualifies if (Equal)
+Show if (Equal)
+Show if (Not Equal)
+Show if (In List)
+Show if (Not In List)
+Show if (Min Length)
+Show if (Max Length)
+Show if (Min Age)
+Show if (Max Age)
+
+
+
+survey
+index
+group
+source
+prepopulate
+uuid
+callback
+latency
+process
+
+
+email
+fname
+lname
+postcode
+gender
+address
+phone
+state
+age
+dob
