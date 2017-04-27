@@ -25,6 +25,7 @@ class App extends Component {
             },
         };
 
+        this.filterPath = this.filterPath.bind(this);
         this.collectData = this.collectData.bind(this);
         this.sendData = this.sendData.bind(this);
         this.nextStep = this.nextStep.bind(this);
@@ -58,6 +59,20 @@ class App extends Component {
         preloadImages('', offerImages);
     }
 
+    filterPath (pathData) {
+        return pathData.filter(step => {
+            if (this.state.collectedData[step.name]) return false;
+            let result = true;
+            if (step.rules) {
+                step.rules.map(rule => {
+                    if (rule.min && this.state.collectedData[rule.field] < rule.min) result = false;
+                    if (rule.max && this.state.collectedData[rule.field] > rule.max) result = false;
+                });
+            }
+            return result;
+        });
+    }
+
     collectData(key, value) {
         let collectedData = this.state.collectedData;
         collectedData[key] = value;
@@ -73,6 +88,10 @@ class App extends Component {
             collectedData,
             stepExit: true
         });
+
+        // this.setState({
+        //     pathData: this.filterPath(pathData.path)
+        // });
 
         this.sendData();
 
