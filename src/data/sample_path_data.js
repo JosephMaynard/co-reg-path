@@ -62,19 +62,19 @@ const pathData = {
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/dodo.png',
             requiredInfo: ['state'],
             rules: [
-                    {
-                        field: 'age',
-                        min: 24,
-                    },
-                    {
-                        field: 'age',
-                        max: 52,
-                    },
-                    {
-                        field: 'postcode',
-                        equals: [4575, 6865, 3547],
-                    }
-                ]
+                {
+                    field: 'age',
+                    min: 24,
+                },
+                {
+                    field: 'age',
+                    max: 52,
+                },
+                {
+                    field: 'postcode',
+                    equals: [4575, 6865, 3547],
+                }
+            ]
         },
         {
             type: 'offerBool',
