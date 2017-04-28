@@ -25,13 +25,52 @@ class App extends Component {
             },
         };
 
+        this.filterPath = this.filterPath.bind(this);
         this.collectData = this.collectData.bind(this);
         this.sendData = this.sendData.bind(this);
         this.nextStep = this.nextStep.bind(this);
+        this.lookUpStateAndSuburb = this.lookUpStateAndSuburb.bind(this);
     }
 
     componentDidMount() {
+        window.jsonpLoader = {
+            lookUpState: (data) => {
+                const result = JSON.parse(data);
+                let collectedData = this.state.collectedData;
+                collectedData['state'] = result.value;
+                collectedData['stateName'] = result.text;
+                this.setState({
+                    collectedData
+                });
+            },
+            lookUpSuburb: (data) => {
+                const result = JSON.parse(data);
+                let collectedData = this.state.collectedData;
+                if (result.length === 1) {
+                    collectedData.suburb = result[0].value;
+                } else if (result.length > 1) {
+                    collectedData.suburbList = result;
+                }
+                this.setState({
+                    collectedData
+                });
+            },
+        };
         preloadImages('', offerImages);
+    }
+
+    filterPath (pathData) {
+        return pathData.filter(step => {
+            if (this.state.collectedData[step.name]) return false;
+            let result = true;
+            if (step.rules) {
+                step.rules.map(rule => {
+                    if (rule.min && this.state.collectedData[rule.field] < rule.min) result = false;
+                    if (rule.max && this.state.collectedData[rule.field] > rule.max) result = false;
+                });
+            }
+            return result;
+        });
     }
 
     collectData(key, value) {
@@ -41,11 +80,18 @@ class App extends Component {
         if(key === 'dob') {
             collectedData.age = getAge(value);
         }
+        if(key === 'postcode') {
+            this.lookUpStateAndSuburb(value);
+        }
 
         this.setState({
             collectedData,
             stepExit: true
         });
+
+        // this.setState({
+        //     pathData: this.filterPath(pathData.path)
+        // });
 
         this.sendData();
 
@@ -69,6 +115,15 @@ class App extends Component {
                 stepExit: false
             });
         }, 300);
+    }
+
+    lookUpStateAndSuburb(postcode) {
+        const liLookUpState = document.createElement('script');
+        liLookUpState.src = `https://leadinterface.vizmondmedia.com/ajax/getstatebypostcodeajax?callback=jsonpLoader.lookUpState&country=13&postcode=${postcode}`;
+        document.body.appendChild(liLookUpState);
+        const liLookUpSuburbs = document.createElement('script');
+        liLookUpSuburbs.src = `https://leadinterface.vizmondmedia.com/ajax/getsuburbsbypostcodeajax?callback=jsonpLoader.lookUpSuburb&country=13&postcode=${postcode}`;
+        document.body.appendChild(liLookUpSuburbs);
     }
 
     sendData(){
