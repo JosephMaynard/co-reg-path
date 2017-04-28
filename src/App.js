@@ -66,8 +66,24 @@ class App extends Component {
             let result = true;
             if (step.rules) {
                 step.rules.map(rule => {
-                    if (rule.min && this.state.collectedData[rule.field] < rule.min) result = false;
-                    if (rule.max && this.state.collectedData[rule.field] > rule.max) result = false;
+                    if (rule.min 
+                        && this.state.collectedData[rule.field] 
+                        && this.state.collectedData[rule.field] < rule.min) result = false;
+                    if (rule.max 
+                        && this.state.collectedData[rule.field] 
+                        && this.state.collectedData[rule.field] > rule.max) result = false;
+                    if (rule.minLength 
+                        && this.state.collectedData[rule.field] 
+                        && this.state.collectedData[rule.field].length < rule.minLength) result = false;
+                    if (rule.maxLength 
+                        && this.state.collectedData[rule.field] 
+                        && this.state.collectedData[rule.field].length > rule.maxLength) result = false;
+                    if (rule.equal 
+                        && this.state.collectedData[rule.field] 
+                        && this.state.collectedData[rule.field].toLowerCase() !== rule.equal.toLowerCase()) result = false;
+                    if (rule.notEqual 
+                        && this.state.collectedData[rule.field] 
+                        && this.state.collectedData[rule.field].toLowerCase() === rule.notEqual.toLowerCase()) result = false;
                 });
             }
             return result;
