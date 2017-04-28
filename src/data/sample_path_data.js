@@ -20,12 +20,12 @@ const pathData = {
             name: 'firstName',
             title: 'Enter your first name:',
             label: 'First name',
-            // rules: [
-            //     {
-            //         field: 'postcode',
-            //         inList: [3000]
-            //     }
-            // ]
+            rules: [
+                {
+                    field: 'postcode',
+                    inList: [3000]
+                }
+            ]
         },
         {
             type: 'name',

@@ -59,6 +59,10 @@ class App extends Component {
         preloadImages('', offerImages);
     }
 
+    importPath (pathData) {
+        return pathData.filter(step => !this.state.collectedData[step.name]);
+    }
+
     filterPath (pathData) {
         const completedSteps = pathData.slice(0, this.state.currentStep + 1);
         const stepsToDo = pathData.slice(this.state.currentStep + 1).filter(step => {
@@ -88,14 +92,17 @@ class App extends Component {
                         let searchResult = false;
                         rule.inList.map(listItem => {
                             if (this.state.collectedData[rule.field].trim().toLowerCase() === listItem.toString().trim().toLowerCase()) searchResult = true;
+                            return null;
                         });
                         result = searchResult;
                     }
                     if (rule.notInList && Array.isArray(rule.notInList)) {
                         rule.notInList.map(listItem => {
                             if (this.state.collectedData[rule.field].trim().toLowerCase() === listItem.toString().trim().toLowerCase()) result = false;
+                            return null;
                         });
                     }
+                    return null;
                 });
             }
             return result;
