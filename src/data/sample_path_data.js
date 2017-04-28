@@ -55,6 +55,20 @@ const pathData = {
             title: 'Dodo NBN plans just got better! Get a FREE SPEED BOOST on an awesome Standard Speed NBN plan. Tick Yes to find out more.',
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/dodo.png',
             requiredInfo: ['state'],
+            rules: [
+                    {
+                        field: 'age',
+                        min: 24,
+                    },
+                    {
+                        field: 'age',
+                        max: 52,
+                    },
+                    {
+                        field: 'postcode',
+                        equals: [4575, 6865, 3547],
+                    }
+                ]
         },
         {
             type: 'offerBool',

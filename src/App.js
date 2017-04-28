@@ -60,7 +60,8 @@ class App extends Component {
     }
 
     filterPath (pathData) {
-        return pathData.filter(step => {
+        const completedSteps = pathData.slice(0, this.state.currentStep + 1);
+        const stepsToDo = pathData.slice(this.state.currentStep + 1).filter(step => {
             if (this.state.collectedData[step.name]) return false;
             let result = true;
             if (step.rules) {
@@ -71,6 +72,7 @@ class App extends Component {
             }
             return result;
         });
+        return completedSteps.concat(stepsToDo);
     }
 
     collectData(key, value) {
@@ -89,9 +91,9 @@ class App extends Component {
             stepExit: true
         });
 
-        // this.setState({
-        //     pathData: this.filterPath(pathData.path)
-        // });
+        this.setState({
+            pathData: this.filterPath(pathData.path)
+        });
 
         this.sendData();
 
