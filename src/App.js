@@ -68,10 +68,10 @@ class App extends Component {
                 step.rules.map(rule => {
                     if (rule.min 
                         && this.state.collectedData[rule.field] 
-                        && this.state.collectedData[rule.field] < rule.min) result = false;
+                        && parseFloat(this.state.collectedData[rule.field]) < rule.min) result = false;
                     if (rule.max 
                         && this.state.collectedData[rule.field] 
-                        && this.state.collectedData[rule.field] > rule.max) result = false;
+                        && parseFloat(this.state.collectedData[rule.field]) > rule.max) result = false;
                     if (rule.minLength 
                         && this.state.collectedData[rule.field] 
                         && this.state.collectedData[rule.field].length < rule.minLength) result = false;
@@ -79,11 +79,23 @@ class App extends Component {
                         && this.state.collectedData[rule.field] 
                         && this.state.collectedData[rule.field].length > rule.maxLength) result = false;
                     if (rule.equal 
-                        && this.state.collectedData[rule.field] 
-                        && this.state.collectedData[rule.field].toLowerCase() !== rule.equal.toLowerCase()) result = false;
-                    if (rule.notEqual 
-                        && this.state.collectedData[rule.field] 
-                        && this.state.collectedData[rule.field].toLowerCase() === rule.notEqual.toLowerCase()) result = false;
+                        && this.state.collectedData[rule.field]
+                        && this.state.collectedData[rule.field].trim().toLowerCase() !== rule.equal.toString().trim().toLowerCase()) result = false;
+                    if (rule.notEqual
+                        && this.state.collectedData[rule.field]
+                        && this.state.collectedData[rule.field].trim().toLowerCase() === rule.notEqual.toString().trim().toLowerCase()) result = false;
+                    if (rule.inList && Array.isArray(rule.inList)) {
+                        let searchResult = false;
+                        rule.inList.map(listItem => {
+                            if (this.state.collectedData[rule.field].trim().toLowerCase() === listItem.toString().trim().toLowerCase()) searchResult = true;
+                        });
+                        result = searchResult;
+                    }
+                    if (rule.notInList && Array.isArray(rule.notInList)) {
+                        rule.notInList.map(listItem => {
+                            if (this.state.collectedData[rule.field].trim().toLowerCase() === listItem.toString().trim().toLowerCase()) result = false;
+                        });
+                    }
                 });
             }
             return result;
