@@ -16,70 +16,93 @@ const pathData = {
             label: 'Postcode',
             maxLength: 4
         },
-        {
-            type: 'additionalInfo',
-            additionalInfoType: 'input',
-        },
-        {
-            type: 'suburb',
-            name: 'suburb',
-            title: 'Please enter your suburb:',
-            label: 'Suburb',
-        },
+        // {
+        //     type: 'additionalInfo',
+        //     additionalInfoType: 'input',
+        // },
+        // {
+        //     type: 'suburb',
+        //     name: 'suburb',
+        //     title: 'Please enter your suburb:',
+        //     label: 'Suburb',
+        // },
         {
             type: 'name',
             name: 'firstName',
             title: 'Enter your first name:',
             label: 'First name',
         },
-        {
-            type: 'name',
-            name: 'lastName',
-            title: 'Hi {firstName}, please enter your last name:',
-            label: 'Last name',
-        },
-        {
-            type: 'email',
-            name: 'email',
-            title: 'Enter your email address:',
-            label: 'Email address',
-        },
-        {
-            type: 'dob',
-            name: 'dob',
-            title: 'Please enter your date of birth:',
-        },
-        {
-            type: 'gender',
-            name: 'gender',
-            title: 'Please select your gender:',
-        },
-        {
-            type: 'phone',
-            name: 'phone',
-            title: 'Please enter your mobile number',
-            label: 'Mobile Number',
-        },
+        // {
+        //     type: 'name',
+        //     name: 'lastName',
+        //     title: 'Hi {firstName}, please enter your last name:',
+        //     label: 'Last name',
+        // },
+        // {
+        //     type: 'email',
+        //     name: 'email',
+        //     title: 'Enter your email address:',
+        //     label: 'Email address',
+        // },
+        // {
+        //     type: 'dob',
+        //     name: 'dob',
+        //     title: 'Please enter your date of birth:',
+        // },
+        // {
+        //     type: 'gender',
+        //     name: 'gender',
+        //     title: 'Please select your gender:',
+        // },
+        // {
+        //     type: 'phone',
+        //     name: 'phone',
+        //     title: 'Please enter your mobile number',
+        //     label: 'Mobile Number',
+        //     maxLength: 14
+        // },
         {
             type: 'offerBool',
             name: 'vmli_co_3507',
             title: 'Dodo NBN plans just got better! Get a FREE SPEED BOOST on an awesome Standard Speed NBN plan. Tick Yes to find out more.',
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/dodo.png',
-            requiredInfo: ['state'],
-            rules: [
+            requiredInfo: [
                 {
-                    field: 'age',
-                    min: 24,
+                    type: 'suburb',
+                    name: 'suburb',
+                    title: 'Please enter your suburb:',
+                    label: 'Suburb',
                 },
                 {
-                    field: 'age',
-                    max: 52,
-                },
-                {
-                    field: 'postcode',
-                    equals: [4575, 6865, 3547],
+                    type: 'select',
+                    name: 'favoriteColour',
+                    title: 'Hey {firstName} what\'s your favorite colour?',
+                    options: [
+                        {value:'Red', text:'Red'}, 
+                        {value:'Orange', text:'Orange'}, 
+                        {value:'Yellow', text:'Yellow'}, 
+                        {value:'Green', text:'Green'}, 
+                        {value:'Blue', text:'Blue'}, 
+                        {value:'Purple', text:'Purple'}, 
+                        {value:'Brown', text:'Brown'}, 
+                    ],
+
                 }
-            ]
+            ],
+            // rules: [
+            //     {
+            //         field: 'age',
+            //         min: 24,
+            //     },
+            //     {
+            //         field: 'age',
+            //         max: 52,
+            //     },
+            //     {
+            //         field: 'postcode',
+            //         equals: [4575, 6865, 3547, 2010],
+            //     }
+            // ]
         },
         {
             type: 'offerBool',

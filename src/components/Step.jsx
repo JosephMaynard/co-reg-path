@@ -33,29 +33,18 @@ class Step extends Component {
     }
 
     validateInput(input) {
-        if (this.props.type === 'name' || this.props.additionalInfoType === 'name') {
+        if (this.props.type === 'name') {
             return (input !== '');
-        } else if (this.props.type === 'email' || this.props.additionalInfoType === 'email') {
+        } else if (this.props.type === 'email') {
             return checkEmailAddress(input);
-        } else if (this.props.type === 'postcode' || this.props.additionalInfoType === 'postcode') {
+        } else if (this.props.type === 'postcode') {
             return checkPostcode(input);
-        } else if (this.props.type === 'gender' || this.props.additionalInfoType === 'gender') {
-            return true;
-        } else if (this.props.type === 'dob' || this.props.additionalInfoType === 'dob') {
-            return true;
-        } else if (this.props.type === 'suburb' || this.props.additionalInfoType === 'suburb') {
-            return (input !== '' && input !== 'Other');
-        } else if (this.props.type === 'phone' || this.props.additionalInfoType === 'phone') {
+        } else if (this.props.type === 'phone') {
             return checkPhoneNumber(input);
-        } else if (this.props.type === 'offerBool' || this.props.additionalInfoType === 'offerBool') {
-            return true;
-        } else if (this.props.type === 'offerMultiChoice' || this.props.additionalInfoType === 'offerMultiChoice') {
-            return true;
-        } else if (this.props.type === 'offerMultiCheckboxes' || this.props.additionalInfoType === 'offerMultiCheckboxes') {
-            return true;
-        } else if (this.props.type === 'endCard' || this.props.additionalInfoType === 'endCard') {
-            return true;
+        } else if (this.props.type === 'suburb') {
+            return (input !== '' && input !== 'Other');
         } 
+        return true; 
     }
 
     createStep() {
@@ -191,6 +180,24 @@ class Step extends Component {
                             ? () => this.props.collectData(this.props.name, this.state.tempValue)
                             : () => this.props.collectData(this.props.name, this.state.value)
                         }
+                    />
+                </div>
+            );
+        } else if (this.props.type === 'select') {
+            return (
+                <div>
+                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
+                    <Select
+                        label={this.props.label}
+                        id={uniqueID()}
+                        options={ [...this.props.suburbList, {text: 'Other', value: 'Other'}]  }
+                        optionSelected={this.updateValue}
+                        value={this.state.value}
+                    />
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
                     />
                 </div>
             );
@@ -337,10 +344,9 @@ class Step extends Component {
     }
 
     render() {
-        const createdStep = this.createStep();
         return (
             <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
-                {createdStep}
+                { this.createStep() }
                 {
                     this.props.additionalStepID
                     ? <CTAButton

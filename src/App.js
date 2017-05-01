@@ -26,6 +26,7 @@ class App extends Component {
         };
 
         this.filterPath = this.filterPath.bind(this);
+        this.addSteps = this.addSteps.bind(this);
         this.collectData = this.collectData.bind(this);
         this.sendData = this.sendData.bind(this);
         this.nextStep = this.nextStep.bind(this);
@@ -112,6 +113,12 @@ class App extends Component {
         return completedSteps.concat(stepsToDo);
     }
 
+    addSteps(pathData, additionalSteps) {
+        const completedSteps = pathData.slice(0, this.state.currentStep + 1);
+        const stepsToDo = pathData.slice(this.state.currentStep + 1);
+        return completedSteps.concat(additionalSteps, stepsToDo);
+    }
+
     collectData(key, value) {
         let collectedData = this.state.collectedData;
         collectedData[key] = value;
@@ -131,6 +138,20 @@ class App extends Component {
         this.setState({
             pathData: this.filterPath(pathData.path)
         });
+
+        if(value && this.state.pathData[this.state.currentStep].requiredInfo) {
+            const additionalStepID = uniqueID();
+            const additionalSteps = this.state.pathData[this.state.currentStep].requiredInfo
+                .filter(step => !this.state[step.name])
+                .map(step => {
+                    const newStep = Object.assign({additionalStepID}, step);
+                    return newStep;
+                });           
+
+            this.setState({
+                pathData: this.addSteps(pathData.path, additionalSteps)
+            });
+        }
 
         this.sendData();
 
