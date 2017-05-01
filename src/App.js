@@ -45,15 +45,17 @@ class App extends Component {
             },
             lookUpSuburb: (data) => {
                 const result = JSON.parse(data);
-                let collectedData = this.state.collectedData;
                 if (result.length === 1) {
+                    let collectedData = this.state.collectedData;
                     collectedData.suburb = result[0].value;
+                    this.setState({
+                        collectedData
+                    });
                 } else if (result.length > 1) {
-                    collectedData.suburbList = result;
+                    this.setState({
+                        suburbList: result
+                    });
                 }
-                this.setState({
-                    collectedData
-                });
             },
         };
         preloadImages('', offerImages);
@@ -183,6 +185,7 @@ class App extends Component {
             stepExit={this.state.stepExit}
             collectData={this.collectData}
             details={this.state.collectedData}
+            suburbList={this.state.suburbList || false}
           />
         </div>
       </div>

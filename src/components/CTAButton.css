@@ -40,6 +40,10 @@
     text-shadow: none;
 }
 
+.cancelButton {
+  margin: 0.8em auto 0;
+}
+
 .CTAButton:disabled {
     cursor: not-allowed; 
 }

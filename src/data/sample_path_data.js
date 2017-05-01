@@ -10,7 +10,20 @@ const pathData = {
     process: '9301',
     path:[
         {
+            type: 'postcode',
+            name: 'postcode',
+            title: 'Please enter your postcode:',
+            label: 'Postcode',
+        },
+        {
             type: 'additionalInfo',
+            additionalInfoType: 'input',
+        },
+        {
+            type: 'suburb',
+            name: 'suburb',
+            title: 'Please enter your suburb:',
+            label: 'Suburb',
         },
         {
             type: 'name',
@@ -34,12 +47,6 @@ const pathData = {
             type: 'dob',
             name: 'dob',
             title: 'Please enter your date of birth:',
-        },
-        {
-            type: 'postcode',
-            name: 'postcode',
-            title: 'Please enter your postcode:',
-            label: 'Postcode',
         },
         {
             type: 'gender',

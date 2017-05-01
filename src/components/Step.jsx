@@ -17,6 +17,7 @@ class Step extends Component {
         super(props);
         this.state = {
             value: '',
+            tempValue: '',
             inputValid: true,
         };
 
@@ -25,30 +26,33 @@ class Step extends Component {
         this.createStep = this.createStep.bind(this);
         this.validateInput = this.validateInput.bind(this);
         this.updateValue = this.updateValue.bind(this);
+        this.handleChangeTemp = this.handleChangeTemp.bind(this);
+        this.updateTempValue = this.updateTempValue.bind(this);
+        this.handleKeyPressTemp = this.handleKeyPressTemp.bind(this);
     }
 
     validateInput(input) {
-        if (this.props.type === 'name') {
+        if (this.props.type === 'name' || this.props.additionalInfoType === 'name') {
             return (input !== '');
-        } else if (this.props.type === 'email') {
+        } else if (this.props.type === 'email' || this.props.additionalInfoType === 'email') {
             return checkEmailAddress(input);
-        } else if (this.props.type === 'postcode') {
+        } else if (this.props.type === 'postcode' || this.props.additionalInfoType === 'postcode') {
             return checkPostcode(input);
-        } else if (this.props.type === 'gender') {
+        } else if (this.props.type === 'gender' || this.props.additionalInfoType === 'gender') {
             return true;
-        } else if (this.props.type === 'dob') {
+        } else if (this.props.type === 'dob' || this.props.additionalInfoType === 'dob') {
             return true;
-        } else if (this.props.type === 'suburb') {
-            return true;
-        } else if (this.props.type === 'phone') {
+        } else if (this.props.type === 'suburb' || this.props.additionalInfoType === 'suburb') {
+            return (input !== '' && input !== 'Other');
+        } else if (this.props.type === 'phone' || this.props.additionalInfoType === 'phone') {
             return checkPhoneNumber(input);
-        } else if (this.props.type === 'offerBool') {
+        } else if (this.props.type === 'offerBool' || this.props.additionalInfoType === 'offerBool') {
             return true;
-        } else if (this.props.type === 'offerMultiChoice') {
+        } else if (this.props.type === 'offerMultiChoice' || this.props.additionalInfoType === 'offerMultiChoice') {
             return true;
-        } else if (this.props.type === 'offerMultiCheckboxes') {
+        } else if (this.props.type === 'offerMultiCheckboxes' || this.props.additionalInfoType === 'offerMultiCheckboxes') {
             return true;
-        } else if (this.props.type === 'endCard') {
+        } else if (this.props.type === 'endCard' || this.props.additionalInfoType === 'endCard') {
             return true;
         } 
     }
@@ -148,7 +152,46 @@ class Step extends Component {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
-                    <Select />
+                    {this.props.suburbList 
+                        ? <Select
+                            label={this.props.label}
+                            id={uniqueID()}
+                            options={ [...this.props.suburbList, {text: 'Other', value: 'Other'}]  }
+                            optionSelected={this.updateValue}
+                            value={this.state.value}
+                        />
+                        : <Input
+                            value={this.state.value}
+                            onInput={this.handleChange}
+                            id={uniqueID()}
+                            type="text"
+                            label={this.props.label}
+                            handleChange={this.handleChange}
+                            handleKeyPress={this.handleKeyPress}
+                        /> 
+                    }
+                    {
+                      this.state.value === 'Other'
+                      ? <Input
+                            value={this.state.tempValue}
+                            onInput={this.handleChange}
+                            id={uniqueID()}
+                            type="text"
+                            label={this.props.label}
+                            handleChange={this.handleChangeTemp}
+                            handleKeyPress={this.handleKeyPressTemp}
+                        /> 
+                      : null  
+                    }
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={
+                            this.state.value === 'Other' && this.state.tempValue !== ''
+                            ? () => this.props.collectData(this.props.name, this.state.tempValue)
+                            : () => this.props.collectData(this.props.name, this.state.value)
+                        }
+                    />
                 </div>
             );
         } else if (this.props.type === 'phone') {
@@ -191,7 +234,7 @@ class Step extends Component {
                         options={this.props.options}
                         id={uniqueID()}
                         optionSelected={this.handleChange}
-                         name={this.props.name}
+                        name={this.props.name}
                      />
                     <CTAButton
                         text="next"
@@ -228,7 +271,6 @@ class Step extends Component {
                         disabled={this.state.inputValid}
                         nextstep={() => this.props.collectData(this.props.name, this.state.value)}
                     />
-                    <br />
                     <CTAButton
                         text="cancel"
                         cancelButton
@@ -258,6 +300,14 @@ class Step extends Component {
         });
     }
 
+    handleChangeTemp(event) {
+        const input = event.target.value;
+        this.setState({
+            tempValue: input,
+            inputValid: !this.validateInput(input),
+        });
+    }
+
     updateValue(value) {
         this.setState({
             value,
@@ -265,9 +315,22 @@ class Step extends Component {
         });
     }
 
+    updateTempValue(value) {
+        this.setState({
+            tempValue: value,
+            inputValid: !this.validateInput(value),
+        });
+    }
+
     handleKeyPress(e) {
         if (e.key === 'Enter' && !this.state.inputValid) {
             this.props.collectData(this.props.name, this.state.value);
+        }
+    }
+
+    handleKeyPressTemp(e) {
+        if (e.key === 'Enter' && !this.state.inputValid) {
+            this.props.collectData(this.props.name, this.state.tempValue);
         }
     }
 
