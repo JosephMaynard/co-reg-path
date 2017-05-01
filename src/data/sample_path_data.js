@@ -108,7 +108,7 @@ const pathData = {
                 {value:'Vanuatu', text:'Vanuatu'}, 
                 {value:'Cook_Islands', text:'Cook Islands'}, 
                 {value:'Samoa', text:'Samoa'}, 
-                {value:'Not_Interested', text:'Not Interested'}
+                {value:'false', text:'Not Interested'}
             ],
             requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
         },
