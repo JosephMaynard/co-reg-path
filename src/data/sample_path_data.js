@@ -10,22 +10,13 @@ const pathData = {
     process: '9301',
     path:[
         {
-            type: 'postcode',
-            name: 'postcode',
-            title: 'Please enter your postcode:',
-            label: 'Postcode',
+            type: 'additionalInfo',
         },
         {
             type: 'name',
             name: 'firstName',
             title: 'Enter your first name:',
             label: 'First name',
-            rules: [
-                {
-                    field: 'postcode',
-                    inList: [3000]
-                }
-            ]
         },
         {
             type: 'name',
@@ -43,6 +34,12 @@ const pathData = {
             type: 'dob',
             name: 'dob',
             title: 'Please enter your date of birth:',
+        },
+        {
+            type: 'postcode',
+            name: 'postcode',
+            title: 'Please enter your postcode:',
+            label: 'Postcode',
         },
         {
             type: 'gender',
@@ -133,7 +130,7 @@ const pathData = {
             type: 'endCard',
             title: 'Congratulations {firstName}! You’re in the draw to Win a $10,000 New York Shopping Spree.\n\nYou’ll begin receiving the latest Surveys & Competitions shortly, catered to your interests.\n\nYou will be redirected to one of our partners shortly.',
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/endCard.jpg',
-            redirectURL: 'https://www.vizmondmedia.com/',
+            //redirectURL: 'https://www.vizmondmedia.com/',
             redirectDelay: 3000,
         },
         {

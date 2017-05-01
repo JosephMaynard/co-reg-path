@@ -175,7 +175,7 @@ class Step extends Component {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
-                    <p className="offerText">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
+                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <YesNo
                         nextstep={this.props.collectData}
                         name={this.props.name}
@@ -186,7 +186,7 @@ class Step extends Component {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
-                    <p className="offerText">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
+                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <RadioButtons
                         options={this.props.options}
                         id={uniqueID()}
@@ -204,7 +204,7 @@ class Step extends Component {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
-                    <p className="offerText">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
+                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Checkboxes
                         options={this.props.options}
                         id={uniqueID()}
@@ -218,6 +218,24 @@ class Step extends Component {
                     />
                 </div>
             );
+        } else if (this.props.type === 'additionalInfo') {
+            return (
+                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                    <StepTitle text={replaceTemplateStrings(this.props.title || 'Additional information required:', this.props.details)} />
+                    
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
+                    <br />
+                    <CTAButton
+                        text="cancel"
+                        cancelButton
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
+                </div>
+            );
         } else if (this.props.type === 'endCard') {
             if(this.props.redirectURL) {
                 setTimeout(() => window.location = this.props.redirectURL, this.props.redirectDelay || 0);
@@ -225,7 +243,7 @@ class Step extends Component {
             return (
                 <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
                     <img src={this.props.image} alt="Congratulations" className="endCardImg" />
-                    <p className="offerText">{replaceTemplateStrings(this.props.title, this.props.details)}</p>
+                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                 </div>
             );
         }

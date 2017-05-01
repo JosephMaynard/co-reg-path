@@ -3,7 +3,7 @@ import './CTAButton.css';
 function CTAButton(props) {
     return (
         <button
-            className="CTAButton"
+            className={props.cancelButton ? 'cancelButton' : 'CTAButton'}
             disabled={props.disabled}
             onClick={props.nextstep}
         >{props.text}</button>

@@ -1,5 +1,5 @@
 import { render } from 'inferno';
-import infernoDevtools from 'inferno-devtools';
+import infernoDevtools from 'inferno-devtools';  // eslint-disable-line no-unused-vars
 import App from './App';
 import './index.css';
 
