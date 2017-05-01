@@ -14,6 +14,7 @@ const pathData = {
             name: 'postcode',
             title: 'Please enter your postcode:',
             label: 'Postcode',
+            maxLength: 4
         },
         {
             type: 'additionalInfo',

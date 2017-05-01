@@ -29,6 +29,7 @@ class Step extends Component {
         this.handleChangeTemp = this.handleChangeTemp.bind(this);
         this.updateTempValue = this.updateTempValue.bind(this);
         this.handleKeyPressTemp = this.handleKeyPressTemp.bind(this);
+        this.limitLength = this.limitLength.bind(this);
     }
 
     validateInput(input) {
@@ -63,7 +64,7 @@ class Step extends Component {
             return null;
         } else if (this.props.type === 'name') {
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Input
                         value={this.state.value}
@@ -83,7 +84,7 @@ class Step extends Component {
             );
         } else if (this.props.type === 'email') {
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Input
                         value={this.state.value}
@@ -103,7 +104,7 @@ class Step extends Component {
             );
         } else if (this.props.type === 'postcode') {
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Input
                         value={this.state.value}
@@ -112,7 +113,6 @@ class Step extends Component {
                         type="number"
                         label={this.props.label}
                         min='100'
-                        max='9999'
                         handleChange={this.handleChange}
                         handleKeyPress={this.handleKeyPress}
                     />
@@ -125,7 +125,7 @@ class Step extends Component {
             );
         } else if (this.props.type === 'gender') {
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Gender
                         nextstep={this.props.collectData}
@@ -135,7 +135,7 @@ class Step extends Component {
             );
         } else if (this.props.type === 'dob') {
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <DoB
                         id={uniqueID()}
@@ -150,7 +150,7 @@ class Step extends Component {
             );
         } else if (this.props.type === 'suburb') {
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     {this.props.suburbList 
                         ? <Select
@@ -196,7 +196,7 @@ class Step extends Component {
             );
         } else if (this.props.type === 'phone') {
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                 <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                 <Input
                     value={this.state.value}
@@ -216,7 +216,7 @@ class Step extends Component {
             );
         } else if (this.props.type === 'offerBool') {
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <YesNo
@@ -227,7 +227,7 @@ class Step extends Component {
             );
         } else if (this.props.type === 'offerMultiChoice') {
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <RadioButtons
@@ -245,7 +245,7 @@ class Step extends Component {
             );
         } else if (this.props.type === 'offerMultiCheckboxes') {
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                     <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Checkboxes
@@ -263,17 +263,12 @@ class Step extends Component {
             );
         } else if (this.props.type === 'additionalInfo') {
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                     <StepTitle text={replaceTemplateStrings(this.props.title || 'Additional information required:', this.props.details)} />
                     
                     <CTAButton
                         text="next"
                         disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                    <CTAButton
-                        text="cancel"
-                        cancelButton
                         nextstep={() => this.props.collectData(this.props.name, this.state.value)}
                     />
                 </div>
@@ -283,7 +278,7 @@ class Step extends Component {
                 setTimeout(() => window.location = this.props.redirectURL, this.props.redirectDelay || 0);
             }
             return (
-                <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                <div>
                     <img src={this.props.image} alt="Congratulations" className="endCardImg" />
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                 </div>
@@ -292,33 +287,40 @@ class Step extends Component {
         return null;
     }
 
+    limitLength(input) {
+        if(this.props.maxLength) {
+            return input.substring(0, this.props.maxLength);
+        }
+        return input;
+    }
+
     handleChange(event) {
         const input = event.target.value;
         this.setState({
-            value: input,
-            inputValid: !this.validateInput(input),
+            value: this.limitLength(input),
+            inputValid: !this.validateInput(this.limitLength(input)),
         });
     }
 
     handleChangeTemp(event) {
         const input = event.target.value;
         this.setState({
-            tempValue: input,
-            inputValid: !this.validateInput(input),
+            tempValue: this.limitLength(input),
+            inputValid: !this.validateInput(this.limitLength(input)),
         });
     }
 
     updateValue(value) {
         this.setState({
-            value,
-            inputValid: !this.validateInput(value),
+            value: this.limitLength(value),
+            inputValid: !this.validateInput(this.limitLength(value)),
         });
     }
 
     updateTempValue(value) {
         this.setState({
-            tempValue: value,
-            inputValid: !this.validateInput(value),
+            tempValue: this.limitLength(value),
+            inputValid: !this.validateInput(this.limitLength(value)),
         });
     }
 
@@ -335,7 +337,20 @@ class Step extends Component {
     }
 
     render() {
-        return this.createStep();
+        const createdStep = this.createStep();
+        return (
+            <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                {createdStep}
+                {
+                    this.props.additionalStepID
+                    ? <CTAButton
+                        text="cancel"
+                        cancelButton
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
+                    : null
+                }
+            </div>);
     }
 }
 
