@@ -352,7 +352,7 @@ class Step extends Component {
                     ? <CTAButton
                         text="cancel"
                         cancelButton
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                        nextstep={() => this.props.cancelAdditionalSteps(this.props.offerID, this.props.additionalStepID)}
                     />
                     : null
                 }

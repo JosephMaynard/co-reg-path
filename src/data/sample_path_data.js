@@ -16,51 +16,41 @@ const pathData = {
             label: 'Postcode',
             maxLength: 4
         },
-        // {
-        //     type: 'additionalInfo',
-        //     additionalInfoType: 'input',
-        // },
-        // {
-        //     type: 'suburb',
-        //     name: 'suburb',
-        //     title: 'Please enter your suburb:',
-        //     label: 'Suburb',
-        // },
         {
             type: 'name',
             name: 'firstName',
             title: 'Enter your first name:',
             label: 'First name',
         },
-        // {
-        //     type: 'name',
-        //     name: 'lastName',
-        //     title: 'Hi {firstName}, please enter your last name:',
-        //     label: 'Last name',
-        // },
-        // {
-        //     type: 'email',
-        //     name: 'email',
-        //     title: 'Enter your email address:',
-        //     label: 'Email address',
-        // },
-        // {
-        //     type: 'dob',
-        //     name: 'dob',
-        //     title: 'Please enter your date of birth:',
-        // },
+        {
+            type: 'name',
+            name: 'lastName',
+            title: 'Hi {firstName}, please enter your last name:',
+            label: 'Last name',
+        },
+        {
+            type: 'email',
+            name: 'email',
+            title: 'Enter your email address:',
+            label: 'Email address',
+        },
+        {
+            type: 'dob',
+            name: 'dob',
+            title: 'Please enter your date of birth:',
+        },
         {
             type: 'gender',
             name: 'gender',
             title: 'Please select your gender:',
         },
-        // {
-        //     type: 'phone',
-        //     name: 'phone',
-        //     title: 'Please enter your mobile number',
-        //     label: 'Mobile Number',
-        //     maxLength: 14
-        // },
+        {
+            type: 'phone',
+            name: 'phone',
+            title: 'Please enter your mobile number',
+            label: 'Mobile Number',
+            maxLength: 14
+        },
         {
             type: 'offerBool',
             name: 'vmli_co_3507',
@@ -94,26 +84,26 @@ const pathData = {
                     label: 'Suburb',
                 },
             ],
-            // rules: [
-            //     {
-            //         field: 'age',
-            //         min: 24,
-            //     },
-            //     {
-            //         field: 'age',
-            //         max: 52,
-            //     },
-            //     {
-            //         field: 'postcode',
-            //         equals: [4575, 6865, 3547, 2010],
-            //     }
-            // ]
         },
         {
             type: 'offerBool',
             name: 'vmli_co_5565464',
             title: 'Virgin Life insurance can provide financial support if you’re not around to take care of family. Insurance issued by TAL Life Limited.',
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/VirginMoney.png',
+            rules: [
+                {
+                    field: 'age',
+                    min: 24,
+                },
+                {
+                    field: 'age',
+                    max: 52,
+                },
+                {
+                    field: 'postcode',
+                    equals: [4575, 6865, 3547, 2010],
+                }
+            ]
         },
         {
             type: 'offerBool',

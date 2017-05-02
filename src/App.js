@@ -24,14 +24,16 @@ class App extends Component {
                 return step;
             }),
             loadingData: true,
+            parameters: getUrlParameters(),
             collectedData: {
                 sessionID: uniqueID(),
-                parameters: getUrlParameters(),
             },
         };
 
         this.filterPath = this.filterPath.bind(this);
-        this.addSteps = this.addSteps.bind(this);
+        this.addAdditionalSteps = this.addAdditionalSteps.bind(this);
+        this.removeAdditionalSteps = this.removeAdditionalSteps.bind(this);
+        this.cancelAdditionalSteps = this.cancelAdditionalSteps.bind(this);
         this.collectData = this.collectData.bind(this);
         this.sendData = this.sendData.bind(this);
         this.nextStep = this.nextStep.bind(this);
@@ -125,10 +127,38 @@ class App extends Component {
         return completedSteps.concat(stepsToDo);
     }
 
-    addSteps(pathData, additionalSteps) {
+    addAdditionalSteps(pathData, additionalSteps) {
         const completedSteps = pathData.slice(0, this.state.currentStep + 1);
         const stepsToDo = pathData.slice(this.state.currentStep + 1);
         return completedSteps.concat(additionalSteps, stepsToDo);
+    }
+
+    removeAdditionalSteps(pathData, additionalStepID) {
+        const completedSteps = pathData.slice(0, this.state.currentStep + 1);
+        const stepsToDo = pathData.slice(this.state.currentStep + 1)
+            .filter(step => step.additionalStepID !== additionalStepID);
+        return completedSteps.concat(stepsToDo);
+    }
+
+    cancelAdditionalSteps(offerID, additionalStepID) {
+        let collectedData = this.state.collectedData;
+        collectedData[offerID] = false;
+        this.setState({
+            collectedData,
+            pathData: this.removeAdditionalSteps(this.state.pathData, additionalStepID),
+            stepExit: true
+        });
+
+        this.sendData();
+
+        setTimeout(() => {    
+            const nextStep = this.state.currentStep + 1;
+            this.setState({
+                currentStep: nextStep,
+                stepExit: false
+            });
+        }, 300);
+
     }
 
     collectData(key, value) {
@@ -148,7 +178,7 @@ class App extends Component {
         });
 
         this.setState({
-            pathData: this.filterPath(pathData.path)
+            pathData: this.filterPath(this.state.pathData)
         });
 
         if(value && this.state.pathData[this.state.currentStep].requiredInfo) {
@@ -164,11 +194,11 @@ class App extends Component {
                 });           
 
             this.setState({
-                pathData: this.addSteps(pathData.path, additionalSteps)
+                pathData: this.addAdditionalSteps(pathData.path, additionalSteps)
             });
+        } else if(!this.state.pathData[this.state.currentStep].additionalStepID) {
+            this.sendData();
         }
-
-        this.sendData();
 
         setTimeout(() => {    
             const nextStep = this.state.currentStep + 1;
@@ -202,7 +232,7 @@ class App extends Component {
     }
 
     sendData(){
-        console.log('SEND DATA', this.state.collectedData);
+        console.log(this.state.collectedData);
     }
 
     render() {
@@ -218,6 +248,7 @@ class App extends Component {
         }
         <div className="StepArea">
             {this.state.loadingData
+
                 ?<Loading />
                 :<Step
                     {...this.state.pathData[this.state.currentStep]}
@@ -227,6 +258,7 @@ class App extends Component {
                     collectData={this.collectData}
                     details={this.state.collectedData}
                     suburbList={this.state.suburbList || false}
+                    cancelAdditionalSteps={this.cancelAdditionalSteps}
                 />
             }
         </div>
