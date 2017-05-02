@@ -73,7 +73,7 @@ class App extends Component {
             this.setState({
                 loadingData: false
             });
-        }, 1000);
+        }, 2000);
     }
 
     importPath (pathData) {
@@ -200,6 +200,8 @@ class App extends Component {
             this.sendData();
         }
 
+        document.querySelector('.StepArea').scrollTop = 0;
+
         setTimeout(() => {    
             const nextStep = this.state.currentStep + 1;
             this.setState({
@@ -213,6 +215,9 @@ class App extends Component {
         this.setState({
             stepExit: true
         });
+
+        document.querySelector('.StepArea').scrollTop = 0;
+
         setTimeout(() => {    
             const nextStep = this.state.currentStep + 1;
             this.setState({

@@ -10,13 +10,6 @@ const pathData = {
     process: '9301',
     path:[
         {
-            type: 'postcode',
-            name: 'postcode',
-            title: 'Please enter your postcode:',
-            label: 'Postcode',
-            maxLength: 4
-        },
-        {
             type: 'name',
             name: 'firstName',
             title: 'Enter your first name:',
@@ -27,6 +20,13 @@ const pathData = {
             name: 'lastName',
             title: 'Hi {firstName}, please enter your last name:',
             label: 'Last name',
+        },
+        {
+            type: 'postcode',
+            name: 'postcode',
+            title: 'Please enter your postcode:',
+            label: 'Postcode',
+            maxLength: 4
         },
         {
             type: 'email',
@@ -119,7 +119,7 @@ const pathData = {
         },
         {
             type: 'offerMultiCheckboxes',
-            name: 'offer1',
+            name: 'vmli_co_546841354',
             title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/PlatinumHolidayClub.png',
             options: [
@@ -135,7 +135,7 @@ const pathData = {
         },
         {
             type: 'offerMultiChoice',
-            name: 'offer1',
+            name: 'vmli_co_8654858',
             title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/PlatinumHolidayClub.png',
             options: [

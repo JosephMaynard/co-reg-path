@@ -1,5 +1,5 @@
 import Component from 'inferno-component';
-import { checkEmailAddress, checkPhoneNumber, uniqueID, replaceTemplateStrings, checkPostcode } from '../helpers';
+import { checkEmailAddress, checkPhoneNumber, uniqueID, replaceTemplateStrings, checkPostcode, checkName } from '../helpers';
 import StepTitle from './StepTitle';
 import Input from './Input';
 import Select from './Select';
@@ -33,8 +33,11 @@ class Step extends Component {
     }
 
     validateInput(input) {
-        if (this.props.type === 'name') {
-            return (input !== '');
+        if (this.props.regex) {
+            const regex = new RegExp(this.props.regex, this.props.regexFlags || '');
+            return regex.test(input);
+        } else if (this.props.type === 'name') {
+            return checkName(input);
         } else if (this.props.type === 'email') {
             return checkEmailAddress(input);
         } else if (this.props.type === 'postcode') {
@@ -356,7 +359,8 @@ class Step extends Component {
                     />
                     : null
                 }
-            </div>);
+            </div>
+        );
     }
 }
 
