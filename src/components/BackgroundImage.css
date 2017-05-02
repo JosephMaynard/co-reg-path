@@ -17,6 +17,7 @@
     background: #FFF url(https://creative.mobileembrace.com/test/co-reg-path/img/bkg.jpg) 50% 50%;
     background-size: cover;
     transition: all 1s;
+    transform: scale(1.1);
 }
 
 .BackgroundImageBlurred {

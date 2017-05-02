@@ -2,6 +2,7 @@ import Component from 'inferno-component';
 
 import BackgroundImage from './components/BackgroundImage';
 import ProgressBar from './components/ProgressBar';
+import Loading from './components/Loading';
 import Step from './components/Step';
 
 import pathData from './data/sample_path_data';
@@ -19,6 +20,7 @@ class App extends Component {
             stepExit: false,
             currentStep: 0,
             pathData: pathData.path,
+            loadingData: true,
             collectedData: {
                 sessionID: uniqueID(),
                 parameters: getUrlParameters(),
@@ -60,6 +62,13 @@ class App extends Component {
             },
         };
         preloadImages('', offerImages);
+
+        //Simulate loading JSON data
+        setTimeout(() => {
+            this.setState({
+                loadingData: false
+            });
+        }, 1000);
     }
 
     importPath (pathData) {
@@ -193,21 +202,27 @@ class App extends Component {
     render() {
         return (
       <div className="App">
-        <BackgroundImage blur />
-        <ProgressBar
-          currentStep={this.state.currentStep}
-          totalSteps={this.state.pathData.length}
-        />
+        <BackgroundImage blur={!this.state.loadingData} />
+        {this.state.loadingData
+            ? null
+            : <ProgressBar
+              currentStep={this.state.currentStep}
+              totalSteps={this.state.pathData.length}
+            />
+        }
         <div className="StepArea">
-          <Step
-            {...this.state.pathData[this.state.currentStep]}
-            nextStep={this.nextStep}
-            key={this.state.currentStep}
-            stepExit={this.state.stepExit}
-            collectData={this.collectData}
-            details={this.state.collectedData}
-            suburbList={this.state.suburbList || false}
-          />
+            {this.state.loadingData
+                ?<Loading />
+                :<Step
+                    {...this.state.pathData[this.state.currentStep]}
+                    nextStep={this.nextStep}
+                    key={this.state.currentStep}
+                    stepExit={this.state.stepExit}
+                    collectData={this.collectData}
+                    details={this.state.collectedData}
+                    suburbList={this.state.suburbList || false}
+                />
+            }
         </div>
       </div>
         );

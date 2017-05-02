@@ -1,0 +1,80 @@
+.Loading {
+  margin: auto;
+  width: 4em;
+  height: 4em;
+  position: relative;
+  background: rgba(255,255,255, 0.5);
+  border: 0.5em solid rgba(255,255,255, 0.3);
+  border-radius: 0.2em;
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+}
+
+.Loading .Loading-cube {
+  float: left;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1); 
+}
+.Loading .Loading-cube:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #63A69F;
+  opacity: 0.9;
+  -webkit-animation: Loading-foldCubeAngle 2.4s infinite linear both;
+          animation: Loading-foldCubeAngle 2.4s infinite linear both;
+  -webkit-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+.Loading .Loading-cube2 {
+  -webkit-transform: scale(1.1) rotateZ(90deg);
+          transform: scale(1.1) rotateZ(90deg);
+}
+.Loading .Loading-cube3 {
+  -webkit-transform: scale(1.1) rotateZ(180deg);
+          transform: scale(1.1) rotateZ(180deg);
+}
+.Loading .Loading-cube4 {
+  -webkit-transform: scale(1.1) rotateZ(270deg);
+          transform: scale(1.1) rotateZ(270deg);
+}
+.Loading .Loading-cube2:before {
+  background: #F2E1AC;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.Loading .Loading-cube3:before {
+  background: #F2836B;
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s; 
+}
+.Loading .Loading-cube4:before {
+  background: #F2594B;
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+
+
+@keyframes Loading-foldCubeAngle {
+  0%, 10% {
+    -webkit-transform: perspective(140px) rotateX(-180deg);
+            transform: perspective(140px) rotateX(-180deg);
+    opacity: 0; 
+  } 25%, 75% {
+    -webkit-transform: perspective(140px) rotateX(0deg);
+            transform: perspective(140px) rotateX(0deg);
+    opacity: 0.9; 
+  } 90%, 100% {
+    -webkit-transform: perspective(140px) rotateY(180deg);
+            transform: perspective(140px) rotateY(180deg);
+    opacity: 0; 
+  }
+}
