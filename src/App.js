@@ -19,7 +19,10 @@ class App extends Component {
         this.state = {
             stepExit: false,
             currentStep: 0,
-            pathData: pathData.path,
+            pathData: pathData.path.map(step => {
+                step.key = uniqueID();
+                return step;
+            }),
             loadingData: true,
             collectedData: {
                 sessionID: uniqueID(),
@@ -76,8 +79,8 @@ class App extends Component {
     }
 
     filterPath (pathData) {
-        const completedSteps = pathData.slice(0, this.state.currentStep + 1);
-        const stepsToDo = pathData.slice(this.state.currentStep + 1).filter(step => {
+        const completedSteps = this.state.pathData.slice(0, this.state.currentStep + 1);
+        const stepsToDo = this.state.pathData.slice(this.state.currentStep + 1).filter(step => {
             if (this.state.collectedData[step.name]) return false;
             let result = true;
             if (step.rules) {
@@ -151,10 +154,13 @@ class App extends Component {
         if(value && this.state.pathData[this.state.currentStep].requiredInfo) {
             const additionalStepID = uniqueID();
             const additionalSteps = this.state.pathData[this.state.currentStep].requiredInfo
-                .filter(step => !this.state[step.name])
+                .filter(step => !this.state.collectedData[step.name])
                 .map(step => {
-                    const newStep = Object.assign({additionalStepID}, step);
-                    return newStep;
+                    return Object.assign(step, {
+                        additionalStepID: additionalStepID,
+                        key: uniqueID(),
+                        offerID: this.state.pathData[this.state.currentStep].name,
+                    });
                 });           
 
             this.setState({
@@ -216,7 +222,7 @@ class App extends Component {
                 :<Step
                     {...this.state.pathData[this.state.currentStep]}
                     nextStep={this.nextStep}
-                    key={this.state.currentStep}
+                    key={this.state.pathData[this.state.currentStep].key}
                     stepExit={this.state.stepExit}
                     collectData={this.collectData}
                     details={this.state.collectedData}

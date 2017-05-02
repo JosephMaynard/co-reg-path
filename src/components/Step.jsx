@@ -190,7 +190,7 @@ class Step extends Component {
                     <Select
                         label={this.props.label}
                         id={uniqueID()}
-                        options={ [...this.props.suburbList, {text: 'Other', value: 'Other'}]  }
+                        options={this.props.options}
                         optionSelected={this.updateValue}
                         value={this.state.value}
                     />

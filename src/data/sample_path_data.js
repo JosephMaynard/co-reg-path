@@ -49,11 +49,11 @@ const pathData = {
         //     name: 'dob',
         //     title: 'Please enter your date of birth:',
         // },
-        // {
-        //     type: 'gender',
-        //     name: 'gender',
-        //     title: 'Please select your gender:',
-        // },
+        {
+            type: 'gender',
+            name: 'gender',
+            title: 'Please select your gender:',
+        },
         // {
         //     type: 'phone',
         //     name: 'phone',
@@ -68,10 +68,9 @@ const pathData = {
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/dodo.png',
             requiredInfo: [
                 {
-                    type: 'suburb',
-                    name: 'suburb',
-                    title: 'Please enter your suburb:',
-                    label: 'Suburb',
+                    type: 'gender',
+                    name: 'gender',
+                    title: 'Please select your gender:',
                 },
                 {
                     type: 'select',
@@ -87,7 +86,13 @@ const pathData = {
                         {value:'Brown', text:'Brown'}, 
                     ],
 
-                }
+                },
+                {
+                    type: 'suburb',
+                    name: 'suburb',
+                    title: 'Please enter your suburb:',
+                    label: 'Suburb',
+                },
             ],
             // rules: [
             //     {
@@ -109,7 +114,6 @@ const pathData = {
             name: 'vmli_co_5565464',
             title: 'Virgin Life insurance can provide financial support if you’re not around to take care of family. Insurance issued by TAL Life Limited.',
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/VirginMoney.png',
-            requiredInfo: ['state'],
         },
         {
             type: 'offerBool',
@@ -138,7 +142,6 @@ const pathData = {
                 {value:'Samoa', text:'Samoa'}, 
                 {value:'false', text:'Not Interested'}
             ],
-            requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
         },
         {
             type: 'offerMultiChoice',
@@ -155,7 +158,6 @@ const pathData = {
                 {value:'Samoa', text:'Samoa'}, 
                 {value:'Not_Interested', text:'Not Interested'}
             ],
-            requiredInfo: ['email', 'firstName', 'lastName', 'dob', 'phone', ],
         },
         {
             type: 'endCard',
@@ -164,12 +166,12 @@ const pathData = {
             //redirectURL: 'https://www.vizmondmedia.com/',
             redirectDelay: 3000,
         },
-        {
-            type: 'redirect',
-            redirectURL: 'https://www.vizmondmedia.com/',
-            redirectDelay: 3000,
+        // {
+        //     type: 'redirect',
+        //     redirectURL: 'https://www.vizmondmedia.com/',
+        //     redirectDelay: 3000,
             
-        },
+        // },
     ],
 };
 
