@@ -19,8 +19,14 @@ const pathData = {
             //key in data
             name: 'firstName',
 
-            //Title text 
+            //Title text that appears at the top of the step card
+            //Use \n for line breaks
+            //Can pull in previously collected data
+            //e.g. {firstName} will insert the value for the key firstName if it has been collected,
+            //or just be removed if it has not been collected
             title: 'Enter your first name:',
+
+            //
             label: 'First name',
             regex: '',
             regexFlags: '',
@@ -65,6 +71,44 @@ const pathData = {
             label: 'Mobile Number',
             maxLength: 14
         },
+
+        //CUSTOM STEPS
+        {
+            type: 'input',
+            title: 'Test Input',
+            inputType: 'text',
+            name: 'testInput',
+            maxLength: 5
+        },
+        {
+            type: 'select',
+            name: 'favoriteColour',
+            title: 'Hey {firstName} what\'s your favorite colour?',
+            options: [
+                {value:'Red', text:'Red'}, 
+                {value:'Orange', text:'Orange'}, 
+                {value:'Yellow', text:'Yellow'}, 
+                {value:'Green', text:'Green'}, 
+                {value:'Blue', text:'Blue'}, 
+                {value:'Purple', text:'Purple'}, 
+                {value:'Brown', text:'Brown'}, 
+            ],
+        },
+        {
+            type: 'radio',
+            name: 'radioButtons',
+            title: 'Hey {firstName} who is the greatest?',
+            options: [
+                {value:'Bruce Lee', text:'Bruce Lee'}, 
+                {value:'Jackie Chan', text:'Jackie Chan'}, 
+                {value:'Elvis', text:'Elvis'}, 
+                {value:'Jimi Hendrix', text:'Jimi Hendrix'}, 
+                {value:'Richard Pryor', text:'Richard Pryor'}, 
+            ],
+
+        },
+
+        //OFFER STEPS
         {
             type: 'offerBool',
             name: 'vmli_co_3507',

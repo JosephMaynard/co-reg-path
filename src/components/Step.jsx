@@ -165,24 +165,6 @@ class Step extends Component {
                     />
                 </div>
             );
-        } else if (this.props.type === 'select') {
-            return (
-                <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
-                    <Select
-                        label={this.props.label}
-                        id={uniqueID()}
-                        options={this.props.options}
-                        optionSelected={this.updateValue}
-                        value={this.state.value}
-                    />
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
-            );
         } else if (this.props.type === 'phone') {
             return (
                 <div>
@@ -201,6 +183,84 @@ class Step extends Component {
                     disabled={this.state.inputValid}
                     nextstep={() => this.props.collectData(this.props.name, this.state.value)}
                 />
+                </div>
+            );
+        } else if (this.props.type === 'input') {
+            return (
+                <div>
+                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
+                    <Input
+                        value={this.state.value}
+                        onInput={this.handleChange}
+                        id={uniqueID()}
+                        type={this.props.inputType}
+                        label={this.props.label}
+                        minLength={this.props.minLength}
+                        maxLength={this.props.maxLength}
+                        min={this.props.min}
+                        max={this.props.max}
+                        handleChange={this.handleChange}
+                        handleKeyPress={this.handleKeyPress}
+                    />
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
+                </div>
+            );
+        } else if (this.props.type === 'select') {
+            return (
+                <div>
+                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
+                    <Select
+                        label={this.props.label}
+                        id={uniqueID()}
+                        options={this.props.options}
+                        optionSelected={this.updateValue}
+                        value={this.state.value}
+                    />
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
+                </div>
+            );
+        } else if (this.props.type === 'radio') {
+            return (
+                <div>
+                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
+                    <RadioButtons
+                        label={this.props.label}
+                        id={uniqueID()}
+                        options={this.props.options}
+                        optionSelected={this.handleChange}
+                        value={this.state.value}
+                        name={this.props.name}
+                    />
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
+                </div>
+            );
+        } else if (this.props.type === 'checkbox') {
+            return (
+                <div>
+                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
+                    <Checkboxes
+                        options={this.props.options}
+                        id={uniqueID()}
+                        updateValue={this.updateValue}
+                        name={this.props.name}
+                     />
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
                 </div>
             );
         } else if (this.props.type === 'offerBool') {
