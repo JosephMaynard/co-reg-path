@@ -17,7 +17,6 @@ class Step extends Component {
         super(props);
         this.state = {
             value: '',
-            tempValue: '',
             inputValid: true,
         };
 
@@ -26,9 +25,6 @@ class Step extends Component {
         this.createStep = this.createStep.bind(this);
         this.validateInput = this.validateInput.bind(this);
         this.updateValue = this.updateValue.bind(this);
-        this.handleChangeTemp = this.handleChangeTemp.bind(this);
-        this.updateTempValue = this.updateTempValue.bind(this);
-        this.handleKeyPressTemp = this.handleKeyPressTemp.bind(this);
         this.limitLength = this.limitLength.bind(this);
     }
 
@@ -148,7 +144,7 @@ class Step extends Component {
                         ? <Select
                             label={this.props.label}
                             id={uniqueID()}
-                            options={ [...this.props.suburbList, {text: 'Other', value: 'Other'}]  }
+                            options={this.props.suburbList}
                             optionSelected={this.updateValue}
                             value={this.state.value}
                         />
@@ -162,27 +158,10 @@ class Step extends Component {
                             handleKeyPress={this.handleKeyPress}
                         /> 
                     }
-                    {
-                      this.state.value === 'Other'
-                      ? <Input
-                            value={this.state.tempValue}
-                            onInput={this.handleChange}
-                            id={uniqueID()}
-                            type="text"
-                            label={this.props.label}
-                            handleChange={this.handleChangeTemp}
-                            handleKeyPress={this.handleKeyPressTemp}
-                        /> 
-                      : null  
-                    }
                     <CTAButton
                         text="next"
                         disabled={this.state.inputValid}
-                        nextstep={
-                            this.state.value === 'Other' && this.state.tempValue !== ''
-                            ? () => this.props.collectData(this.props.name, this.state.tempValue)
-                            : () => this.props.collectData(this.props.name, this.state.value)
-                        }
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
                     />
                 </div>
             );
@@ -312,14 +291,6 @@ class Step extends Component {
         });
     }
 
-    handleChangeTemp(event) {
-        const input = event.target.value;
-        this.setState({
-            tempValue: this.limitLength(input),
-            inputValid: !this.validateInput(this.limitLength(input)),
-        });
-    }
-
     updateValue(value) {
         this.setState({
             value: this.limitLength(value),
@@ -327,22 +298,9 @@ class Step extends Component {
         });
     }
 
-    updateTempValue(value) {
-        this.setState({
-            tempValue: this.limitLength(value),
-            inputValid: !this.validateInput(this.limitLength(value)),
-        });
-    }
-
     handleKeyPress(e) {
         if (e.key === 'Enter' && !this.state.inputValid) {
             this.props.collectData(this.props.name, this.state.value);
-        }
-    }
-
-    handleKeyPressTemp(e) {
-        if (e.key === 'Enter' && !this.state.inputValid) {
-            this.props.collectData(this.props.name, this.state.tempValue);
         }
     }
 

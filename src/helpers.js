@@ -82,5 +82,5 @@ export function getAge(dateString) {
 }
 
 export function checkName(name) {
-    return name.match(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u);
+    return name.match(/^[a-zA-Z-.\\' ]+$/u);
 }
