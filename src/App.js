@@ -19,15 +19,25 @@ class App extends Component {
         this.state = {
             stepExit: false,
             currentStep: 0,
-            pathData: pathData.path.map(step => {
-                step.key = uniqueID();
-                return step;
-            }),
             loadingData: true,
             parameters: getUrlParameters(),
             collectedData: {
                 sessionID: uniqueID(),
             },
+
+            survey: pathData.survey,
+            index: pathData.index,
+            group: pathData.group,
+            source: pathData.source,
+            prepopulate: pathData.prepopulate,
+            uuid: pathData.uuid,
+            callback: pathData.callback,
+            latency: pathData.latency,
+            process: pathData.process,
+            pathData: pathData.path.map(step => {
+                step.key = uniqueID();
+                return step;
+            }),
         };
 
         this.filterPath = this.filterPath.bind(this);
@@ -237,6 +247,18 @@ class App extends Component {
     }
 
     sendData(){
+        const liString = `https://leadinterface.vizmondmedia.com/generator/preliminary`
+            + `?survey=${this.state.survey}`
+            + `&index=${this.state.index}`
+            + `&group=${this.state.group}`
+            + `&source=${this.state.source}`
+            + `&prepopulate=${this.state.prepopulate}`
+            + `&uuid=${this.state.uuid}`
+            + `&callback=${this.state.callback}`
+            + `&latency=${this.state.latency}`
+            + `&process=${this.state.process}`
+            + `${Object.keys(this.state.collectedData).map(key => `${key}=${encodeURIComponent(this.state.collectedData[key])}`).join('&')}`;
+        console.log(liString);
         console.log(this.state.collectedData);
     }
 
