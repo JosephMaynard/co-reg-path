@@ -240,8 +240,8 @@ class Step extends Component {
                     <Checkboxes
                         options={this.props.options}
                         id={uniqueID()}
-                        optionSelected={this.handleChange}
-                         name={this.props.name}
+                        updateValue={this.updateValue}
+                        name={this.props.name}
                      />
                     <CTAButton
                         text="next"

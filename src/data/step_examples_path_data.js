@@ -9,24 +9,38 @@ const pathData = {
     latency: '743',
     process: '9301',
     path:[
+        //STANDARD STEPS
+        //Predefined steps with built in validation
         {
+            //TYPE NAME, uses built in regex (/^[a-zA-Z-.\\' ]+$/u) function in
+            //helpers.js which can be over written with optional custom regex
             type: 'name',
+
+            //key in data
             name: 'firstName',
+
+            //Title text 
             title: 'Enter your first name:',
             label: 'First name',
+            regex: '',
+            regexFlags: '',
         },
         {
             type: 'email',
             name: 'email',
             title: 'Enter your email address:',
             label: 'Email address',
+            regex: '',
+            regexFlags: '',
         },
         {
             type: 'postcode',
             name: 'postcode',
             title: 'Please enter your postcode:',
             label: 'Postcode',
-            maxLength: 4
+            maxLength: 4,
+            regex: '',
+            regexFlags: '',
         },
         {
             type: 'dob',
