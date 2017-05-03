@@ -65,8 +65,10 @@
 .Step .offerImg {
     display: block;
     margin: 0 auto 1em;
-    width: 75%;
-    max-width: 360px;
+    /*width: 75%;
+    max-width: 360px;*/
+    width: 120px;
+    height: 60px;
 }
 
 .Step .endCardImg {
@@ -92,14 +94,29 @@
   transition: opacity 300ms ease-in;
 }
 
+@media screen and (min-width: 800px) {
+    .Step .offerImg {
+      width: 180px;
+      height: 90px;
+  }
+}
+
 @media screen and (min-width: 1500px) {
     .Step {
         max-width: 720px;
     }
+    .Step .offerImg {
+      width: 240px;
+      height: 120px;
+  }
 }
 
 @media screen and (min-width: 2000px) {
     .Step {
         max-width: 960px;
     }
+    .Step .offerImg {
+      width: 360px;
+      height: 180px;
+  }
 }
