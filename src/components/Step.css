@@ -62,7 +62,7 @@
     color: #565656;
     margin-bottom: 0.7em;
 }
-.Step .offerImg {
+.Step .offerImage {
     display: block;
     margin: 0 auto 1em;
     /*width: 75%;
@@ -71,7 +71,7 @@
     height: 60px;
 }
 
-.Step .endCardImg {
+.Step .image {
     display: block;
     width: 100%;
 }

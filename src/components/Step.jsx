@@ -53,7 +53,6 @@ class Step extends Component {
         } else if (this.props.type === 'name') {
             return (
                 <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Input
                         value={this.state.value}
                         onInput={this.handleChange}
@@ -73,7 +72,6 @@ class Step extends Component {
         } else if (this.props.type === 'email') {
             return (
                 <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Input
                         value={this.state.value}
                         onInput={this.handleChange}
@@ -93,7 +91,6 @@ class Step extends Component {
         } else if (this.props.type === 'postcode') {
             return (
                 <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Input
                         value={this.state.value}
                         onInput={this.handleChange}
@@ -113,18 +110,14 @@ class Step extends Component {
             );
         } else if (this.props.type === 'gender') {
             return (
-                <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
-                    <Gender
-                        nextstep={this.props.collectData}
-                        name={this.props.name}
-                    />
-                </div>
+                <Gender
+                    nextstep={this.props.collectData}
+                    name={this.props.name}
+                />
             );
         } else if (this.props.type === 'dob') {
             return (
                 <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <DoB
                         id={uniqueID()}
                         updateValue={this.updateValue}
@@ -139,7 +132,6 @@ class Step extends Component {
         } else if (this.props.type === 'suburb') {
             return (
                 <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     {this.props.suburbList 
                         ? <Select
                             label={this.props.label}
@@ -168,27 +160,25 @@ class Step extends Component {
         } else if (this.props.type === 'phone') {
             return (
                 <div>
-                <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
-                <Input
-                    value={this.state.value}
-                    onInput={this.handleChange}
-                    id={uniqueID()}
-                    type="text"
-                    label={this.props.label}
-                    handleChange={this.handleChange}
-                    handleKeyPress={this.handleKeyPress}
-                />
-                <CTAButton
-                    text="next"
-                    disabled={this.state.inputValid}
-                    nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                />
+                    <Input
+                        value={this.state.value}
+                        onInput={this.handleChange}
+                        id={uniqueID()}
+                        type="text"
+                        label={this.props.label}
+                        handleChange={this.handleChange}
+                        handleKeyPress={this.handleKeyPress}
+                    />
+                    <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
                 </div>
             );
         } else if (this.props.type === 'input') {
             return (
                 <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Input
                         value={this.state.value}
                         onInput={this.handleChange}
@@ -212,7 +202,6 @@ class Step extends Component {
         } else if (this.props.type === 'select') {
             return (
                 <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Select
                         label={this.props.label}
                         id={uniqueID()}
@@ -230,7 +219,6 @@ class Step extends Component {
         } else if (this.props.type === 'radio') {
             return (
                 <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <RadioButtons
                         label={this.props.label}
                         id={uniqueID()}
@@ -249,7 +237,6 @@ class Step extends Component {
         } else if (this.props.type === 'checkbox') {
             return (
                 <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     <Checkboxes
                         options={this.props.options}
                         id={uniqueID()}
@@ -263,64 +250,12 @@ class Step extends Component {
                     />
                 </div>
             );
-        } else if (this.props.type === 'offerBool') {
+        } else if (this.props.type === 'yesNo') {
             return (
-                <div>
-                    <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
-                    <YesNo
-                        nextstep={this.props.collectData}
-                        name={this.props.name}
-                    />
-                </div>
-            );
-        } else if (this.props.type === 'offerMultiChoice') {
-            return (
-                <div>
-                    <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
-                    <RadioButtons
-                        options={this.props.options}
-                        id={uniqueID()}
-                        optionSelected={this.handleChange}
-                        name={this.props.name}
-                     />
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
-            );
-        } else if (this.props.type === 'offerMultiCheckboxes') {
-            return (
-                <div>
-                    <img src={this.props.image} alt="Bonus Offer" className="offerImg" />
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
-                    <Checkboxes
-                        options={this.props.options}
-                        id={uniqueID()}
-                        updateValue={this.updateValue}
-                        name={this.props.name}
-                     />
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
-            );
-        } else if (this.props.type === 'additionalInfo') {
-            return (
-                <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title || 'Additional information required:', this.props.details)} />
-                    
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
+                <YesNo
+                    nextstep={this.props.collectData}
+                    name={this.props.name}
+                />
             );
         } else if (this.props.type === 'endCard') {
             if(this.props.redirectURL) {
@@ -328,7 +263,6 @@ class Step extends Component {
             }
             return (
                 <div>
-                    <img src={this.props.image} alt="Congratulations" className="endCardImg" />
                     <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                 </div>
             );
@@ -367,6 +301,29 @@ class Step extends Component {
     render() {
         return (
             <div className={this.props.stepExit ? 'Step StepExit' : 'Step'}>
+                {
+                    this.props.offerImage
+                    ? <img
+                        src={this.props.offerImage}
+                        alt={this.props.offerImageAltText || 'Bonus Offer'}
+                        className='offerImage'
+                    />
+                    : null
+                }
+                {
+                    this.props.image
+                    ? <img
+                        src={this.props.image}
+                        alt={this.props.imageAltText || 'Bonus Offer'}
+                        className='image'
+                    />
+                    : null
+                }
+                {
+                    this.props.title
+                    ? <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
+                    : null
+                }
                 { this.createStep() }
                 {
                     this.props.additionalStepID

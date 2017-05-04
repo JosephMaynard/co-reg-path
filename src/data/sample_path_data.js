@@ -52,10 +52,10 @@ const pathData = {
             maxLength: 14
         },
         {
-            type: 'offerBool',
+            type: 'yesNo',
             name: 'vmli_co_3507',
             title: 'Dodo NBN plans just got better! Get a FREE SPEED BOOST on an awesome Standard Speed NBN plan. Tick Yes to find out more.',
-            image: 'https://creative.mobileembrace.com/test/co-reg-path/img/dodo.png',
+            offerImage: 'https://creative.mobileembrace.com/test/co-reg-path/img/dodo.png',
             requiredInfo: [
                 {
                     type: 'gender',
@@ -111,10 +111,10 @@ const pathData = {
             ],
         },
         {
-            type: 'offerBool',
+            type: 'yesNo',
             name: 'vmli_co_5565464',
             title: 'Virgin Life insurance can provide financial support if you’re not around to take care of family. Insurance issued by TAL Life Limited.',
-            image: 'https://creative.mobileembrace.com/test/co-reg-path/img/VirginMoney.png',
+            offerImage: 'https://creative.mobileembrace.com/test/co-reg-path/img/VirginMoney.png',
             rules: [
                 {
                     field: 'age',
@@ -131,22 +131,22 @@ const pathData = {
             ]
         },
         {
-            type: 'offerBool',
+            type: 'yesNo',
             name: 'vmli_co_4535435',
             title: 'It\'s better knowing your familys future is protected. That\'s NRMADE BETTER! If you\'re considering any of these products, tick to receive more information.',
-            image: 'https://creative.mobileembrace.com/test/co-reg-path/img/NRMA.png',
+            offerImage: 'https://creative.mobileembrace.com/test/co-reg-path/img/NRMA.png',
         },
         {
-            type: 'offerBool',
+            type: 'yesNo',
             name: 'vmli_co_83',
             title: 'Love sport? Watch all your teams, every round, LIVE AFL, NRL, V8 and F1 with Foxtel\'s Sport + Entertainment pack for $50* a month. Tick Yes to hear more.',
-            image: 'https://creative.mobileembrace.com/test/co-reg-path/img/Foxtel.png',
+            offerImage: 'https://creative.mobileembrace.com/test/co-reg-path/img/Foxtel.png',
         },
         {
-            type: 'offerMultiCheckboxes',
+            type: 'checkbox',
             name: 'vmli_co_546841354',
             title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
-            image: 'https://creative.mobileembrace.com/test/co-reg-path/img/PlatinumHolidayClub.png',
+            offerImage: 'https://creative.mobileembrace.com/test/co-reg-path/img/PlatinumHolidayClub.png',
             options: [
                 {value:'Australia', text:'Australia'}, 
                 {value:'New_Zealand', text:'New Zealand'}, 
@@ -159,10 +159,10 @@ const pathData = {
             ],
         },
         {
-            type: 'offerMultiChoice',
+            type: 'radio',
             name: 'vmli_co_8654858',
             title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
-            image: 'https://creative.mobileembrace.com/test/co-reg-path/img/PlatinumHolidayClub.png',
+            offerImage: 'https://creative.mobileembrace.com/test/co-reg-path/img/PlatinumHolidayClub.png',
             options: [
                 {value:'Australia', text:'Australia'}, 
                 {value:'New_Zealand', text:'New Zealand'}, 
