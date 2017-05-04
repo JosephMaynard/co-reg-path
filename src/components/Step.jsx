@@ -18,6 +18,18 @@ class Step extends Component {
         this.state = {
             value: '',
             inputValid: true,
+            showCTAButton: (
+                   this.props.type === 'name'
+                || this.props.type === 'email'
+                || this.props.type === 'postcode'
+                || this.props.type === 'dob'
+                || this.props.type === 'suburb'
+                || this.props.type === 'phone'
+                || this.props.type === 'input'
+                || this.props.type === 'select'
+                || this.props.type === 'radio'
+                || this.props.type === 'checkbox'
+            ),
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -52,61 +64,123 @@ class Step extends Component {
             return null;
         } else if (this.props.type === 'name') {
             return (
-                <div>
-                    <Input
-                        value={this.state.value}
-                        onInput={this.handleChange}
-                        id={uniqueID()}
-                        type="text"
-                        label={this.props.label}
-                        handleChange={this.handleChange}
-                        handleKeyPress={this.handleKeyPress}
-                    /> 
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
+                <Input
+                    value={this.state.value}
+                    onInput={this.handleChange}
+                    id={uniqueID()}
+                    type="text"
+                    label={this.props.label}
+                    handleChange={this.handleChange}
+                    handleKeyPress={this.handleKeyPress}
+                />
             );
         } else if (this.props.type === 'email') {
             return (
-                <div>
-                    <Input
-                        value={this.state.value}
-                        onInput={this.handleChange}
-                        id={uniqueID()}
-                        type="email"
-                        label={this.props.label}
-                        handleChange={this.handleChange}
-                        handleKeyPress={this.handleKeyPress}
-                    />
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
+                <Input
+                    value={this.state.value}
+                    onInput={this.handleChange}
+                    id={uniqueID()}
+                    type="email"
+                    label={this.props.label}
+                    handleChange={this.handleChange}
+                    handleKeyPress={this.handleKeyPress}
+                />
             );
         } else if (this.props.type === 'postcode') {
             return (
-                <div>
-                    <Input
-                        value={this.state.value}
-                        onInput={this.handleChange}
-                        id={uniqueID()}
-                        type="number"
-                        label={this.props.label}
-                        min='100'
-                        handleChange={this.handleChange}
-                        handleKeyPress={this.handleKeyPress}
-                    />
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
+                <Input
+                    value={this.state.value}
+                    onInput={this.handleChange}
+                    id={uniqueID()}
+                    type="number"
+                    label={this.props.label}
+                    min='100'
+                    handleChange={this.handleChange}
+                    handleKeyPress={this.handleKeyPress}
+                />
+            );
+        } else if (this.props.type === 'dob') {
+            return (
+                <DoB
+                    id={uniqueID()}
+                    updateValue={this.updateValue}
+                 />
+            );
+        } else if (this.props.type === 'suburb') {
+            return this.props.suburbList 
+                ? <Select
+                    label={this.props.label}
+                    id={uniqueID()}
+                    options={this.props.suburbList}
+                    optionSelected={this.updateValue}
+                    value={this.state.value}
+                />
+                : <Input
+                    value={this.state.value}
+                    onInput={this.handleChange}
+                    id={uniqueID()}
+                    type="text"
+                    label={this.props.label}
+                    handleChange={this.handleChange}
+                    handleKeyPress={this.handleKeyPress}
+                />;
+        } else if (this.props.type === 'phone') {
+            return (
+                <Input
+                    value={this.state.value}
+                    onInput={this.handleChange}
+                    id={uniqueID()}
+                    type="text"
+                    label={this.props.label}
+                    handleChange={this.handleChange}
+                    handleKeyPress={this.handleKeyPress}
+                />
+            );
+        } else if (this.props.type === 'input') {
+            return (
+                <Input
+                    value={this.state.value}
+                    onInput={this.handleChange}
+                    id={uniqueID()}
+                    type={this.props.inputType}
+                    label={this.props.label}
+                    minLength={this.props.minLength}
+                    maxLength={this.props.maxLength}
+                    min={this.props.min}
+                    max={this.props.max}
+                    handleChange={this.handleChange}
+                    handleKeyPress={this.handleKeyPress}
+                />
+            );
+        } else if (this.props.type === 'select') {
+            return (
+                <Select
+                    label={this.props.label}
+                    id={uniqueID()}
+                    options={this.props.options}
+                    optionSelected={this.updateValue}
+                    value={this.state.value}
+                />
+            );
+        } else if (this.props.type === 'radio') {
+            return (
+                <RadioButtons
+                    label={this.props.label}
+                    id={uniqueID()}
+                    options={this.props.options}
+                    optionSelected={this.handleChange}
+                    value={this.state.value}
+                    name={this.props.name}
+                />
+            );
+        } else if (this.props.type === 'checkbox') {
+            return (
+                <Checkboxes
+                    options={this.props.options}
+                    id={uniqueID()}
+                    updateValue={this.updateValue}
+                    name={this.props.name}
+                 />
             );
         } else if (this.props.type === 'gender') {
             return (
@@ -114,141 +188,6 @@ class Step extends Component {
                     nextstep={this.props.collectData}
                     name={this.props.name}
                 />
-            );
-        } else if (this.props.type === 'dob') {
-            return (
-                <div>
-                    <DoB
-                        id={uniqueID()}
-                        updateValue={this.updateValue}
-                     />
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
-            );
-        } else if (this.props.type === 'suburb') {
-            return (
-                <div>
-                    {this.props.suburbList 
-                        ? <Select
-                            label={this.props.label}
-                            id={uniqueID()}
-                            options={this.props.suburbList}
-                            optionSelected={this.updateValue}
-                            value={this.state.value}
-                        />
-                        : <Input
-                            value={this.state.value}
-                            onInput={this.handleChange}
-                            id={uniqueID()}
-                            type="text"
-                            label={this.props.label}
-                            handleChange={this.handleChange}
-                            handleKeyPress={this.handleKeyPress}
-                        /> 
-                    }
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
-            );
-        } else if (this.props.type === 'phone') {
-            return (
-                <div>
-                    <Input
-                        value={this.state.value}
-                        onInput={this.handleChange}
-                        id={uniqueID()}
-                        type="text"
-                        label={this.props.label}
-                        handleChange={this.handleChange}
-                        handleKeyPress={this.handleKeyPress}
-                    />
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
-            );
-        } else if (this.props.type === 'input') {
-            return (
-                <div>
-                    <Input
-                        value={this.state.value}
-                        onInput={this.handleChange}
-                        id={uniqueID()}
-                        type={this.props.inputType}
-                        label={this.props.label}
-                        minLength={this.props.minLength}
-                        maxLength={this.props.maxLength}
-                        min={this.props.min}
-                        max={this.props.max}
-                        handleChange={this.handleChange}
-                        handleKeyPress={this.handleKeyPress}
-                    />
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
-            );
-        } else if (this.props.type === 'select') {
-            return (
-                <div>
-                    <Select
-                        label={this.props.label}
-                        id={uniqueID()}
-                        options={this.props.options}
-                        optionSelected={this.updateValue}
-                        value={this.state.value}
-                    />
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
-            );
-        } else if (this.props.type === 'radio') {
-            return (
-                <div>
-                    <RadioButtons
-                        label={this.props.label}
-                        id={uniqueID()}
-                        options={this.props.options}
-                        optionSelected={this.handleChange}
-                        value={this.state.value}
-                        name={this.props.name}
-                    />
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
-            );
-        } else if (this.props.type === 'checkbox') {
-            return (
-                <div>
-                    <Checkboxes
-                        options={this.props.options}
-                        id={uniqueID()}
-                        updateValue={this.updateValue}
-                        name={this.props.name}
-                     />
-                    <CTAButton
-                        text="next"
-                        disabled={this.state.inputValid}
-                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
-                    />
-                </div>
             );
         } else if (this.props.type === 'yesNo') {
             return (
@@ -325,6 +264,15 @@ class Step extends Component {
                     : null
                 }
                 { this.createStep() }
+                {
+                    this.state.showCTAButton
+                    ? <CTAButton
+                        text="next"
+                        disabled={this.state.inputValid}
+                        nextstep={() => this.props.collectData(this.props.name, this.state.value)}
+                    />
+                    : null
+                }
                 {
                     this.props.additionalStepID
                     ? <CTAButton
