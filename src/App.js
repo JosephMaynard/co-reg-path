@@ -5,7 +5,7 @@ import ProgressBar from './components/ProgressBar';
 import Loading from './components/Loading';
 import Step from './components/Step';
 
-import pathData from './data/sample_path_data';
+import pathData from './data/current_path_data';
 import { getUrlParameters, uniqueID, preloadImages, getAge } from './helpers';
 import './App.css';
 

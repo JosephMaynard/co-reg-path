@@ -47,12 +47,17 @@
     animation: StepExitAnimation 0.3s forwards;
 }
 
-.Step .title {
+.Step .title, .Step p {
     text-align: center;
     font-size: 2em;
     font-weight: 300;
     color: #565656;
     margin-bottom: 0.5em;
+}
+
+.Step a, .Step a:visited {
+    color: #565656;
+    text-decoration: none;
 }
 
 .Step .offerText {
@@ -95,9 +100,9 @@
 }
 
 @media screen and (min-width: 800px) {
-    .Step .offerImg {
-      width: 180px;
-      height: 90px;
+    .Step .offerImage {
+      width: 150px;
+      height: 75px;
   }
 }
 
@@ -105,9 +110,9 @@
     .Step {
         max-width: 720px;
     }
-    .Step .offerImg {
-      width: 240px;
-      height: 120px;
+    .Step .offerImage {
+      width: 180px;
+      height: 90px;
   }
 }
 
@@ -115,8 +120,8 @@
     .Step {
         max-width: 960px;
     }
-    .Step .offerImg {
-      width: 360px;
-      height: 180px;
+    .Step .offerImage {
+      width: 240px;
+      height: 120px;
   }
 }

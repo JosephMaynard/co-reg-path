@@ -254,6 +254,11 @@ class Step extends Component {
                     ? <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
                     : null
                 }
+                {
+                    this.props.rawHTML
+                    ? <div dangerouslySetInnerHTML={ { __html: this.props.rawHTML } } />
+                    : null
+                }
                 { this.createStep() }
                 {
                     this.state.showCTAButton
