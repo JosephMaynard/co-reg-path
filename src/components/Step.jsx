@@ -59,10 +59,10 @@ class Step extends Component {
     }
 
     createStep() {
-        if (this.props.type === 'redirect') {
+        if(this.props.redirectURL) {
             setTimeout(() => window.location = this.props.redirectURL, this.props.redirectDelay || 0);
-            return null;
-        } else if (this.props.type === 'name') {
+        } 
+        if (this.props.type === 'name') {
             return (
                 <Input
                     value={this.state.value}
@@ -80,7 +80,7 @@ class Step extends Component {
                     value={this.state.value}
                     onInput={this.handleChange}
                     id={uniqueID()}
-                    type="email"
+                    type='email'
                     label={this.props.label}
                     handleChange={this.handleChange}
                     handleKeyPress={this.handleKeyPress}
@@ -195,15 +195,6 @@ class Step extends Component {
                     nextstep={this.props.collectData}
                     name={this.props.name}
                 />
-            );
-        } else if (this.props.type === 'endCard') {
-            if(this.props.redirectURL) {
-                setTimeout(() => window.location = this.props.redirectURL, this.props.redirectDelay || 0);
-            }
-            return (
-                <div>
-                    <StepTitle text={replaceTemplateStrings(this.props.title, this.props.details)} />
-                </div>
             );
         }
         return null;
