@@ -5,11 +5,13 @@ const pathData = {
     source:' ',
     prepopulate: '%26email%3Ds.an.t.i.ago.jer.ez%40gmail.com%26fname%3DSANTIAGO%26lname%3D%26postcode%3D%26gender%3D%26address%3D%26phone%3D%26state%3D%26age%3D37%26dob%3D1980-01-21',
     uuid: '82ed4ae4-d591-4718-9c50-5da4c6a69a98',
+
+
     callback: 'jQuery1113037716368033298364_1492045579455',
     latency: '743',
     process: '9301',
     path:[
-        //STANDARD STEPS
+        //PREDEFINED STEPS
         //Predefined steps with built in validation
         {
             //TYPE NAME, uses built in regex (/^[a-zA-Z-.\\' ]+$/u) function in
@@ -72,7 +74,7 @@ const pathData = {
             maxLength: 14
         },
 
-        //CUSTOM STEPS
+        //GENERIC STEPS
         {
             type: 'input',
             title: 'Test Input',
@@ -105,12 +107,24 @@ const pathData = {
                 {value:'Jimi Hendrix', text:'Jimi Hendrix'}, 
                 {value:'Richard Pryor', text:'Richard Pryor'}, 
             ],
-
+        },
+        {
+            type: 'checkbox',
+            name: 'checkboxes',
+            title: 'Hey {firstName} which Beatles do you like? (select all that apply)',
+            options: [
+                {value:'John', text:'John'},
+                {value:'Paul', text:'Paul'},
+                {value:'George', text:'George'},
+                {value:'Ringo', text:'Ringo'},
+                {value:'Peter', text:'Peter'},
+                {value:'None', text:'None'},
+            ],
         },
 
         //OFFER STEPS
         {
-            type: 'offerBool',
+            type: 'yesNo',
             name: 'vmli_co_3507',
             title: 'Dodo NBN plans just got better! Get a FREE SPEED BOOST on an awesome Standard Speed NBN plan. Tick Yes to find out more.',
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/dodo.png',
@@ -158,7 +172,7 @@ const pathData = {
             ]
         },
         {
-            type: 'offerMultiCheckboxes',
+            type: 'checkbox',
             name: 'vmli_co_546841354',
             title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/PlatinumHolidayClub.png',
@@ -174,7 +188,7 @@ const pathData = {
             ],
         },
         {
-            type: 'offerMultiChoice',
+            type: 'radio',
             name: 'vmli_co_8654858',
             title: 'Platinum Holiday Club can provide $2000 towards your next holiday, to hear more tell us where you want to go. Please Select:',
             image: 'https://creative.mobileembrace.com/test/co-reg-path/img/PlatinumHolidayClub.png',

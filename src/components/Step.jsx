@@ -142,7 +142,7 @@ class Step extends Component {
                     value={this.state.value}
                     onInput={this.handleChange}
                     id={uniqueID()}
-                    type={this.props.inputType}
+                    type={this.props.inputType || 'text'}
                     label={this.props.label}
                     minLength={this.props.minLength}
                     maxLength={this.props.maxLength}

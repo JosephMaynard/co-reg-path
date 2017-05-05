@@ -29,7 +29,7 @@ class App extends Component {
             index: pathData.index,
             group: pathData.group,
             source: pathData.source,
-            prepopulate: pathData.prepopulate,
+            prepopulate: JSON.parse(pathData.prepopulate),
             uuid: pathData.uuid,
             callback: pathData.callback,
             latency: pathData.latency,
@@ -37,10 +37,11 @@ class App extends Component {
             pathData: pathData.path.map(step => {
                 step.key = uniqueID();
                 return step;
-            }),
+            }).filter(step => this.validateStep(step)),
         };
 
         this.filterPath = this.filterPath.bind(this);
+        this.validateStep = this.validateStep.bind(this);
         this.addAdditionalSteps = this.addAdditionalSteps.bind(this);
         this.removeAdditionalSteps = this.removeAdditionalSteps.bind(this);
         this.cancelAdditionalSteps = this.cancelAdditionalSteps.bind(this);
@@ -87,7 +88,36 @@ class App extends Component {
     }
 
     importPath (pathData) {
-        return pathData.filter(step => !this.state.collectedData[step.name]);
+        return pathData.filter(step => !this.state.collectedData[step.name] && this.validateStep(step));
+    }
+
+    validateStep (step) {
+        if(step.type === 'name'
+            || step.type ==='email'
+            || step.type ==='postcode'
+            || step.type ==='dob'
+            || step.type ==='suburb'
+            || step.type ==='gender'
+            || step.type ==='phone'
+            || step.type ==='input'
+            || step.type ==='select'
+            || step.type ==='radio'
+            || step.type ==='checkbox'
+            || step.type ==='yesNo') {
+            if(!step.name){
+                console.warn(`Step type ${step.type} requires name.`);
+                return false;
+            }
+        }
+        if(step.type === 'select'
+            || step.type ==='radio'
+            || step.type ==='checkbox') {
+            if(!step.options){
+                console.warn(`Step type ${step.type} requires options.`);
+                return false;
+            }
+        }
+        return true;
     }
 
     filterPath (pathData) {
@@ -194,7 +224,7 @@ class App extends Component {
         if(value && this.state.pathData[this.state.currentStep].requiredInfo) {
             const additionalStepID = uniqueID();
             const additionalSteps = this.state.pathData[this.state.currentStep].requiredInfo
-                .filter(step => !this.state.collectedData[step.name])
+                .filter(step => !this.state.collectedData[step.name] && this.validateStep(step))
                 .map(step => {
                     return Object.assign(step, {
                         additionalStepID: additionalStepID,
