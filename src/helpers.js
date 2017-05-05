@@ -26,6 +26,15 @@ export function getUrlParameters() {
     return parameters;
 }
 
+export function decodePrepopulateString(prepopulate) {
+    var parameters = {};
+    var parts = decodeURIComponent(prepopulate).replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        parameters[key] = value;
+    });
+    return parameters;
+}
+
+
 export function populateDays() {
     const days = [];
     for (let i = 1; i < 32; i++) {

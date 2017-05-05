@@ -6,11 +6,11 @@ import Loading from './components/Loading';
 import Step from './components/Step';
 
 import pathData from './data/current_path_data';
-import { getUrlParameters, uniqueID, preloadImages, getAge } from './helpers';
+import { getUrlParameters, uniqueID, preloadImages, getAge, decodePrepopulateString } from './helpers';
 import './App.css';
 
 //Create array of all images from path data to pre-load on componentDidMount
-const offerImages = pathData.path.filter(item => item.image).map(item => item.image);
+const offerImages = pathData.path.filter(item => item.image || item.offerImage).map(item => item.image || item.offerImage);
 
 class App extends Component {
 
@@ -20,7 +20,7 @@ class App extends Component {
             stepExit: false,
             currentStep: 0,
             loadingData: true,
-            parameters: getUrlParameters(),
+            URLParameters: getUrlParameters(),
             collectedData: {
                 sessionID: uniqueID(),
             },
@@ -29,7 +29,7 @@ class App extends Component {
             index: pathData.index,
             group: pathData.group,
             source: pathData.source,
-            prepopulate: JSON.parse(pathData.prepopulate),
+            prepopulate: decodePrepopulateString(pathData.prepopulate),
             uuid: pathData.uuid,
             callback: pathData.callback,
             latency: pathData.latency,
@@ -52,6 +52,23 @@ class App extends Component {
     }
 
     componentDidMount() {
+
+        //Import pre-populate values from URL
+        if(this.state.URLParameters.prepopulate) {
+            const URLPrepopulateData = decodePrepopulateString(this.state.URLParameters.prepopulate);
+            let collectedData = this.state.collectedData;
+            Object.keys(URLPrepopulateData).map(key => {
+                if (URLPrepopulateData[key] !== '') {
+                    collectedData[key] = URLPrepopulateData[key];
+                }
+                return null;
+            });
+            this.setState({
+                collectedData,
+            });
+        }
+
+        //Create global object with JSONP Call Ba
         window.jsonpLoader = {
             lookUpState: (data) => {
                 const result = JSON.parse(data);
@@ -77,6 +94,8 @@ class App extends Component {
                 }
             },
         };
+
+        //preload images form steps
         preloadImages('', offerImages);
 
         //Simulate loading JSON data
