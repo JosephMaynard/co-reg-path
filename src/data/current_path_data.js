@@ -14,14 +14,13 @@ const pathData = {
             name: 'firstName',
             title: 'Enter your first name:',
             label: 'First name',
-            rawHTML: '<p>BUTTS I am a <a href="https://google.com/">monkey</a></p>'
         },
-        // {
-        //     type: 'name',
-        //     name: 'lastName',
-        //     title: 'Hi {firstName}, please enter your last name:',
-        //     label: 'Last name',
-        // },
+        {
+            type: 'name',
+            name: 'lastName',
+            title: 'Hi {firstName}, please enter your last name:',
+            label: 'Last name',
+        },
         {
             type: 'postcode',
             name: 'postcode',
@@ -29,29 +28,29 @@ const pathData = {
             label: 'Postcode',
             maxLength: 4
         },
-        // {
-        //     type: 'email',
-        //     name: 'email',
-        //     title: 'Enter your email address:',
-        //     label: 'Email address',
-        // },
-        // {
-        //     type: 'dob',
-        //     name: 'dob',
-        //     title: 'Please enter your date of birth:',
-        // },
-        // {
-        //     type: 'gender',
-        //     name: 'gender',
-        //     title: 'Please select your gender:',
-        // },
-        // {
-        //     type: 'phone',
-        //     name: 'phone',
-        //     title: 'Please enter your mobile number',
-        //     label: 'Mobile Number',
-        //     maxLength: 14
-        // },
+        {
+            type: 'email',
+            name: 'email',
+            title: 'Enter your email address:',
+            label: 'Email address',
+        },
+        {
+            type: 'dob',
+            name: 'dob',
+            title: 'Please enter your date of birth:',
+        },
+        {
+            type: 'gender',
+            name: 'gender',
+            title: 'Please select your gender:',
+        },
+        {
+            type: 'phone',
+            name: 'phone',
+            title: 'Please enter your mobile number',
+            label: 'Mobile Number',
+            maxLength: 14
+        },
         {
             type: 'radio',
             name: 'vmli_co_3427',
@@ -195,6 +194,7 @@ const pathData = {
                 },
                 {
                     type: 'input',
+                    name: 'address',
                     title: 'Please enter your address',
                     inputType: 'text',
                     label: 'Address'
@@ -226,7 +226,14 @@ const pathData = {
             type: 'checkbox',
             name: 'vmli_co_3857',
             title: 'Take advantage of amazing FLY deals to Europe in 2018 with APT. Download your FREE Europe 2018 Guide and find out all about Luxury River Cruising from Amsterdam to Budapest. Where would your Dream Europe Journey take you? Select your destination:',
-            offerImage: 'https://leadinterface.vizmondmedia.com/attachments/coregs/95c8c2fa-56be-4379-9515-f78908a84d83.png'
+            offerImage: 'https://leadinterface.vizmondmedia.com/attachments/coregs/95c8c2fa-56be-4379-9515-f78908a84d83.png',
+            options: [
+                {value: '1', text: 'Arles to Paris'},
+                {value: '2', text: 'Lisbon to Madrid'},
+                {value: '3', text: 'Arles to Amsterdam'},
+                {value: '4', text: 'Bordeaux region'},
+                {value: '5', text: 'No Thanks'},
+            ],
         },
         {
             type: 'yesNo',
