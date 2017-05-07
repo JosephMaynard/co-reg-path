@@ -68,8 +68,8 @@ class App extends Component {
             });
         }
 
-        //Create global object with JSONP Call Ba
-        window.jsonpLoader = {
+        //Create global object with JSONP Call Back
+        window.globalObject = {
             lookUpState: (data) => {
                 const result = JSON.parse(data);
                 let collectedData = this.state.collectedData;
@@ -93,6 +93,8 @@ class App extends Component {
                     });
                 }
             },
+            nextStep: () => this.nextStep(),
+            collectData: () => this.collectData(),
         };
 
         //preload images form steps
@@ -288,10 +290,10 @@ class App extends Component {
 
     lookUpStateAndSuburb(postcode) {
         const liLookUpState = document.createElement('script');
-        liLookUpState.src = `https://leadinterface.vizmondmedia.com/ajax/getstatebypostcodeajax?callback=jsonpLoader.lookUpState&country=13&postcode=${postcode}`;
+        liLookUpState.src = `https://leadinterface.vizmondmedia.com/ajax/getstatebypostcodeajax?callback=globalObject.lookUpState&country=13&postcode=${postcode}`;
         document.body.appendChild(liLookUpState);
         const liLookUpSuburbs = document.createElement('script');
-        liLookUpSuburbs.src = `https://leadinterface.vizmondmedia.com/ajax/getsuburbsbypostcodeajax?callback=jsonpLoader.lookUpSuburb&country=13&postcode=${postcode}`;
+        liLookUpSuburbs.src = `https://leadinterface.vizmondmedia.com/ajax/getsuburbsbypostcodeajax?callback=globalObject.lookUpSuburb&country=13&postcode=${postcode}`;
         document.body.appendChild(liLookUpSuburbs);
     }
 

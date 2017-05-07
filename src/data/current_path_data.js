@@ -10,6 +10,10 @@ const pathData = {
     process: '9301',
     path:[
         {
+            type: 'test',
+            rawHTML: '<a href="javascript:window.globalObject.nextStep()">Next</a>'
+        },
+        {
             type: 'name',
             name: 'firstName',
             title: 'Enter your first name:',
