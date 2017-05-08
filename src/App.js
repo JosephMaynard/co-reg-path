@@ -121,6 +121,7 @@ class App extends Component {
                 if (this.state.prepopulate[item] !== '') {
                     collectedData[item] = this.state.prepopulate[item];
                 }
+                return null;
             });
 
             this.setState({

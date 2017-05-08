@@ -77,7 +77,7 @@ img {
 
 .footer-inner {
     width: 90%;
-    max-width: 960px;
+    max-width: 800px;
     margin: 0 auto;
     position: relative;
     display: flex;
@@ -92,6 +92,48 @@ img {
 .footer .disclaimer {
     font-size: 0.85em;
     font-weight: 200;
+}
+.VizmondLogo {
+    display: block;
+    width: 70%;
+    margin: 0 auto 1em;
+    max-width: 12em;
+}
+.VizmondSVG {
+    fill: #FFF;
+}
+.footer_left-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 0 1em 0;
+    flex-wrap: wrap;
+}
+.footer_left-link, .footer_left-link-mo {
+    font-size: 1.1em;
+}
+.footer_left-link {
+    display: none;
+}
+.footer_left-link-mo {
+    display: inline-block;
+    margin: 0 1em;
+}
+
+.mobileadbanner {
+    margin: 2em auto 0;
+    text-align: center;
+}
+
+.mobileadbannerdesk {
+    display: none;
+}
+
+.promoter, .leyend {
+    text-align: center;
+    padding: 0 0 1em 0;
+    font-size: 0.9em;
+    line-height: 1.3
 }
 
 @media screen and (min-width: 800px) {
@@ -134,16 +176,34 @@ img {
     .footer_left {
         width: 25%;
     }
-
     .footer_right {
         width: 70%;
     }
-    .footer_left-link, .footer_left-link-mo {
-        padding: 0 0 1em 0;
-        font-size: 1.2em;
+    .footer_left-links {
+        display: block;
     }
-
+    .footer_left-link, .footer_left-link-mo {
+        display: block;
+        padding: 0 0 1em 0;
+        margin: 0;
+    }
+    .VizmondLogo {
+        width: 70%;
+        margin: 0 0 1em;
+    }
+    .mobileadbanner {
+        display: none;
+    }
+    .mobileadbannerdesk {
+        display: block;
+        margin: 2em auto 0;
+        text-align: center;
+    }
+    .promoter, .leyend {
+        text-align: left;
+    }
 }
+
 @media screen and (min-width: 1500px) {
     body {
         font-size: 150%;
@@ -161,6 +221,10 @@ img {
         margin: auto;
         box-shadow: rgba(0,0,0,0.2) 0px 8px 128px;
     }
+    .footer-inner {
+        max-width: 1200px;
+        font-size: 0.75em;
+    }
 }
 
 @media screen and (min-width: 2000px) {
@@ -170,5 +234,8 @@ img {
     .app-container {
         max-width: 1600px;
         max-height: 1200px;
+    }
+    .footer-inner {
+        max-width: 1600px;
     }
 }
