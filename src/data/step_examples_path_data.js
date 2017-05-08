@@ -5,12 +5,98 @@ const pathData = {
     source:' ',
     prepopulate: '%26email%3Ds.an.t.i.ago.jer.ez%40gmail.com%26fname%3DSANTIAGO%26lname%3D%26postcode%3D%26gender%3D%26address%3D%26phone%3D%26state%3D%26age%3D37%26dob%3D1980-01-21',
     uuid: '82ed4ae4-d591-4718-9c50-5da4c6a69a98',
-
-
     callback: 'jQuery1113037716368033298364_1492045579455',
     latency: '743',
     process: '9301',
+
     path:[
+
+        {
+            //TYPE
+            //Predefined types:
+            //    name - 
+            //    email -
+            //    postcode -
+            //    dob -
+            //    suburb -
+            //    phone -
+            //    input -
+            //    select - Requires 'options' or will be ignored
+            //    radio - Requires 'options' or will be ignored
+            //    checkbox - Requires 'options' or will be ignored
+            //    gender - Shows male and female buttons
+            //    yesNo - Shows no and yes buttons instead of CTA Button which return values false or true
+
+            type: 'name',
+
+            //NAME
+            //Name used for form element, predefined step types will be skipped if this is not set.
+            name: 'lname',
+
+            //OFFER IMAGE
+            offerImage: 'http://assetserver/offerImage.jpg',
+            image: 'http://assetserver/image.jpg',
+            title: 'Hi {fname}\n what\'s your last name?',
+            rawHTML: '<p>Custom Raw HTML Step</p><p><a href="javascript:window.globalObject.nextStep()" style="display:block;width:50%;color:#FFF;background:#F00;padding:0.4em;margin:0 auto;font-weight:bold;">Custom CSS Button</a></p><button onclick="window.globalObject.nextStep()" class="CTAButton">CTA Button</button>',
+            label: 'Last Name',
+            maxLength: 64,
+            options: [
+                {value:'Red', text:'Red'}, 
+                {value:'Orange', text:'Orange'}, 
+                {value:'Yellow', text:'Yellow'}, 
+                {value:'Green', text:'Green'}, 
+                {value:'Blue', text:'Blue'}, 
+                {value:'Purple', text:'Purple'}, 
+                {value:'Brown', text:'Brown'}, 
+            ],         
+            requiredInfo: [
+                {
+                    type: 'gender',
+                    name: 'gender',
+                    title: 'Please select your gender:',
+                },
+                {
+                    type: 'select',
+                    name: 'favoriteColour',
+                    title: 'Hey {firstName} what\'s your favorite colour?',
+                    options: [
+                        {value:'Red', text:'Red'}, 
+                        {value:'Orange', text:'Orange'}, 
+                        {value:'Yellow', text:'Yellow'}, 
+                        {value:'Green', text:'Green'}, 
+                        {value:'Blue', text:'Blue'}, 
+                        {value:'Purple', text:'Purple'}, 
+                        {value:'Brown', text:'Brown'}, 
+                    ],
+
+                },
+                {
+                    type: 'suburb',
+                    name: 'suburb',
+                    title: 'Please enter your suburb:',
+                    label: 'Suburb',
+                },
+            ],
+            rules: [
+                {
+                    field: 'age',
+                    min: 24,
+                },
+                {
+                    field: 'age',
+                    max: 52,
+                },
+                {
+                    field: 'postcode',
+                    equals: [4575, 6865, 3547, 2010],
+                }
+            ],
+            regex: '/^[a-zA-Z-.\\\' ]+$/',
+            regexFlags: 'u',
+            redirectURL: 'https://www.vizmondmedia.com/',
+            redirectDelay: 3000,
+
+        },
         //PREDEFINED STEPS
         //Predefined steps with built in validation
         {

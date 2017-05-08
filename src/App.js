@@ -5,12 +5,11 @@ import ProgressBar from './components/ProgressBar';
 import Loading from './components/Loading';
 import Step from './components/Step';
 
-import pathData from './data/current_path_data';
+// import pathData from './data/current_path_data';
+
 import { getUrlParameters, uniqueID, preloadImages, getAge, decodePrepopulateString } from './helpers';
 import './App.css';
 
-//Create array of all images from path data to pre-load on componentDidMount
-const offerImages = pathData.path.filter(item => item.image || item.offerImage).map(item => item.image || item.offerImage);
 
 class App extends Component {
 
@@ -24,20 +23,6 @@ class App extends Component {
             collectedData: {
                 sessionID: uniqueID(),
             },
-
-            survey: pathData.survey,
-            index: pathData.index,
-            group: pathData.group,
-            source: pathData.source,
-            prepopulate: decodePrepopulateString(pathData.prepopulate),
-            uuid: pathData.uuid,
-            callback: pathData.callback,
-            latency: pathData.latency,
-            process: pathData.process,
-            pathData: pathData.path.map(step => {
-                step.key = uniqueID();
-                return step;
-            }).filter(step => this.validateStep(step)),
         };
 
         this.filterPath = this.filterPath.bind(this);
@@ -47,6 +32,7 @@ class App extends Component {
         this.cancelAdditionalSteps = this.cancelAdditionalSteps.bind(this);
         this.collectData = this.collectData.bind(this);
         this.sendData = this.sendData.bind(this);
+        this.importPath = this.importPath.bind(this);
         this.nextStep = this.nextStep.bind(this);
         this.lookUpStateAndSuburb = this.lookUpStateAndSuburb.bind(this);
     }
@@ -70,6 +56,7 @@ class App extends Component {
 
         //Create global object with JSONP Call Back
         window.globalObject = {
+            loadPathData: (data) => this.importPath(data),
             lookUpState: (data) => {
                 const result = JSON.parse(data);
                 let collectedData = this.state.collectedData;
@@ -97,34 +84,73 @@ class App extends Component {
             collectData: () => this.collectData(),
         };
 
-        //preload images form steps
-        preloadImages('', offerImages);
+        
 
         //Simulate loading JSON data
-        setTimeout(() => {
-            this.setState({
-                loadingData: false
-            });
-        }, 2000);
+        // setTimeout(() => {
+        //     this.setState({
+        //         loadingData: false
+        //     });
+        // }, 2000);
     }
 
-    importPath (pathData) {
-        return pathData.filter(step => !this.state.collectedData[step.name] && this.validateStep(step));
+    importPath (data) {
+        const pathData = JSON.parse(data);
+
+        //Create array of all images from path data to pre-load on componentDidMount
+        const offerImages = pathData.path.filter(item => item.image || item.offerImage).map(item => item.image || item.offerImage);
+        this.setState({
+            survey: pathData.survey,
+            index: pathData.index,
+            group: pathData.group,
+            source: pathData.source,
+            prepopulate: decodePrepopulateString(pathData.prepopulate),
+            uuid: pathData.uuid,
+            callback: pathData.callback,
+            latency: pathData.latency,
+            process: pathData.process,
+            pathData: pathData.path.map(step => {
+                step.key = uniqueID();
+                return step;
+            }).filter(step => this.validateStep(step)),
+            loadingData: false,
+        });
+        if(this.state.prepopulate) {
+            let collectedData = this.state.collectedData;
+            Object.keys(this.state.prepopulate).map(item => {
+                if (this.state.prepopulate[item] !== '') {
+                    collectedData[item] = this.state.prepopulate[item];
+                }
+            });
+
+            this.setState({
+                collectedData
+            });
+
+            this.setState({
+                pathData: this.filterPath(this.state.pathData)
+            });
+
+        }
+        //preload images form steps
+        preloadImages('', offerImages);
     }
 
     validateStep (step) {
+        if(this.state.collectedData[step.name]) return false;
+        
         if(step.type === 'name'
-            || step.type ==='email'
-            || step.type ==='postcode'
-            || step.type ==='dob'
-            || step.type ==='suburb'
-            || step.type ==='gender'
-            || step.type ==='phone'
-            || step.type ==='input'
-            || step.type ==='select'
-            || step.type ==='radio'
-            || step.type ==='checkbox'
-            || step.type ==='yesNo') {
+        || step.type ==='email'
+        || step.type ==='postcode'
+        || step.type ==='dob'
+        || step.type ==='suburb'
+        || step.type ==='gender'
+        || step.type ==='phone'
+        || step.type ==='input'
+        || step.type ==='select'
+        || step.type ==='radio'
+        || step.type ==='checkbox'
+        || step.type ==='yesNo') {
             if(!step.name){
                 console.warn(`Step type ${step.type} requires name.`);
                 return false;
@@ -255,7 +281,7 @@ class App extends Component {
                 });           
 
             this.setState({
-                pathData: this.addAdditionalSteps(pathData.path, additionalSteps)
+                pathData: this.addAdditionalSteps(this.state.pathData.path, additionalSteps)
             });
         } else if(!this.state.pathData[this.state.currentStep].additionalStepID) {
             this.sendData();

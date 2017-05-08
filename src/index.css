@@ -75,6 +75,25 @@ img {
     box-sizing: border-box;
 }
 
+.footer-inner {
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer_left, .footer_right {
+    width: 100%;
+}
+
+.footer .disclaimer {
+    font-size: 0.85em;
+    font-weight: 200;
+}
+
 @media screen and (min-width: 800px) {
     body {
         background: #e73359;
@@ -108,6 +127,22 @@ img {
         border-radius: 100%;
         box-shadow: rgba(0,0,0,0.5) 0px 4px 42px 10px;
     }
+    .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .footer_left {
+        width: 25%;
+    }
+
+    .footer_right {
+        width: 70%;
+    }
+    .footer_left-link, .footer_left-link-mo {
+        padding: 0 0 1em 0;
+        font-size: 1.2em;
+    }
+
 }
 @media screen and (min-width: 1500px) {
     body {

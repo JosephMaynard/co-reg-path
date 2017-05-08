@@ -11,7 +11,7 @@ const pathData = {
     path:[
         {
             type: 'test',
-            rawHTML: '<a href="javascript:window.globalObject.nextStep()">Next</a>'
+            rawHTML: '<p>Custom Raw HTML Step</p><p><a href="javascript:window.globalObject.nextStep()" style="display:block;width:50%;color:#FFF;background:#F00;padding:0.4em;margin:0 auto;font-weight:bold;">Custom CSS Button</a></p><button onclick="window.globalObject.nextStep()" class="CTAButton">CTA Button</button>'
         },
         {
             type: 'name',
