@@ -239,7 +239,7 @@ class App extends Component {
 
         this.sendData();
 
-        setTimeout(() => {    
+        setTimeout(() => {
             const nextStep = this.state.currentStep + 1;
             this.setState({
                 currentStep: nextStep,
@@ -288,7 +288,9 @@ class App extends Component {
             this.sendData();
         }
 
+        //Scroll back to top of page
         document.querySelector('.StepArea').scrollTop = 0;
+        window.scrollTo(0,0);
 
         setTimeout(() => {    
             const nextStep = this.state.currentStep + 1;
