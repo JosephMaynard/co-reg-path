@@ -139,7 +139,7 @@ class App extends Component {
 
     validateStep (step) {
         if(this.state.collectedData[step.name]) return false;
-        
+
         if(step.type === 'name'
         || step.type ==='email'
         || step.type ==='postcode'
@@ -282,7 +282,7 @@ class App extends Component {
                 });           
 
             this.setState({
-                pathData: this.addAdditionalSteps(this.state.pathData.path, additionalSteps)
+                pathData: this.addAdditionalSteps(this.state.pathData, additionalSteps)
             });
         } else if(!this.state.pathData[this.state.currentStep].additionalStepID) {
             this.sendData();
