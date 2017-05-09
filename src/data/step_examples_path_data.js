@@ -13,31 +13,36 @@ const pathData = {
 
         {
             //TYPE
-            //Predefined types:
-            //    name - 
-            //    email -
+            //    name     - 
+            //    email    -
             //    postcode -
-            //    dob -
-            //    suburb -
-            //    phone -
-            //    input -
-            //    select - Requires 'options' or will be ignored
-            //    radio - Requires 'options' or will be ignored
+            //    dob      -
+            //    suburb   -
+            //    phone    -
+            //    input    -
+            //    select   - Requires 'options' or will be ignored
+            //    radio    - Requires 'options' or will be ignored
             //    checkbox - Requires 'options' or will be ignored
-            //    gender - Shows male and female buttons
-            //    yesNo - Shows no and yes buttons instead of CTA Button which return values false or true
+            //    gender   - Shows male and female buttons
+            //    yesNo    - Shows no and yes buttons instead of CTA Button which return values false or true
 
             type: 'name',
 
             //NAME
-            //Name used for form element, predefined step types will be skipped if this is not set.
+            //Name used for form element to collect data, predefined step types will be skipped if this is not set.
             name: 'lname',
 
             //OFFER IMAGE
             offerImage: 'http://assetserver/offerImage.jpg',
+
+            //IMAGE
+            //Full width image
             image: 'http://assetserver/image.jpg',
+
+
             title: 'Hi {fname}\n what\'s your last name?',
-            rawHTML: '<p>Custom Raw HTML Step</p><p><a href="javascript:window.globalObject.nextStep()" style="display:block;width:50%;color:#FFF;background:#F00;padding:0.4em;margin:0 auto;font-weight:bold;">Custom CSS Button</a></p><button onclick="window.globalObject.nextStep()" class="CTAButton">CTA Button</button>',
+
+            rawHTML: '<p>Custom Raw HTML Step</p><a href="javascript:window.globalObject.nextStep()" style="display:block;width:50%;color:#FFF;background:#F00;padding:0.4em;margin:0 auto;font-weight:bold;">Custom CSS Button</a><button onclick="window.globalObject.nextStep()" class="CTAButton">CTA Button</button>',
             label: 'Last Name',
             maxLength: 64,
             options: [
@@ -69,6 +74,31 @@ const pathData = {
                         {value:'Brown', text:'Brown'}, 
                     ],
 
+                },        
+                {
+                    type: 'radio',
+                    name: 'radioButtons',
+                    title: 'Hey {firstName} who is the greatest?',
+                    options: [
+                        {value:'Bruce Lee', text:'Bruce Lee'}, 
+                        {value:'Jackie Chan', text:'Jackie Chan'}, 
+                        {value:'Elvis', text:'Elvis'}, 
+                        {value:'Jimi Hendrix', text:'Jimi Hendrix'}, 
+                        {value:'Richard Pryor', text:'Richard Pryor'}, 
+                    ],
+                },
+                {
+                    type: 'checkbox',
+                    name: 'checkboxes',
+                    title: 'Hey {firstName} which Beatles do you like? (select all that apply)',
+                    options: [
+                        {value:'John', text:'John'},
+                        {value:'Paul', text:'Paul'},
+                        {value:'George', text:'George'},
+                        {value:'Ringo', text:'Ringo'},
+                        {value:'Peter', text:'Peter'},
+                        {value:'None', text:'None'},
+                    ],
                 },
                 {
                     type: 'suburb',

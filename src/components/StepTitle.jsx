@@ -1,11 +1,11 @@
 const StepTitle = (props) => {
     return (
         <p className="title">
-            {props.text.split('\n').map((item, key) => {
+            {props.text.split('<br>').map((item, key) => {
                 return (
                     <span key={key}>
                         {item}
-                        {key < props.text.split('\n').length  ? <br/> : null}
+                        {key < props.text.split('<br>').length  ? <br/> : null}
                     </span>);
             })}
             {props.link && props.linkText
