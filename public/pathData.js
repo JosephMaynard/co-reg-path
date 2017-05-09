@@ -4,20 +4,27 @@ globalObject.loadPathData(JSON.stringify({
     index: 0,
     group: '77389395-72ce-4092-97bc-3e507212cbd5',
     source:'',
-    prepopulate: 'email%3Ds.an.t.i.ago.jer.ez%40gmail.com%26fname%3DSANTIAGO%26lname%3D%26postcode%3D%26gender%3D%26address%3D%26phone%3D%26state%3D%26age%3D37%26dob%3D1980-01-21',
+    // prepopulate: 'email%3Ds.an.t.i.ago.jer.ez%40gmail.com%26fname%3DSANTIAGO%26lname%3D%26postcode%3D%26gender%3D%26address%3D%26phone%3D%26state%3D%26age%3D37%26dob%3D1980-01-21',
     uuid: '82ed4ae4-d591-4718-9c50-5da4c6a69a98',
     callback: 'jQuery1113037716368033298364_1492045579455',
     latency: '743',
     process: '9301',
     path:[
-        // {
-        //     type: 'test',
-        //     rawHTML: '<p>Custom Raw HTML Step</p><p><a href="javascript:window.globalObject.nextStep()" style="display:block;width:50%;color:#FFF;background:#F00;padding:0.4em;margin:0 auto;font-weight:bold;">Custom CSS Button</a></p><button onclick="window.globalObject.nextStep()" class="CTAButton">CTA Button</button>'
-        // },
+        {
+            type: 'test',
+            rawHTML: '<p>Custom Raw HTML Step</p><p><a href="javascript:window.globalObject.nextStep()" style="display:block;width:50%;color:#FFF;background:#F00;padding:0.4em;margin:0 auto;font-weight:bold;">Custom CSS Button</a></p><button onclick="window.globalObject.collectData(\'Hello\', true)" class="CTAButton">CTA Button</button>',
+            requiredInfo: [
+                {
+                    type: 'dob',
+                    name: 'dob',
+                    title: 'Please enter your date of birth:',
+                },
+            ],
+        },
         {
             type: 'name',
             name: 'firstName',
-            title: 'Enter your<br>first name:',
+            title: 'Enter your first name:',
             label: 'First name',
         },
         {

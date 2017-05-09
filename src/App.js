@@ -81,7 +81,7 @@ class App extends Component {
                 }
             },
             nextStep: () => this.nextStep(),
-            collectData: () => this.collectData(),
+            collectData: (key, value) => this.collectData(key, value),
         };
 
         
