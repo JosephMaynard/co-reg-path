@@ -10,17 +10,17 @@ globalObject.loadPathData(JSON.stringify({
     latency: '743',
     process: '9301',
     path:[
-        {
-            type: 'test',
-            rawHTML: '<p>Custom Raw HTML Step</p><p><a href="javascript:window.globalObject.nextStep()" style="display:block;width:50%;color:#FFF;background:#F00;padding:0.4em;margin:0 auto;font-weight:bold;">Custom CSS Button</a></p><button onclick="window.globalObject.collectData(\'Hello\', true)" class="CTAButton">CTA Button</button>',
-            requiredInfo: [
-                {
-                    type: 'dob',
-                    name: 'dob',
-                    title: 'Please enter your date of birth:',
-                },
-            ],
-        },
+        // {
+        //     type: 'test',
+        //     rawHTML: '<p>Custom Raw HTML Step</p><p><a href="javascript:window.globalObject.nextStep()" style="display:block;width:50%;color:#FFF;background:#F00;padding:0.4em;margin:0 auto;font-weight:bold;">Custom CSS Button</a></p><button onclick="window.globalObject.collectData(\'Hello\', true)" class="CTAButton">CTA Button</button>',
+        //     requiredInfo: [
+        //         {
+        //             type: 'dob',
+        //             name: 'dob',
+        //             title: 'Please enter your date of birth:',
+        //         },
+        //     ],
+        // },
         {
             type: 'name',
             name: 'firstName',
